@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            background: #fff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0
+        }
+        
+        a {
+            color: #333;
+            text-decoration: none;
+        }
+        
+        img {
+            border: none;
+        }
+        
+        .clear::after {
+            content: "";
+            display: table;
+            clear: both
+        }
+        
+        ul,
+        li {
+            list-style: none;
+        }
+        
+        #uls {
+            margin: 1rem;
+        }
+        
+        #uls li {
+            height: 40px;
+            padding: 12px 0;
+            border: 1px solid skyblue;
+            color: #333;
+            margin-bottom: 12px;
+            border-radius: 2px;
+            transition: all .7s linear;
+            overflow: hidden;
+        }
+        
+        li p {
+            line-height: 40px;
+            float: left;
+            text-align: left;
+            text-indent: 2rem;
+            width: 70%;
+        }
+        
+        li a {
+            display: block;
+            font-size: 13px;
+            border-radius: 5px;
+            height: 30px;
+            line-height: 30px;
+            margin-top: 5px;
+            margin-right: 3%;
+            background-color: skyblue;
+            color: #fff;
+            float: right;
+            width: 60px;
+            text-align: center;
+        }
+        /*动画效果 摘选自animate.css*/
+        
+        @-webkit-keyframes flipOutX {
+            from {
+                -webkit-transform: perspective(400px);
+                transform: perspective(400px);
+            }
+            30% {
+                -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+                transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+                opacity: 1;
+            }
+            to {
+                -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+                transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes flipOutX {
+            from {
+                -webkit-transform: perspective(400px);
+                transform: perspective(400px);
+            }
+            30% {
+                -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+                transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+                opacity: 1;
+            }
+            to {
+                -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+                transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+                opacity: 0;
+            }
+        }
+        
+        .flipOutX {
+            -webkit-animation-name: flipOutX;
+            animation-name: flipOutX;
+            animation-duration: .7s;
+            animation-timing-function: linear;
+            -webkit-animation-duration: .7s;
+            animation-fill-mode: forwards;
+            /*规定对象动画时间之外的状态*/
+            -webkit-animation-fill-mode: forwards
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="uls">
+        <li class="clear">
+            <p>
+                秘密的甚笃
+            </p>
+            <a href="javascript:;">
+                删除
+            </a>
+        </li>
+        <li class="clear">
+            <p>
+                秘密的甚笃
+            </p>
+            <a href="javascript:;">
+                删除
+            </a>
+        </li>
+        <li class="clear">
+            <p>
+                秘密的甚笃
+            </p>
+            <a href="javascript:;">
+                删除
+            </a>
+        </li>
+        <li class="clear">
+            <p>
+                秘密的甚笃
+            </p>
+            <a href="javascript:;">
+                删除
+            </a>
+        </li>
+        <li class="clear">
+            <p>
+                秘密的甚笃
+            </p>
+            <a href="javascript:;">
+                删除
+            </a>
+        </li>
+    </ul>
+    <script>
+        var oul = document.getElementById("uls");
+        var olis = oul.getElementsByTagName("li");
+        for (var i = 0; i < olis.length; i++) {
+            // 给每个li里的a添加事件
+            olis[i].getElementsByTagName("a")[0].onclick = function() {
+                // 获取当前点击的a的父级，也就是它的爸爸li
+                var theLi = this.parentNode;
+                // 给这个li添加动画的class，这样就会出现动画的效果了
+                theLi.className = "flipOutX";
+                // 280ms后改变li的高度为0，包括边框和margin
+                setTimeout(function() {
+                    theLi.style.cssText = "height:0;padding:0;border-width:0;margin:0";
+                }, 280);
+                // 动画时间为0.7s+280ms，所以直接设置1s后触发删除li
+                setTimeout(function() {
+                    oul.removeChild(theLi)
+                }, 1000)
+
+            }
+        }
+    </script>
+</body>
+
+</html>
