@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            background: #fff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0
+        }
+        
+        a {
+            color: #333;
+            text-decoration: none;
+        }
+        
+        img {
+            border: none;
+        }
+        
+        .clear::after {
+            content: "";
+            display: table;
+            clear: both
+        }
+        
+        ul,
+        li {
+            list-style: none;
+        }
+        
+        .cldrWrp {
+            line-height: 35px;
+            text-align: center;
+            width: 100%;
+            margin: 20px 0 0;
+            /*box-shadow: 0 0 8px #cfcfcf;*/
+            color: #666
+        }
+        
+        #yearWrp {
+            height: 40px;
+            line-height: 40px;
+            font-size: 20px;
+        }
+        
+        .cldrBody span,
+        .cldrBody ul li {
+            float: left;
+            display: block;
+            width: 13%;
+            margin-right: 1.5%;
+        }
+        
+        #yearList a {
+            float: left;
+            display: block;
+            font-size: 17px;
+            width: 32%;
+            margin: 7px;
+            border-radius: 4px;
+            margin-left: 0;
+            margin-right: 2%;
+            line-height: 50px;
+            box-sizing: border-box;
+            color: #333;
+            background-color: #fafafa;
+        }
+        
+        #yearList a:nth-child(3n) {
+            margin-right: 0
+        }
+        
+        #yearList {
+            position: fixed;
+            border-radius: 8px;
+            box-shadow: 0 0 8px #ccc;
+            top: 1%;
+            left: 2%;
+            bottom: 1%;
+            right: 2%;
+            z-index: 9;
+            background-color: rgba(255, 255, 255, .95);
+            overflow: scroll;
+            display: none;
+        }
+        
+        .cldrBody ul {
+            margin: 12px 0;
+        }
+        
+        .cldrBody span:last-child,
+        .cldrBody ul li:nth-child(7n) {
+            margin-right: 0
+        }
+        
+        .cldrBody ul li {
+            margin-bottom: 1.5%;
+            height: 45px;
+            line-height: 45px;
+            background-color: #fafafa;
+            color: #333;
+            border-radius: 3px
+        }
+        
+        .cldrBody ul li.preMounth {
+            font-size: 12px;
+            color: #999;
+        }
+        
+        .cldrBody ul li.passed {
+            color: #999;
+        }
+        
+        .cldrBody ul li.innow {
+            color: #fff;
+            background-color: skyblue;
+        }
+        
+        .arrs {
+            display: block;
+            position: relative;
+            float: left;
+            width: 30%;
+            height: 70px;
+        }
+        
+        .arrs::before {
+            content: "";
+            display: block;
+            position: absolute;
+            height: 16px;
+            width: 16px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotateZ(45deg);
+            /*background-color: skyblue;*/
+            border: 1px solid slategray;
+        }
+        
+        #ltArr.arrs::before {
+            border-top: 0;
+            border-right: 0
+        }
+        
+        #rtArr.arrs::before {
+            border-bottom: 0;
+            border-left: 0
+        }
+        
+        .lunaName {
+            float: left;
+            width: 40%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="cldrWrp" class="cldrWrp">
+        <div id="yearWrp">2017</div>
+        <div class="clear">
+            <a id="ltArr" class="arrs" href="javascript:;"></a>
+            <div class="lunaName" data-mouthNum="6">
+                <h2>六月</h2>
+                <h3>June</h3>
+            </div>
+            <a id="rtArr" class="arrs" href="javascript:;"></a>
+        </div>
+        <div class="cldrBody">
+            <div class="clear">
+                <span>日</span>
+                <span>一</span>
+                <span>二</span>
+                <span>三</span>
+                <span>四</span>
+                <span>五</span>
+                <span>六</span>
+            </div>
+            <ul id="datesWrp" class="clear">
+
+            </ul>
+        </div>
+        <div id="yearList">
+
+        </div>
+    </div>
+    <script>
+        var odate = document.getElementById('datesWrp');
+        var nowDate = new Date(); //获取当前日期
+        var nowdate = nowDate.getDate(); //当前日期的几号
+        var nowmonth = nowDate.getMonth(); //当前日期的月份
+        var nowyear = nowDate.getFullYear(); //当前日期的年份
+        var yearMonthDayRun = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]; //闰年每个月的总天数
+        var yearMonthDay = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]; //平年每个月的总天数
+        var englishNameOfMonth = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        var chineseNameOfMonth = ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"];
+
+
+        //如果是闰年则返回true
+        function runNian(yearNum) {
+            if (yearNum % 4 == 0 || yearNum % 100 == 0 && yearNum % 400 == 0) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+
+        //这里让每个月的日期生成，传入年份，月份
+        function outPutli(yearStr, monthStr) {
+            var str = "";
+            var yearNum = Number(yearStr); //转成数字类型
+            var monthNum = Number(monthStr) - 1; //js的月份从0开始，也就是0代表一月，1代表二月
+            var firstDayDate = new Date(yearNum, monthNum, 1).getDay(); //获取月份第一天礼拜几
+
+            var previousMonth = monthNum - 1; //上个月的月份
+
+            // 上个月的天数计算
+            var previousdayCount = runNian(yearNum) ? yearMonthDayRun[previousMonth] : yearMonthDay[previousMonth];
+
+            //传入月份的天数计算
+            var theDayCount = runNian(yearNum) ? yearMonthDayRun[monthNum] : yearMonthDay[monthNum];
+
+            //如果当前月是一月，那上个月就是上一年的12月
+            if (monthNum == 0) {
+                var previousMonth = 11;
+                var previousdayCount = runNian(yearNum - 1) ? yearMonthDayRun[previousMonth] : yearMonthDay[previousMonth];
+            }
+
+            //算出传入月份的第一天礼拜几，就知道上个月的末尾有几天是在1号前面
+            for (var i = previousdayCount - firstDayDate + 1; i <= previousdayCount; i++) {
+                str += "<li class='preMounth'>" + i + "</li>";
+            }
+
+            //生产传入月份的各个天数
+            for (var i = 1; i <= theDayCount; i++) {
+                // 如果等于现在的日期，给个蓝色底
+                if (yearNum == nowyear && monthNum == nowmonth && i == nowdate) {
+                    str += "<li class='innow'>" + i + "</li>";
+                }
+                // 如果都是已经过去的日期，就淡化文字颜色
+                else if (yearNum < nowyear || yearNum == nowyear && monthNum < nowmonth || yearNum == nowyear && monthNum == nowmonth && i < nowdate) {
+                    str += "<li class='passed'>" + i + "</li>";
+                } else {
+                    str += "<li>" + i + "</li>";
+                }
+            }
+            odate.innerHTML = str;
+        }
+
+        outPutli(nowyear, nowmonth + 1)
+
+        var oYearBtn = document.getElementById('yearWrp');
+        var oYearList = document.getElementById('yearList');
+        var aBtnYear = oYearList.getElementsByTagName('a');
+
+        //年份按钮点击的时候生成相对于现在，前16年和后36年的年份
+        oYearBtn.onclick = function() {
+            var yearNumber = Number(nowyear);
+            var strs = "";
+
+            for (var i = 16; i >= 0; i--) {
+                strs += "<a href='javascript:;' onclick='yearSelect(this)'>" + (yearNumber - i) + "</a>";
+            }
+            for (var i = 1; i <= 36; i++) {
+                strs += "<a href='javascript:;' onclick='yearSelect(this)'>" + (yearNumber + i) + "</a>";
+            }
+            oYearList.innerHTML = strs;
+            oYearList.style.display = "block";
+        }
+
+        // 年份选择后的操作，月份默认为当年一月
+        function yearSelect(_this) {
+            oYearBtn.innerHTML = _this.innerHTML;
+            oYearList.style.display = 'none';
+            outPutli(_this.innerHTML, 1);
+            olunaName.setAttribute('data-mouthNum', 1);
+            olunaName.getElementsByTagName('h2')[0].innerText = chineseNameOfMonth[0];
+            olunaName.getElementsByTagName('h3')[0].innerText = englishNameOfMonth[0];
+        }
+
+        var oltArr = document.getElementById('ltArr');
+        var ortArr = document.getElementById('rtArr');
+        var olunaName = document.getElementsByClassName('lunaName')[0];
+
+        // 改变月份的显示
+        function changeTheMonthName(numberMonth) {
+            olunaName.setAttribute('data-mouthNum', numberMonth);
+            olunaName.getElementsByTagName('h2')[0].innerText = chineseNameOfMonth[numberMonth - 1];
+            olunaName.getElementsByTagName('h3')[0].innerText = englishNameOfMonth[numberMonth - 1];
+        }
+
+        //左箭头点击时效果，月份减
+        oltArr.onclick = function() {
+            var numberMonth = olunaName.getAttribute('data-mouthNum');
+            if (numberMonth > 1) {
+                numberMonth--;
+            }
+            outPutli(oYearBtn.innerHTML, numberMonth);
+            changeTheMonthName(numberMonth);
+        }
+
+        //右箭头点击时效果，月份加
+        ortArr.onclick = function() {
+            var numberMonth = olunaName.getAttribute('data-mouthNum');
+            if (numberMonth < 12) {
+                numberMonth++;
+            }
+            outPutli(oYearBtn.innerHTML, numberMonth);
+            changeTheMonthName(numberMonth);
+        }
+    </script>
+</body>
+
+</html>
