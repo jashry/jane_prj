@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: "Microsoft YaHei", Verdana, Geneva, Tahoma, sans-serif;
+        }
+        
+        html,
+        body,
+        ul,
+        li {
+            margin: 0;
+            padding: 0
+        }
+        
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both
+        }
+        
+         ::-webkit-scrollbar {
+            display: none
+        }
+        
+        ul,
+        li {
+            list-style: none
+        }
+        
+        .swipWrp {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        #swiper {
+            position: relative;
+            padding: 28% 50%;
+            overflow: hidden;
+        }
+        
+        #swiper img {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            width: 100%;
+            transition: all 300ms linear 60ms;
+        }
+        
+        .arwL,
+        .arwR {
+            background-color: rgba(255, 255, 255, .5);
+            border-radius: 50%;
+            display: block;
+            position: absolute;
+            padding: 3%;
+            background-size: 50% auto;
+            background-position: center center;
+            background-repeat: no-repeat;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 9
+        }
+        
+        .arwL {
+            left: 0;
+            background-image: url("http://sandbox.runjs.cn/uploads/rs/113/ajzbmzhg/arrowL.png")
+        }
+        
+        .arwR {
+            right: 0;
+            background-image: url("http://sandbox.runjs.cn/uploads/rs/113/ajzbmzhg/arrowR.png")
+        }
+        
+        #tags {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+        }
+        
+        #tags a {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            margin: 3px 6px;
+            border-radius: 8px;
+            background-color: rgba(0, 0, 0, .5)
+        }
+        
+        #tags a.on {
+            background-color: rgba(255, 255, 255, .5)
+        }
+    </style>
+</head>
+
+<body>
+    <div class="swipWrp">
+        <a id="arwL" href="javascript:;" class="arwL"></a>
+        <div id="swiper" class="clearfix" style="transition: all 1s linear;transform:translateX(0)">
+            <img src="http://sandbox.runjs.cn/uploads/rs/113/ajzbmzhg/b12.jpg" alt="壁纸">
+            <img src="http://sandbox.runjs.cn/uploads/rs/113/ajzbmzhg/b06.jpg" alt="壁纸">
+            <img src="http://sandbox.runjs.cn/uploads/rs/113/ajzbmzhg/b17.jpg" alt="壁纸">
+            <img src="http://sandbox.runjs.cn/uploads/rs/113/ajzbmzhg/b09.jpg" alt="壁纸">
+            <img src="http://sandbox.runjs.cn/uploads/rs/113/ajzbmzhg/b10.jpg" alt="壁纸">
+        </div>
+        <a id="arwR" href="javascript:;" class="arwR"></a>
+    </div>
+    <script>
+        var swiper = document.getElementById("swiper");
+        var imgs = swiper.getElementsByTagName("img");
+        var arwL = document.getElementById("arwL");
+        var arwR = document.getElementById("arwR");
+        var indx = 0;
+        var timers = null;
+        var nodeFgmt = document.createDocumentFragment();
+
+        newNode = document.createElement("div");
+        newNode.id = "tags";
+
+        for (var i = 0; i < imgs.length; i++) {
+            var ond = document.createElement("a");
+            ond.href = "javascript:;";
+            ond.setAttribute("data-indx", i);
+            nodeFgmt.appendChild(ond);
+        }
+        newNode.appendChild(nodeFgmt);
+
+        swiper.appendChild(newNode);
+        var tagsA = document.getElementById("tags").getElementsByTagName("a");
+        for (var s = 0; s < tagsA.length; s++) {
+            tagsA[s].onmouseover = function() {
+                offEft();
+                hideAll();
+                var indxA = this.getAttribute("data-indx");
+                changeEffect(indxA);
+                this.className = "on"
+
+            }
+            tagsA[s].onmouseout = function() {
+                onEft();
+            }
+        }
+        tagsA[0].className = "on";
+        imgs[0].style.display = "block";
+        imgs[0].style.opacity = "1";
+
+        function hideAll() {
+            for (var i = 0; i < imgs.length; i++) {
+                imgs[i].style.display = "none";
+                imgs[i].style.opacity = "0";
+                tagsA[i].className = ""
+            }
+        }
+
+        function scrollIntvel() {
+            timers = setInterval(function() {
+                hideAll();
+                if (indx < imgs.length - 1) {
+                    indx++;
+                } else {
+                    indx = 0;
+                }
+                changeEffect(indx);
+            }, 3600);
+        }
+
+        function changeEffect(indx) {
+            imgs[indx].style.display = "block";
+            console.log("imgs的indx ", indx)
+            setTimeout(function() {
+                imgs[indx].style.opacity = "1";
+                tagsA[indx].className = "on";
+                console.log("times的indx ", indx)
+            }, 30);
+        }
+
+        function onEft() {
+            scrollIntvel()
+            console.log("scrolling now  ")
+        }
+
+        function offEft() {
+            clearInterval(timers);
+            console.log("stopping now  ")
+        }
+
+        scrollIntvel()
+
+        arwL.onmouseover = offEft;
+        arwR.onmouseover = offEft;
+        arwL.onmouseout = onEft;
+        arwR.onmouseout = onEft;
+
+        arwL.onclick = function() {
+            hideAll();
+            if (indx > 0) {
+                indx--;
+            } else {
+                indx = imgs.length - 1;
+            }
+            changeEffect(indx);
+        }
+        arwR.onclick = function() {
+            hideAll();
+            if (indx < imgs.length - 1) {
+                indx++;
+            } else {
+                indx = 0;
+            }
+            changeEffect(indx);
+        }
+    </script>
+</body>
+
+</html>
