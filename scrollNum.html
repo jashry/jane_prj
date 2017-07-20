@@ -50,7 +50,7 @@
         position: absolute;
         display: block;
         z-index: 3;
-        padding: 12.5%;
+        padding: 10%;
         box-sizing: border-box;
         background-repeat: no-repeat;
         background-size: 98% auto;
@@ -165,12 +165,12 @@
     <div id="mubu" data-tog="off"></div>
 
     <div id="mainWrp">
-        <div id="num1" style="top:-25%;left:0" class="dice" select="0"></div>
-        <div id="num2" style="top:-25%;left:0" class="dice" select="0"></div>
-        <div id="num3" style="top:-25%;left:0" class="dice" select="0"></div>
-        <div id="num4" style="top:-25%;left:0" class="dice" select="0"></div>
-        <div id="num5" style="top:-25%;left:0" class="dice" select="0"></div>
-        <div id="num6" style="top:-25%;left:0" class="dice" select="0"></div>
+        <div id="num1" style="top:-20%;left:0" class="dice" select="0"></div>
+        <div id="num2" style="top:-20%;left:0" class="dice" select="0"></div>
+        <div id="num3" style="top:-20%;left:0" class="dice" select="0"></div>
+        <div id="num4" style="top:-20%;left:0" class="dice" select="0"></div>
+        <div id="num5" style="top:-20%;left:0" class="dice" select="0"></div>
+        <div id="num6" style="top:-20%;left:0" class="dice" select="0"></div>
 
     </div>
     <div class="BtnWrp clear">
@@ -186,32 +186,32 @@
         var arrNums = [{
             "number": num1,
             "lefPos": "0",
-            "topPos": "-25%",
+            "topPos": "-20%",
             "select": "0"
         }, {
             "number": num2,
             "lefPos": "0",
-            "topPos": "-25%",
+            "topPos": "-20%",
             "select": "0",
         }, {
             "number": num3,
             "lefPos": "0",
-            "topPos": "-25%",
+            "topPos": "-20%",
             "select": "0",
         }, {
             "number": num4,
             "lefPos": "0",
-            "topPos": "-25%",
+            "topPos": "-20%",
             "select": "0",
         }, {
             "number": num5,
             "lefPos": "0",
-            "topPos": "-25%",
+            "topPos": "-20%",
             "select": "0",
         }, {
             "number": num6,
             "lefPos": "0",
-            "topPos": "-25%",
+            "topPos": "-20%",
             "select": "0",
         }];
         var dices = document.getElementsByClassName("dice");
@@ -286,7 +286,7 @@
 
                         do {
 
-                            var lefPos = Math.floor(Math.random() * 4) * 25 + "%";
+                            var lefPos = Math.floor(Math.random() * 5) * 20 + "%";
                             var topPos = Math.floor(Math.random() * 5) * diceTopStep + "px";
 
                         } while (lefPos == arrNums[0].lefPos && topPos == arrNums[0].topPos || lefPos == arrNums[1].lefPos && topPos == arrNums[1].topPos || lefPos == arrNums[2].lefPos && topPos == arrNums[2].topPos || lefPos == arrNums[3].lefPos && topPos == arrNums[3].topPos || lefPos == arrNums[4].lefPos && topPos == arrNums[4].topPos || lefPos == arrNums[5].lefPos && topPos == arrNums[5].topPos)
