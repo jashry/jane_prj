@@ -15,6 +15,12 @@
         overflow: hidden
     }
     
+    body {
+        max-width: 640px;
+        margin: 0 auto;
+        background: url(bg.jpg)
+    }
+    
     a {
         text-decoration: none;
         font-size: 15px;
@@ -126,7 +132,8 @@
         display: inline-block;
         text-align: center;
         box-sizing: border-box;
-        border: 1px solid #333;
+        border: 1px solid #fff;
+        color: #fff;
         border-radius: 4px;
         height: 35px;
         width: 35px;
@@ -142,6 +149,7 @@
     }
     
     input[type="number"] {
+        color: #fff;
         margin: 5px;
         padding: 0;
         background: none;
@@ -217,11 +225,6 @@
         var diceNumbers = 6;
 
         function addDice() {
-            for (var i = 0; i < diceNumbers; i++) {
-                if (arrNums[i].select == "1") {
-                    return alert("请先解锁骰子，再更改数量")
-                }
-            }
             if (diceNumber.value < 6) {
                 diceNumber.value = Number(diceNumber.value) + 1;
                 diceNumbers = diceNumber.value;
