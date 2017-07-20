@@ -15,6 +15,12 @@
         overflow: hidden
     }
     
+    a {
+        text-decoration: none;
+        font-size: 15px;
+        color: #333;
+    }
+    
     .clear::after {
         display: block;
         content: "";
@@ -43,7 +49,7 @@
         background-repeat: no-repeat;
         background-size: 98% auto;
         background-position: center center;
-        transition: all 370ms ease-out
+        transition: top 420ms linear, left 420ms linear
     }
     
     .dice.on {
@@ -118,10 +124,32 @@
     #plsBtn,
     #musBtn {
         display: inline-block;
-        height: 40px;
-        width: 40px;
-        line-height: 40px;
+        text-align: center;
+        box-sizing: border-box;
+        border: 1px solid #333;
+        border-radius: 4px;
+        height: 35px;
+        width: 35px;
+        line-height: 33px;
         margin: 5px;
+    }
+    
+    .BtnWrp div.clear {
+        position: relative;
+        top: 5px;
+        text-align: center;
+        margin: 0 auto;
+    }
+    
+    input[type="number"] {
+        margin: 5px;
+        padding: 0;
+        background: none;
+        border: none;
+        box-sizing: border-box;
+        border-radius: 4px;
+        line-height: 35px;
+        text-align: center;
     }
 </style>
 
@@ -139,17 +167,14 @@
     </div>
     <div class="BtnWrp clear">
         <a id="mbBtn" onclick="togCover()" href="javascript:;">隐藏</a>
-        <div></div>
-        <a id="szBtn" onclick="scrollNum()" href="javascript:;">骰它</a>
+        <div class="clear">
+            <a id="musBtn" onclick="minusDice()" href="javascript:;">-</a>
+            <input id="diceNumber" type="number" min="1" max="6" value="6">
+            <a id="plsBtn" onclick="addDice()" href="javascript:;">+</a>
+        </div>
+        <a id="szBtn" href="javascript:;">骰它</a>
     </div>
     <script>
-        var dices = document.getElementsByClassName("dice");
-        var diceTopStep = diceWidth = dices[0].clientWidth;
-        var mubu = document.getElementById("mubu");
-        var mbBtn = document.getElementById("mbBtn");
-        var szBtn = document.getElementById("szBtn");
-        var yaudio = new Audio("yao.ogg");
-        var zaudio = new Audio("zheng.ogg");
         var arrNums = [{
             "number": num1,
             "lefPos": "0",
@@ -181,6 +206,30 @@
             "topPos": "-25%",
             "select": "0",
         }];
+        var dices = document.getElementsByClassName("dice");
+        var diceTopStep = diceWidth = dices[0].clientWidth;
+        var mubu = document.getElementById("mubu");
+        var mbBtn = document.getElementById("mbBtn");
+        var szBtn = document.getElementById("szBtn");
+        var diceNumber = document.getElementById("diceNumber");
+        var yaudio = new Audio("yao.ogg");
+        var zaudio = new Audio("zheng.ogg");
+        var diceNumbers = 6;
+
+        function addDice() {
+            if (diceNumber.value < 6) {
+                diceNumber.value = Number(diceNumber.value) + 1;
+                diceNumbers = diceNumber.value;
+            }
+
+        }
+
+        function minusDice() {
+            if (diceNumber.value > 1) {
+                diceNumber.value = diceNumber.value - 1
+            }
+            diceNumbers = diceNumber.value;
+        }
 
         function togCover() {
             var isShow = mubu.getAttribute("data-tog");
@@ -199,7 +248,7 @@
 
 
         // 生成随机骰数
-        function scrollNum() {
+        function scrollNum(diceNumbers) {
             // 每次运行时，先清除结束的计时和暂停结束声
             zaudio.pause();
             yaudio.play();
@@ -248,7 +297,7 @@
 
 
         }
-        scrollNum()
+        scrollNum(diceNumbers)
             // 点击选中
         for (var i = 0; i < 6; i++) {
             dices[i].addEventListener("touchstart", function() {
@@ -281,6 +330,9 @@
 
         }
 
+        szBtn.addEventListener("click", function() {
+            scrollNum(diceNumbers);
+        })
 
         if (window.DeviceMotionEvent) {
             window.addEventListener('devicemotion', deviceMotionHandler, false);
@@ -297,7 +349,7 @@
             y = acceleration.y;
             z = acceleration.z;
             if (Math.abs(x - lastX) > speed || Math.abs(y - lastY) > speed || Math.abs(z - lastZ) > speed) {
-                scrollNum();
+                scrollNum(diceNumbers);
             }
             lastX = x;
             lastY = y;
