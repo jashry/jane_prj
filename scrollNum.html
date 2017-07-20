@@ -15,6 +15,20 @@
         overflow: hidden
     }
     
+    .clear::after {
+        display: block;
+        content: "";
+        clear: both
+    }
+    
+    .fl {
+        float: left
+    }
+    
+    .fr {
+        float: right
+    }
+    
     #mainWrp {
         height: 100%;
         width: 100%;
@@ -29,7 +43,7 @@
         background-repeat: no-repeat;
         background-size: 98% auto;
         background-position: center center;
-        transition: all 260ms ease-out
+        transition: all 370ms ease-out
     }
     
     .dice.on {
@@ -60,23 +74,60 @@
         background-image: url(dice6.png)
     }
     
-    #szBtn {
+    #mubu {
+        position: fixed;
+        z-index: 9;
+        top: 0;
+        transition: all 370ms ease-out;
+        bottom: 100%;
         display: block;
-        height: 45px;
-        width: 45px;
+        width: 100%;
+        background-color: rgba(0, 0, 0, .97)
+    }
+    
+    #szBtn,
+    #mbBtn {
+        display: block;
+        height: 37px;
+        width: 37px;
         color: #fff;
+        font-size: 13px;
         text-align: center;
-        line-height: 45px;
+        line-height: 37px;
         background-color: rgba(0, 0, 0, .35);
-        border-radius: 5px;
+        border-radius: 6px;
         position: absolute;
-        bottom: 12px;
-        right: 8px;
+        bottom: 5px;
+        right: 5px;
         text-decoration: none
+    }
+    
+    #mbBtn {
+        left: 5px;
+    }
+    
+    .BtnWrp {
+        position: fixed;
+        box-sizing: border-box;
+        padding: 0 50px;
+        height: 51px;
+        width: 100%;
+        bottom: 50px;
+    }
+    
+    #plsBtn,
+    #musBtn {
+        display: inline-block;
+        height: 40px;
+        width: 40px;
+        line-height: 40px;
+        margin: 5px;
     }
 </style>
 
 <body>
+    <div id="mubu" data-tog="off"></div>
+
     <div id="mainWrp">
         <div id="num1" style="top:-25%;left:0" class="dice" select="0"></div>
         <div id="num2" style="top:-25%;left:0" class="dice" select="0"></div>
@@ -84,12 +135,21 @@
         <div id="num4" style="top:-25%;left:0" class="dice" select="0"></div>
         <div id="num5" style="top:-25%;left:0" class="dice" select="0"></div>
         <div id="num6" style="top:-25%;left:0" class="dice" select="0"></div>
-        <a id="szBtn" style="display:none" onclick="scrollNum()" href="javascript:;">骰它</a>
+
+    </div>
+    <div class="BtnWrp clear">
+        <a id="mbBtn" onclick="togCover()" href="javascript:;">隐藏</a>
+        <div></div>
+        <a id="szBtn" onclick="scrollNum()" href="javascript:;">骰它</a>
     </div>
     <script>
         var dices = document.getElementsByClassName("dice");
         var diceTopStep = diceWidth = dices[0].clientWidth;
+        var mubu = document.getElementById("mubu");
+        var mbBtn = document.getElementById("mbBtn");
         var szBtn = document.getElementById("szBtn");
+        var yaudio = new Audio("yao.ogg");
+        var zaudio = new Audio("zheng.ogg");
         var arrNums = [{
             "number": num1,
             "lefPos": "0",
@@ -121,8 +181,28 @@
             "topPos": "-25%",
             "select": "0",
         }];
+
+        function togCover() {
+            var isShow = mubu.getAttribute("data-tog");
+            if (isShow == "off") {
+                mbBtn.textContent = "显示";
+                mubu.setAttribute("data-tog", "on");
+                mubu.style.bottom = "100px";
+            } else {
+                mbBtn.textContent = "隐藏";
+                mubu.setAttribute("data-tog", "off");
+                mubu.style.bottom = "";
+            }
+        }
+
+
+
+
         // 生成随机骰数
         function scrollNum() {
+            // 每次运行时，先清除结束的计时和暂停结束声
+            zaudio.pause();
+            yaudio.play();
 
             // 重置🎲位置并更新数组内各🎲信息
             for (var m = 0; m < 6; m++) {
@@ -164,7 +244,9 @@
                     }
 
                 }
-            }, 300);
+            }, 360);
+
+
         }
         scrollNum()
             // 点击选中
@@ -189,7 +271,14 @@
                     }
 
                 }
+            });
+
+            dices[i].addEventListener("webkitTransitionEnd", function() {
+                yaudio.pause();
+                zaudio.play();
             })
+
+
         }
 
 
@@ -197,9 +286,9 @@
             window.addEventListener('devicemotion', deviceMotionHandler, false);
         } else {
             alert("您的手机不支持摇一摇,请点按钮来摇骰子！");
-            szBtn.style.display = "block"
+
         }
-        var speed = 37;
+        var speed = 26;
         var x = y = z = lastX = lastY = lastZ = 0;
 
         function deviceMotionHandler(eventData) {
@@ -208,8 +297,7 @@
             y = acceleration.y;
             z = acceleration.z;
             if (Math.abs(x - lastX) > speed || Math.abs(y - lastY) > speed || Math.abs(z - lastZ) > speed) {
-
-                scrollNum()
+                scrollNum();
             }
             lastX = x;
             lastY = y;
