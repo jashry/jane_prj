@@ -42,6 +42,7 @@
     }
     
     #mainWrp {
+        position: relative;
         height: 100%;
         width: 100%;
     }
@@ -150,6 +151,7 @@
         height: 51px;
         width: 100%;
         bottom: 50px;
+        left: 0
     }
     
     #plsBtn,
@@ -204,7 +206,7 @@
 </style>
 
 <body>
-    <audio hidden id="yao" src="yao.ogg"></audio>
+    <audio hidden id="yao" src="007.mp3"></audio>
     <audio hidden id="zheng" src="zheng.ogg"></audio>
     <div id="mubu" data-tog="off"></div>
 
@@ -291,6 +293,10 @@
         var yaudio = document.getElementById("yao");
         var zaudio = document.getElementById("zheng");
         var diceNumbers = 5;
+        document.addEventListener("WeixinJSBridgeReady", function() {
+            yaudio.load();
+            zaudio.load();
+        }, false);
 
         function addDice() {
             if (diceNumber.value < 10) {
@@ -421,6 +427,7 @@
         }
 
         szBtn.addEventListener("touchstart", function() {
+            //alert("点了投骰子按钮007")
             zaudio.pause();
             yaudio.play();
             scrollNum(diceNumbers);
