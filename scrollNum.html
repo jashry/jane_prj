@@ -59,7 +59,7 @@
     }
     
     .roller {
-        animation: roller 320ms linear 3
+        animation: roller 320ms linear infinite
     }
     
     @keyframes roller {
@@ -277,7 +277,12 @@
 
         // 生成随机骰数
         function scrollNum(diceNumbers) {
-
+            setTimeout(function() {
+                for (var k = 0; k < 6; k++) {
+                    dices[k].className = "dice roller";
+                    console.log(k)
+                }
+            }, 70);
 
             // 重置🎲位置并更新数组内各🎲信息
             for (var m = 0; m < 6; m++) {
@@ -316,11 +321,19 @@
                         arrNums[i]["lefPos"] = lefPos;
                         arrNums[i]["select"] = "0";
 
+
                     }
 
                 }
+
             }, 360);
 
+            setTimeout(function() {
+                for (var k = 0; k < 6; k++) {
+                    dices[k].className = "dice";
+                    console.log(k)
+                }
+            }, 900);
 
         }
         scrollNum(diceNumbers)
