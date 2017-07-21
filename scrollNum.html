@@ -58,6 +58,19 @@
         transition: top 420ms linear, left 420ms linear
     }
     
+    .roller {
+        animation: roller 320ms linear 3
+    }
+    
+    @keyframes roller {
+        0% {
+            transform: rotateZ(0)
+        }
+        100% {
+            transform: rotateZ(360deg)
+        }
+    }
+    
     .dice.on {
         background-color: #FFEB66;
     }
@@ -167,12 +180,12 @@
     <div id="mubu" data-tog="off"></div>
 
     <div id="mainWrp">
-        <div id="num1" style="top:-20%;left:0" class="dice" select="0"></div>
-        <div id="num2" style="top:-20%;left:0" class="dice" select="0"></div>
-        <div id="num3" style="top:-20%;left:0" class="dice" select="0"></div>
-        <div id="num4" style="top:-20%;left:0" class="dice" select="0"></div>
-        <div id="num5" style="top:-20%;left:0" class="dice" select="0"></div>
-        <div id="num6" style="top:-20%;left:0" class="dice" select="0"></div>
+        <div id="num1" style="top:-20%;left:0" class="dice roller" select="0"></div>
+        <div id="num2" style="top:-20%;left:0" class="dice roller" select="0"></div>
+        <div id="num3" style="top:-20%;left:0" class="dice roller" select="0"></div>
+        <div id="num4" style="top:-20%;left:0" class="dice roller" select="0"></div>
+        <div id="num5" style="top:-20%;left:0" class="dice roller" select="0"></div>
+        <div id="num6" style="top:-20%;left:0" class="dice roller" select="0"></div>
 
     </div>
     <div class="BtnWrp clear">
@@ -355,7 +368,7 @@
             alert("您的手机不支持摇一摇,请点按钮来摇骰子！");
 
         }
-        var speed = 26;
+        var speed = 22;
         var x = y = z = lastX = lastY = lastZ = 0;
 
         function deviceMotionHandler(eventData) {
