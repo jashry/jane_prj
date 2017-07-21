@@ -111,7 +111,7 @@
         background-color: #421728;
         background-image: url('adBg.jpg');
         background-repeat: no-repeat;
-        background-size: 105% auto;
+        background-size: 100% auto;
         background-position: center center;
         overflow: hidden
     }
@@ -119,8 +119,8 @@
     #szBtn,
     #mbBtn {
         display: block;
-        height: 37px;
-        width: 37px;
+        height: 45px;
+        width: 45px;
         color: #fff;
         font-size: 13px;
         text-align: center;
@@ -156,6 +156,7 @@
     #musBtn {
         display: inline-block;
         text-align: center;
+        float: left;
         background-repeat: no-repeat;
         background-size: 100% auto;
         background-position: center center;
@@ -178,14 +179,16 @@
         background-image: url('btnWrpBg.png');
         background-repeat: no-repeat;
         background-size: 110px auto;
-        background-position: center center;
+        width: 140px;
+        background-position: 17px center;
         position: relative;
         top: 5px;
         text-align: center;
         margin: 0 auto;
     }
     
-    input[type="number"] {
+    #diceNumber {
+        float: left;
         color: #fff;
         margin: 5px;
         padding: 0;
@@ -200,8 +203,8 @@
 </style>
 
 <body>
-    <audio id="yao" src="yao.ogg"></audio>
-    <audio id="zheng" src="zheng.ogg"></audio>
+    <audio hidden id="yao" src="yao.ogg"></audio>
+    <audio hidden id="zheng" src="zheng.ogg"></audio>
     <div id="mubu" data-tog="off"></div>
 
     <div id="mainWrp">
@@ -216,9 +219,9 @@
     <div class="BtnWrp clear">
         <a id="mbBtn" href="javascript:;"></a>
         <div class="clear">
-            <a id="musBtn" onclick="minusDice()" href="javascript:;">-</a>
+            <a id="musBtn" onclick="minusDice()" href="javascript:;"></a>
             <input id="diceNumber" type="number" min="1" max="6" value="6">
-            <a id="plsBtn" onclick="addDice()" href="javascript:;">+</a>
+            <a id="plsBtn" onclick="addDice()" href="javascript:;"></a>
         </div>
         <a id="szBtn" href="javascript:;"></a>
     </div>
@@ -268,6 +271,7 @@
             if (diceNumber.value < 6) {
                 diceNumber.value = Number(diceNumber.value) + 1;
                 diceNumbers = diceNumber.value;
+                scrollNum(diceNumbers);
             }
 
         }
@@ -279,9 +283,11 @@
                 }
             }
             if (diceNumber.value > 1) {
-                diceNumber.value = diceNumber.value - 1
+                diceNumber.value = diceNumber.value - 1;
+                diceNumbers = diceNumber.value;
+                scrollNum(diceNumbers);
             }
-            diceNumbers = diceNumber.value;
+
         }
 
         function togCover() {
