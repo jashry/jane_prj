@@ -214,6 +214,10 @@
         <div id="num4" style="top:-20%;left:0" class="dice roller" select="0"></div>
         <div id="num5" style="top:-20%;left:0" class="dice roller" select="0"></div>
         <div id="num6" style="top:-20%;left:0" class="dice roller" select="0"></div>
+        <div id="num7" style="top:-20%;left:0" class="dice roller" select="0"></div>
+        <div id="num8" style="top:-20%;left:0" class="dice roller" select="0"></div>
+        <div id="num9" style="top:-20%;left:0" class="dice roller" select="0"></div>
+        <div id="num10" style="top:-20%;left:0" class="dice roller" select="0"></div>
 
     </div>
     <div class="BtnWrp clear">
@@ -256,6 +260,26 @@
             "lefPos": "0",
             "topPos": "-20%",
             "select": "0",
+        }, {
+            "number": num7,
+            "lefPos": "0",
+            "topPos": "-20%",
+            "select": "0",
+        }, {
+            "number": num8,
+            "lefPos": "0",
+            "topPos": "-20%",
+            "select": "0",
+        }, {
+            "number": num9,
+            "lefPos": "0",
+            "topPos": "-20%",
+            "select": "0",
+        }, {
+            "number": num10,
+            "lefPos": "0",
+            "topPos": "-20%",
+            "select": "0",
         }];
         var dices = document.getElementsByClassName("dice");
         var diceTopStep = diceWidth = dices[0].clientWidth;
@@ -268,7 +292,7 @@
         var diceNumbers = 6;
 
         function addDice() {
-            if (diceNumber.value < 6) {
+            if (diceNumber.value < 10) {
                 diceNumber.value = Number(diceNumber.value) + 1;
                 diceNumbers = diceNumber.value;
                 scrollNum(diceNumbers);
@@ -308,14 +332,14 @@
 
         function scrollNum(diceNumbers) {
             setTimeout(function() {
-                for (var k = 0; k < 6; k++) {
+                for (var k = 0; k < 10; k++) {
                     if (arrNums[k].select == "0") {
                         dices[k].className = "dice roller";
                     }
                 }
             }, 70);
 
-            for (var m = 0; m < 6; m++) {
+            for (var m = 0; m < 10; m++) {
                 if (arrNums[m].select == "0") {
                     dices[m].style.left = "-25%";
                     dices[m].style.top = "-20%";
@@ -335,7 +359,7 @@
                             var lefPos = Math.floor(Math.random() * 5) * 20 + "%";
                             var topPos = Math.floor(Math.random() * 5) * diceTopStep + "px";
 
-                        } while (lefPos == arrNums[0].lefPos && topPos == arrNums[0].topPos || lefPos == arrNums[1].lefPos && topPos == arrNums[1].topPos || lefPos == arrNums[2].lefPos && topPos == arrNums[2].topPos || lefPos == arrNums[3].lefPos && topPos == arrNums[3].topPos || lefPos == arrNums[4].lefPos && topPos == arrNums[4].topPos || lefPos == arrNums[5].lefPos && topPos == arrNums[5].topPos)
+                        } while (lefPos == arrNums[0].lefPos && topPos == arrNums[0].topPos || lefPos == arrNums[1].lefPos && topPos == arrNums[1].topPos || lefPos == arrNums[2].lefPos && topPos == arrNums[2].topPos || lefPos == arrNums[3].lefPos && topPos == arrNums[3].topPos || lefPos == arrNums[4].lefPos && topPos == arrNums[4].topPos || lefPos == arrNums[5].lefPos && topPos == arrNums[5].topPos || lefPos == arrNums[6].lefPos && topPos == arrNums[6].topPos || lefPos == arrNums[7].lefPos && topPos == arrNums[7].topPos || lefPos == arrNums[8].lefPos && topPos == arrNums[8].topPos || lefPos == arrNums[9].lefPos && topPos == arrNums[9].topPos)
 
 
                         dices[i].style.left = lefPos;
@@ -354,7 +378,7 @@
             }, 360);
 
             setTimeout(function() {
-                for (var k = 0; k < 6; k++) {
+                for (var k = 0; k < 10; k++) {
                     if (arrNums[k].select == "0") {
                         dices[k].className = "dice";
                     }
@@ -364,12 +388,12 @@
         }
         scrollNum(diceNumbers)
             // 点击选中
-        for (var i = 0; i < 6; i++) {
+        for (var i = 0; i < 10; i++) {
             dices[i].addEventListener("touchstart", function() {
                 if (this.getAttribute("select") == 0) {
                     this.setAttribute("select", "1");
                     this.className = "dice on";
-                    for (var l = 0; l < 6; l++) {
+                    for (var l = 0; l < 10; l++) {
                         if (arrNums[l].number == this.id) {
                             arrNums[l].select = "1";
                         }
@@ -378,7 +402,7 @@
                 } else {
                     this.setAttribute("select", "0");
                     this.className = "dice";
-                    for (var l = 0; l < 6; l++) {
+                    for (var l = 0; l < 10; l++) {
                         if (arrNums[l].number == this.id) {
                             arrNums[l].select = "0";
                         }
