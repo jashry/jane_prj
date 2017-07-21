@@ -108,7 +108,7 @@
         bottom: 100%;
         display: block;
         width: 100%;
-        background-color: #333;
+        background-color: #421728;
         background-image: url('adBg.jpg');
         background-repeat: no-repeat;
         background-size: 105% auto;
@@ -125,16 +125,22 @@
         font-size: 13px;
         text-align: center;
         line-height: 37px;
-        background-color: rgba(0, 0, 0, .35);
-        border-radius: 6px;
+        background-repeat: no-repeat;
+        background-size: 100% auto;
+        background-position: center center;
         position: absolute;
         bottom: 5px;
         right: 5px;
         text-decoration: none
     }
     
+    #szBtn {
+        background-image: url('szBtnBg.png');
+    }
+    
     #mbBtn {
         left: 5px;
+        background-image: url('mbBg0.png');
     }
     
     .BtnWrp {
@@ -150,17 +156,29 @@
     #musBtn {
         display: inline-block;
         text-align: center;
+        background-repeat: no-repeat;
+        background-size: 100% auto;
+        background-position: center center;
         box-sizing: border-box;
-        border: 1px solid #fff;
-        color: #fff;
-        border-radius: 4px;
         height: 35px;
         width: 35px;
         line-height: 33px;
         margin: 5px;
     }
     
+    #plsBtn {
+        background-image: url('add1.png');
+    }
+    
+    #musBtn {
+        background-image: url('add.png');
+    }
+    
     .BtnWrp div.clear {
+        background-image: url('btnWrpBg.png');
+        background-repeat: no-repeat;
+        background-size: 110px auto;
+        background-position: center center;
         position: relative;
         top: 5px;
         text-align: center;
@@ -173,8 +191,9 @@
         padding: 0;
         background: none;
         border: none;
+        font-weight: bold;
+        font-size: 15px;
         box-sizing: border-box;
-        border-radius: 4px;
         line-height: 35px;
         text-align: center;
     }
@@ -195,13 +214,13 @@
 
     </div>
     <div class="BtnWrp clear">
-        <a id="mbBtn" href="javascript:;">隐藏</a>
+        <a id="mbBtn" href="javascript:;"></a>
         <div class="clear">
             <a id="musBtn" onclick="minusDice()" href="javascript:;">-</a>
             <input id="diceNumber" type="number" min="1" max="6" value="6">
             <a id="plsBtn" onclick="addDice()" href="javascript:;">+</a>
         </div>
-        <a id="szBtn" href="javascript:;">骰它</a>
+        <a id="szBtn" href="javascript:;"></a>
     </div>
     <script>
         var arrNums = [{
@@ -268,11 +287,11 @@
         function togCover() {
             var isShow = mubu.getAttribute("data-tog");
             if (isShow == "off") {
-                mbBtn.textContent = "显示";
+                mbBtn.style.backgroundImage = "url('mbBg1.png')";
                 mubu.setAttribute("data-tog", "on");
                 mubu.style.bottom = "100px";
             } else {
-                mbBtn.textContent = "隐藏";
+                mbBtn.style.backgroundImage = "url('mbBg0.png')";
                 mubu.setAttribute("data-tog", "off");
                 mubu.style.bottom = "";
             }
