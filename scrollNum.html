@@ -154,9 +154,8 @@
     
     #plsBtn,
     #musBtn {
-        display: inline-block;
+        display: block;
         text-align: center;
-        float: left;
         background-repeat: no-repeat;
         background-size: 100% auto;
         background-position: center center;
@@ -168,10 +167,12 @@
     }
     
     #plsBtn {
+        float: right;
         background-image: url('add1.png');
     }
     
     #musBtn {
+        float: left;
         background-image: url('add.png');
     }
     
@@ -188,9 +189,8 @@
     }
     
     #diceNumber {
-        float: left;
         color: #fff;
-        margin: 5px;
+        margin: 5px auto;
         padding: 0;
         background: none;
         border: none;
@@ -411,7 +411,7 @@
         });
         mubu.addEventListener("touchend", function(evt) {
             if (startY - endY > 0) {
-                mbBtn.textContent = "隐藏";
+                mbBtn.style.backgroundImage = "url('mbBg0.png')";
                 mubu.setAttribute("data-tog", "off");
                 mubu.style.bottom = "";
             }
