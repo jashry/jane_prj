@@ -275,16 +275,13 @@
 
 
 
-        // 生成随机骰数
         function scrollNum(diceNumbers) {
             setTimeout(function() {
                 for (var k = 0; k < 6; k++) {
                     dices[k].className = "dice roller";
-                    console.log(k)
                 }
             }, 70);
 
-            // 重置🎲位置并更新数组内各🎲信息
             for (var m = 0; m < 6; m++) {
                 if (arrNums[m].select == "0") {
                     dices[m].style.left = "-25%";
@@ -296,10 +293,8 @@
 
             setTimeout(function() {
 
-                // 遍历每个🎲
                 for (var i = 0; i < diceNumbers; i++) {
 
-                    // 🎲未选中时的操作
                     if (arrNums[i].select == "0") {
 
                         do {
@@ -310,12 +305,11 @@
                         } while (lefPos == arrNums[0].lefPos && topPos == arrNums[0].topPos || lefPos == arrNums[1].lefPos && topPos == arrNums[1].topPos || lefPos == arrNums[2].lefPos && topPos == arrNums[2].topPos || lefPos == arrNums[3].lefPos && topPos == arrNums[3].topPos || lefPos == arrNums[4].lefPos && topPos == arrNums[4].topPos || lefPos == arrNums[5].lefPos && topPos == arrNums[5].topPos)
 
 
-                        // 每个🎲的属性
                         dices[i].style.left = lefPos;
                         dices[i].style.top = topPos;
                         dices[i].style.backgroundImage = "url(dice" + Math.floor(Math.random() * 6 + 1) + ".png)";
 
-                        // 更新数组内选择🎲的信息
+
                         arrNums[i]["number"] = dices[i].id;
                         arrNums[i]["topPos"] = topPos;
                         arrNums[i]["lefPos"] = lefPos;
@@ -331,7 +325,6 @@
             setTimeout(function() {
                 for (var k = 0; k < 6; k++) {
                     dices[k].className = "dice";
-                    console.log(k)
                 }
             }, 900);
 
@@ -390,7 +383,7 @@
             y = acceleration.y;
             z = acceleration.z;
             if (Math.abs(x - lastX) > speed || Math.abs(y - lastY) > speed || Math.abs(z - lastZ) > speed) {
-                // 每次运行时，先清除结束的计时和暂停结束声
+
                 zaudio.pause();
                 yaudio.play();
                 scrollNum(diceNumbers);
