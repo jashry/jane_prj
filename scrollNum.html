@@ -262,9 +262,7 @@
 
         // 生成随机骰数
         function scrollNum(diceNumbers) {
-            // 每次运行时，先清除结束的计时和暂停结束声
-            zaudio.pause();
-            yaudio.play();
+
 
             // 重置🎲位置并更新数组内各🎲信息
             for (var m = 0; m < 6; m++) {
@@ -344,6 +342,8 @@
         }
 
         szBtn.addEventListener("click", function() {
+            zaudio.pause();
+            yaudio.play();
             scrollNum(diceNumbers);
         })
 
@@ -362,6 +362,9 @@
             y = acceleration.y;
             z = acceleration.z;
             if (Math.abs(x - lastX) > speed || Math.abs(y - lastY) > speed || Math.abs(z - lastZ) > speed) {
+                // 每次运行时，先清除结束的计时和暂停结束声
+                zaudio.pause();
+                yaudio.play();
                 scrollNum(diceNumbers);
             }
             lastX = x;
