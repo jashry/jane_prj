@@ -72,6 +72,7 @@
     }
     
     .dice.on {
+        border-radius: 3px;
         background-color: #FFEB66;
     }
     
@@ -108,6 +109,11 @@
         display: block;
         width: 100%;
         background-color: #333;
+        background-image: url('adBg.jpg');
+        background-repeat: no-repeat;
+        background-size: 105% auto;
+        background-position: center center;
+        overflow: hidden
     }
     
     #szBtn,
@@ -175,8 +181,8 @@
 </style>
 
 <body>
-    <audio id="yao" hidden src="yao.ogg"></audio>
-    <audio id="zheng" hidden src="zheng.ogg"></audio>
+    <audio id="yao" src="yao.ogg"></audio>
+    <audio id="zheng" src="zheng.ogg"></audio>
     <div id="mubu" data-tog="off"></div>
 
     <div id="mainWrp">
@@ -189,7 +195,7 @@
 
     </div>
     <div class="BtnWrp clear">
-        <a id="mbBtn" onclick="togCover()" href="javascript:;">隐藏</a>
+        <a id="mbBtn" href="javascript:;">隐藏</a>
         <div class="clear">
             <a id="musBtn" onclick="minusDice()" href="javascript:;">-</a>
             <input id="diceNumber" type="number" min="1" max="6" value="6">
@@ -278,7 +284,9 @@
         function scrollNum(diceNumbers) {
             setTimeout(function() {
                 for (var k = 0; k < 6; k++) {
-                    dices[k].className = "dice roller";
+                    if (arrNums[k].select == "0") {
+                        dices[k].className = "dice roller";
+                    }
                 }
             }, 70);
 
@@ -322,7 +330,9 @@
 
             setTimeout(function() {
                 for (var k = 0; k < 6; k++) {
-                    dices[k].className = "dice";
+                    if (arrNums[k].select == "0") {
+                        dices[k].className = "dice";
+                    }
                 }
             }, 900);
 
@@ -364,13 +374,28 @@
             zaudio.pause();
             yaudio.play();
             scrollNum(diceNumbers);
-        })
+        });
+
+        mbBtn.addEventListener("touchstart", togCover, false);
+        var startY = endY = 0;
+        mubu.addEventListener("touchstart", function(evt) {
+            startY = evt.targetTouches[0].clientY
+        });
+        mubu.addEventListener("touchmove", function(evt) {
+            endY = evt.targetTouches[0].clientY
+        });
+        mubu.addEventListener("touchend", function(evt) {
+            if (startY - endY > 0) {
+                mbBtn.textContent = "隐藏";
+                mubu.setAttribute("data-tog", "off");
+                mubu.style.bottom = "";
+            }
+        });
 
         if (window.DeviceMotionEvent) {
             window.addEventListener('devicemotion', deviceMotionHandler, false);
         } else {
-            alert("您的手机不支持摇一摇,请点按钮来摇骰子！");
-
+            alert("您的手机不支持摇一摇,请点'骰它'按钮来摇骰子！");
         }
         var speed = 22;
         var x = y = z = lastX = lastY = lastZ = 0;
