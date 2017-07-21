@@ -162,8 +162,8 @@
 </style>
 
 <body>
-    <audio hidden src="yao.ogg"></audio>
-    <audio hidden src="zheng.ogg"></audio>
+    <audio id="yao" hidden src="yao.ogg"></audio>
+    <audio id="zheng" hidden src="zheng.ogg"></audio>
     <div id="mubu" data-tog="off"></div>
 
     <div id="mainWrp">
@@ -222,8 +222,8 @@
         var mbBtn = document.getElementById("mbBtn");
         var szBtn = document.getElementById("szBtn");
         var diceNumber = document.getElementById("diceNumber");
-        var yaudio = new Audio("yao.ogg");
-        var zaudio = new Audio("zheng.ogg");
+        var yaudio = document.getElementById("yao");
+        var zaudio = document.getElementById("zheng");
         var diceNumbers = 6;
 
         function addDice() {
