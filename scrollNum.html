@@ -309,12 +309,10 @@
                         dices[i].style.top = topPos;
                         dices[i].style.backgroundImage = "url(dice" + Math.floor(Math.random() * 6 + 1) + ".png)";
 
-
                         arrNums[i]["number"] = dices[i].id;
                         arrNums[i]["topPos"] = topPos;
                         arrNums[i]["lefPos"] = lefPos;
                         arrNums[i]["select"] = "0";
-
 
                     }
 
@@ -362,7 +360,7 @@
 
         }
 
-        szBtn.addEventListener("click", function() {
+        szBtn.addEventListener("touchstart", function() {
             zaudio.pause();
             yaudio.play();
             scrollNum(diceNumbers);
