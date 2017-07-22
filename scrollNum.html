@@ -207,7 +207,6 @@
 
 <body>
     <audio hidden id="yao" src="007.mp3"></audio>
-    <audio hidden id="zheng" src="zheng.ogg"></audio>
     <div id="mubu" data-tog="off"></div>
 
     <div id="mainWrp">
@@ -291,11 +290,9 @@
         var szBtn = document.getElementById("szBtn");
         var diceNumber = document.getElementById("diceNumber");
         var yaudio = document.getElementById("yao");
-        var zaudio = document.getElementById("zheng");
         var diceNumbers = 5;
         document.addEventListener("WeixinJSBridgeReady", function() {
             yaudio.load();
-            zaudio.load();
         }, false);
 
         function addDice() {
@@ -420,15 +417,13 @@
 
             dices[i].addEventListener("webkitTransitionEnd", function() {
                 yaudio.pause();
-                zaudio.play();
             })
 
 
         }
 
         szBtn.addEventListener("touchstart", function() {
-            //alert("点了投骰子按钮007")
-            zaudio.pause();
+
             yaudio.play();
             scrollNum(diceNumbers);
         });
@@ -463,8 +458,6 @@
             y = acceleration.y;
             z = acceleration.z;
             if (Math.abs(x - lastX) > speed || Math.abs(y - lastY) > speed || Math.abs(z - lastZ) > speed) {
-
-                zaudio.pause();
                 yaudio.play();
                 scrollNum(diceNumbers);
             }
