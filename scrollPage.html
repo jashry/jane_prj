@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+        
+        div {
+            height: 100%;
+            font-size: 22px;
+        }
+        
+        #mainWrp {
+            transition: all 600ms ease-out
+        }
+        
+        #mainWrp>div:nth-child(1) {
+            background-color: lightgoldenrodyellow
+        }
+        
+        #mainWrp>div:nth-child(2) {
+            background-color: lightblue
+        }
+        
+        #mainWrp>div:nth-child(3) {
+            background-color: lightpink
+        }
+    </style>
+</head>
+
+<body>
+    <div id="mainWrp">
+        <div class="pages">
+            0
+        </div>
+        <div class="pages">
+            1
+        </div>
+        <div class="pages">
+            2
+        </div>
+    </div>
+    <script>
+        var pages = document.getElementsByClassName('pages');
+        var mainWrp = document.getElementById('mainWrp');
+        var clientHet = window.innerHeight;
+        var startY = endY = 0;
+        document.body.addEventListener("scroll", function(evt) {
+            evt.preventDefault();
+        })
+        pages[0].addEventListener('touchstart', function(evt) {
+            startY = evt.targetTouches[0].clientY;
+            console.log("startY: " + startY);
+        }, true);
+        pages[0].addEventListener('touchmove', function(evt) {
+            endY = evt.targetTouches[0].clientY;
+        }, true);
+        pages[0].addEventListener('touchend', function(evt) {
+            console.log("endY: " + endY);
+            if (startY - endY > 10) {
+                mainWrp.style.transform = "translateY(-" + clientHet + "px)"
+            }
+        }, true);
+        pages[1].addEventListener('touchstart', function(evt) {
+            startY = evt.targetTouches[0].clientY;
+            console.log("startY: " + startY);
+        }, true);
+        pages[1].addEventListener('touchmove', function(evt) {
+            endY = evt.targetTouches[0].clientY;
+        }, true);
+        pages[1].addEventListener('touchend', function(evt) {
+            console.log("endY: " + endY);
+            if (startY - endY < 0 && pages[1].getBoundingClientRect().top == 0) {
+                mainWrp.style.transform = "translateY(0)"
+            }
+        }, true);
+    </script>
+</body>
+
+</html>
