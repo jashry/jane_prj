@@ -1,0 +1,307 @@
+body {
+    background-color: #ededed;
+}
+
+.fl {
+    float: left
+}
+
+.fr {
+    float: right
+}
+
+.clear::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.mainWrp {
+    background-color: #fff;
+    margin: 0 auto;
+}
+
+.mainWrp header {
+    border-bottom: 3px solid #2599e1;
+    background-image: linear-gradient(0deg, #fcfcfc, #fff);
+    margin-bottom: 0;
+    box-shadow: 0 0 3px #666;
+}
+
+.iwd {
+    width: 1020px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.headWrp img {
+    height: 100px;
+}
+
+.phone {
+    display: inline-block;
+    position: absolute;
+    top: 16px;
+    right: 8px;
+    height: 30px;
+    line-height: 30px;
+    color: #999;
+    background-color: #eee;
+    border-radius: 3px;
+    font-size: 13px;
+    padding-left: 22px;
+    padding-right: 12px;
+    background-image: url(../img/telogo.png);
+    background-repeat: no-repeat;
+    background-size: 16px;
+    background-position: 5px center;
+}
+
+.phone em {
+    color: #2599e1;
+    font-size: 16px;
+    font-weight: bold;
+    text-shadow: 0 0 3px #fff
+}
+
+.headWrp nav {
+    position: absolute;
+    right: 8px;
+    bottom: 1px;
+    margin-top: 45px;
+    font-size: 15px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+}
+
+.headWrp nav a {
+    color: #333;
+    font-size: 13px;
+    transition: color 500ms ease-out;
+    border-radius: 2px 2px 0 0;
+    display: inline-block;
+    width: 110px;
+    margin: 0 2px;
+    background-image: url('../img/navBg.jpg')
+}
+
+.headWrp nav a:hover {
+    color: #2599e1;
+    background-image: url('../img/navBgon.jpg')
+}
+
+.contWrp {
+    background-color: #fcfcfc;
+    margin: 10px auto
+}
+
+.titWrp {
+    color: #666;
+    font-size: 13px;
+    line-height: 30px;
+}
+
+.titWrp h3 img {
+    vertical-align: middle;
+    display: inline-block;
+    height: 16px;
+    margin: 0 3px;
+    margin-top: -3px;
+}
+
+.titWrp em {
+    color: #999
+}
+
+.titWrp span {
+    color: #2599e1;
+    margin-left: 3px;
+}
+
+.ttOutWrp {
+    padding-left: 1px;
+    margin-bottom: 12px;
+    display: block;
+    border-bottom: 2px solid #ccc
+}
+
+.ttWrp {
+    color: #333;
+    display: inline-block;
+}
+
+.ttWrp h3 {
+    line-height: 18px;
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: #2599e1;
+}
+
+.ttWrp p {
+    color: #999;
+    line-height: 16px;
+}
+
+.ttWrp p,
+.titWrp span {
+    font-family: monospace, cursive, serif, Courier New, Courier;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: normal;
+}
+
+.navWrp {
+    width: 247px;
+}
+
+.artWrp {
+    width: 723px;
+    margin-left: 10px;
+    line-height: 30px;
+    padding: 10px 20px;
+    font-size: 15px;
+    background-color: #f5f5f5;
+}
+
+.artWrp article p {
+    text-indent: 30px;
+    margin-bottom: 20px;
+}
+
+.artWrp article {
+    min-height: 460px;
+}
+
+.imgBanner {
+    margin-bottom: 6px;
+}
+
+.imgBanner img {
+    width: 100%;
+}
+
+.litit {
+    height: 80px;
+    background-color: #2599e1;
+    color: #fff;
+    font-weight: bold;
+    padding-left: 20px;
+    position: relative;
+}
+
+.litit .ttWrp {
+    margin-top: 25px;
+}
+
+.litit .ttWrp h3,
+.litit .ttWrp p {
+    margin-bottom: 0;
+    color: #fff;
+}
+
+.litit img {
+    display: block;
+    position: absolute;
+    width: 16px;
+    top: 32px;
+    right: 30px;
+}
+
+.navWrp ul li a {
+    border-left: 4px solid transparent;
+    display: block;
+    font-size: 14px;
+    color: #999;
+    line-height: 60px;
+    padding-left: 20px;
+    transition: all 500ms cubic-bezier(0.39, 0.575, 0.565, 1);
+    background-color: #efefef
+}
+
+.navWrp ul li a.on,
+.navWrp ul li a:hover {
+    color: #2599e1;
+    text-shadow: 0 0 2px #ccc;
+    border-left: 4px solid #2599e1;
+}
+
+.navWrp ul li a i {
+    margin-left: 20px;
+    font-style: normal;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+footer {
+    background-color: #666
+}
+
+.footerWrp>div {
+    float: left;
+    width: 33.33%
+}
+
+.footerWrp,
+.copyRitWrp {
+    font-size: 12px;
+    padding: 10px 0 10px;
+    color: #C9C9C9;
+    text-align: center;
+}
+
+.copyRitWrp {
+    padding-bottom: 10px;
+}
+
+.icn {
+    position: relative;
+    display: inline-block;
+    margin: 0 auto;
+    width: 40%;
+    padding-bottom: 6px;
+    margin-bottom: 6px;
+    border-bottom: 1px solid #ccc
+}
+
+.icn img.sqr {
+    position: absolute;
+    width: 16px;
+    bottom: -18px;
+    z-index: 2;
+    left: 50%;
+    margin-left: -8px;
+}
+
+.icn img {
+    margin: 10px 0;
+    width: 26px;
+    vertical-align: middle;
+}
+
+.txt {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.txt p {
+    text-transform: uppercase;
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.txt p:nth-child(2) {
+    font-family: monospace, cursive, serif, Courier New, Courier;
+}
+
+.infos a {
+    display: inline-block;
+    margin: 3px 6px;
+    color: #C9C9C9;
+}
+
+.infos p {
+    line-height: 16px;
+    font-style: normal;
+}

@@ -1,0 +1,120 @@
+        .content {
+            overflow: auto;
+            position: relative;
+            box-sizing: border-box;
+            height: auto;
+        }
+        
+        .content li {
+            margin: 4px;
+            overflow: hidden;
+        }
+        
+        .content li a {
+            display: inline-block;
+            border: 7px solid rgba(0, 0, 0, .2);
+        }
+        
+        .content.light,
+        .content.light .mTSButton {
+            background-color: #c2beb2;
+        }
+        
+        .content.light li a {
+            border: 7px solid rgba(255, 255, 255, .4);
+        }
+        
+        #content-6 {
+            background-color: #dedede;
+        }
+        
+        #content-6 .mTSButton {
+            background-color: rgba(0, 0, 0, .7);
+            -moz-border-radius: 48px;
+            -webkit-border-radius: 48px;
+            border-radius: 48px;
+        }
+        
+        #content-6 .mTSButtonLeft {
+            left: 5px;
+        }
+        
+        #content-6 .mTSButtonRight {
+            right: 5px;
+        }
+        
+        .cobwrp {
+            padding: 6px;
+            border: 1px solid #dedede;
+            border-radius: 2px;
+            margin: 8px auto;
+        }
+        
+        .itemWrp {
+            float: left;
+        }
+        
+        .item1 {
+            width: 80%
+        }
+        
+        .item2 {
+            width: 20%;
+        }
+        
+        .cpImg {
+            width: 37%;
+        }
+        
+        .cpIntr {
+            width: 58%;
+            line-height: 20px;
+            font-size: 13px;
+            padding: 0 2%;
+        }
+        
+        .anosWrp {
+            padding: 4% 2%;
+            line-height: 20px;
+            height: 120px;
+            font-size: 13px;
+            background: #f7f7f7;
+            border-radius: 3px;
+            box-shadow: 0 0 3px #ccc;
+            border: 1px solid #ccc
+        }
+        
+        .sersItem h5 {
+            font-weight: bold;
+        }
+        
+        .sersItem {
+            width: 49%;
+            line-height: 20px;
+            margin-bottom: 1.6%;
+            background-color: #f3f3f3;
+        }
+        
+        .sersItem h5 {
+            color: #2599e1;
+            position: relative;
+            font-size: 13px;
+        }
+        
+        .sersItem p {
+            font-size: 12px;
+            margin-top: 6px;
+        }
+        
+        .mlt {
+            margin-right: 2%
+        }
+        
+        .sersItem img {
+            width: 32%;
+        }
+        
+        .sersItem div {
+            width: 64%;
+            margin: 0 2%
+        }

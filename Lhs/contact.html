@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>联系我们——温州澜海国际物流有限公司</title>
+    <link rel="stylesheet" href="wrap/css/rest.css">
+    <link rel="stylesheet" href="wrap/css/public.css">
+    <style>
+        .contWrp {
+            margin-top: 0;
+        }
+        
+        #allmap {
+            margin-top: 20px;
+            width: 100%;
+            height: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mainWrp">
+        <header>
+            <div class="iwd headWrp clear">
+                <img src="wrap/img/lhlogo02.png" class="fl" alt="logo">
+                <div class="phone">服务热线: <em>0577-88287016</em> </div>
+                <nav>
+                    <a href="index.html">首页</a>
+                    <a href="about.html">关于澜海</a>
+                    <a href="product.html">产品与服务</a>
+                    <a href="server.html">客户服务</a>
+                    <a href="recuit.html">人才招聘</a>
+                    <a href="contact.html" style="margin-right:0">联系我们</a>
+                </nav>
+            </div>
+        </header>
+        <div class="contWrp iwd">
+            <div class="imgBanner">
+                <img src="wrap/img/bannerInner01.jpg" alt="">
+            </div>
+            <div class="navWrp fl">
+                <div class="litit">
+                    <div class="ttWrp">
+                        <h3>联系我们</h3>
+                        <p>contact us</p>
+                    </div>
+                    <img src="wrap/img/sac.png" alt="">
+                </div>
+                <ul>
+                    <li>
+                        <a id="contact" href="javascript:;">
+                                联系我们 <i>contact us</i>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="artWrp fl">
+                <div class="ttOutWrp">
+                    <div class="ttWrp">
+                        <h3>联系我们</h3>
+                        <p>contact us</p>
+                    </div>
+                </div>
+                <article>
+                    <h4>尊敬的客户：</h4>
+                    <p>如果您对我们的产品，销售，客服有什么建议，请立即联系我们！我们将竭诚为广大新老客户提供最优质的产品，最优质的服务。</p>
+
+                    <div>
+                        <h4>温州瀚威国际物流有限公司</h4>地址： 温州市鹿城区大自然三期3A801室<br> 电话：0577-88287015 &nbsp&nbsp 0577-88287016<br>E-mail：46642578@qq.com
+                    </div>
+                    <div id="allmap"></div>
+                </article>
+            </div>
+            <div style="height:0;clear:both"></div>
+        </div>
+        <footer>
+            <div class="footerWrp iwd">
+                <div>
+                    <div class="icn">
+                        <img src="wrap/img/contactIcon.png" alt="">
+                        <img class="sqr" src="wrap/img/sqr.jpg" alt="">
+                    </div>
+                    <div class="txt">
+                        <p>联系我们</p>
+                        <p>contact us</p>
+                    </div>
+                    <div class="infos">
+                        <p>Address: 温州市鹿城区大自然三期3A801室</p>
+                        <p>Tel：0086-0577-88287015 / 88287016</p>
+                        <p>Email：46642578@ qq.com</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="icn">
+                        <img src="wrap/img/siteIcon.png" alt="">
+                        <img class="sqr" src="wrap/img/sqr.jpg" alt="">
+                    </div>
+                    <div class="txt">
+                        <p>网站导航</p>
+                        <p>site map</p>
+                    </div>
+                    <div class="infos">
+                        <p>
+                            <a href="index.html">首页</a>
+                            <a href="about.html">关于澜海</a>
+                            <a href="product.html">产品与服务</a>
+                        </p>
+                        <p>
+                            <a href="server.html">客户服务</a>
+                            <a href="recuit.html">人才招聘</a>
+                            <a href="contact.html">联系我们</a>
+
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <div class="icn">
+                        <img src="wrap/img/linksIcon.png" alt="">
+                        <img class="sqr" src="wrap/img/sqr.jpg" alt="">
+                    </div>
+                    <div class="txt">
+                        <p>友情链接</p>
+                        <p>friendly link</p>
+                    </div>
+                    <div class="infos">
+                        <p>
+                            <a href="javascript:;">链接</a>
+                            <a href="javascript:;">链接</a>
+                            <a href="javascript:;">链接</a>
+                        </p>
+                        <p>
+                            <a href="javascript:;">链接</a>
+                            <a href="javascript:;">链接</a>
+                            <a href="javascript:;">链接</a>
+                        </p>
+                    </div>
+                </div>
+                <p style="height:0;clear:both"></p>
+            </div>
+            <div class="copyRitWrp iwd">
+                Copyright © 2017 温州澜海国际物流有限公司 All Rights Reserved.
+            </div>
+        </footer>
+    </div>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=1aPVUX698BoYh4IZX106rTmdqk4cnrTu"></script>
+    <script>
+        var map = new BMap.Map("allmap");
+        var point = new BMap.Point(120.717318, 27.999186);
+        var marker = new BMap.Marker(point); // 创建标注
+        map.addOverlay(marker); // 将标注添加到地图中
+        map.centerAndZoom(point, 19);
+        var opts = {
+            width: 200, // 信息窗口宽度
+            height: 100, // 信息窗口高度
+            title: "温州瀚威国际物流有限公司", // 信息窗口标题
+            enableMessage: true, //设置允许信息窗发送短息
+            message: "如果你找不到位置可以咨询园区内的保安"
+        }
+        var infoWindow = new BMap.InfoWindow("地址：温州市鹿城区大自然三期3A801室", opts); // 创建信息窗口对象 
+        map.openInfoWindow(infoWindow, point)
+    </script>
+    <script src="wrap/js/public.js"></script>
+</body>
+
+</html>
