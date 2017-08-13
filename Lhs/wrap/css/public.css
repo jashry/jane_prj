@@ -64,7 +64,7 @@ body {
     text-shadow: 0 0 3px #fff
 }
 
-.headWrp nav {
+.headWrp .nav {
     position: absolute;
     right: 8px;
     bottom: 1px;
@@ -75,7 +75,7 @@ body {
     text-align: center;
 }
 
-.headWrp nav a {
+.headWrp .nav a {
     color: #333;
     font-size: 13px;
     transition: color 500ms ease-out;
@@ -86,7 +86,7 @@ body {
     background-image: url('../img/navBg.jpg')
 }
 
-.headWrp nav a:hover {
+.headWrp .nav a:hover {
     color: #2599e1;
     background-image: url('../img/navBgon.jpg')
 }
