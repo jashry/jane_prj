@@ -171,6 +171,8 @@ body {
 
 .artWrp article {
     min-height: 460px;
+    height: 470px\9;
+    overflow-y: scroll\9;
 }
 
 .imgBanner {
