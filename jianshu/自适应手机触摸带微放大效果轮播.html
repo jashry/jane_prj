@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            border-top: 1px solid #f4f4f4;
+            background-color: #F4F4F4;
+        }
+        
+        p {
+            padding: 0;
+            margin: 0;
+        }
+        
+        ul,
+        li {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        
+        a {
+            text-decoration: none;
+            color: #525252;
+        }
+        
+        img {
+            vertical-align: middle;
+        }
+        
+        .fl {
+            float: left;
+        }
+        
+        .fr {
+            float: right;
+        }
+        
+        .clear::after {
+            display: block;
+            content: "";
+            clear: both;
+        }
+        
+        .mainWrp {
+            width: 100%;
+            max-width: 640px;
+            margin: 0 auto
+        }
+        
+        #scrolWrp {
+            margin: 3% 0;
+            padding: 3% 0;
+            overflow: hidden;
+        }
+        
+        .imgOur {
+            width: 16%;
+            margin: 0 .5%;
+            float: left;
+        }
+        
+        .imgOur a {
+            position: relative;
+            display: block;
+            overflow: hidden;
+            width: 100%;
+            border-radius: 6px;
+        }
+        
+        .imgOur a img {
+            width: 100%
+        }
+        
+        .imgOurWrp {
+            -webkit-transition: all 370ms linear;
+            -moz-transition: all 370ms linear;
+            transition: all 370ms linear;
+        }
+        
+        .imgOurWrp>div.on {
+            -webkit-transition: all 600ms ease-in;
+            -moz-transition: all 600ms ease-in;
+            transition: all 600ms ease-in;
+            transform: scale3d(1.1, 1.1, 1.1);
+        }
+        
+        .imgOur .innerPos img {
+            width: 50%
+        }
+        
+        .imgOurWrp {
+            width: 500%;
+        }
+        
+        .innerPos {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            text-align: center;
+            line-height: 20px;
+            color: #fff;
+            transform: translate(-50%, -50%)
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mainWrp">
+        <div id="scrolWrp" class="clear">
+            <div class="imgOurWrp" style="transform:translateX(1.5%)">
+                <div class="imgOur on">
+                    <a href="javascript:;">
+                        <img src="http://sandbox.runjs.cn/uploads/rs/113/ajzbmzhg/b01.jpg" alt="">
+                        <div class="innerPos">
+                            <img src="http://sandbox.runjs.cn/uploads/rs/113/ajzbmzhg/play.png" alt="">
+                            <p>点击查看直播</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="imgOur">
+                    <a href="javascript:;">
+                        <img src="http://sandbox.runjs.cn/uploads/rs/113/ajzbmzhg/b02.jpg" alt="">
+                        <div class="innerPos">
+                            <img src="http://sandbox.runjs.cn/uploads/rs/113/ajzbmzhg/play.png" alt="">
+                            <p>点击查看直播</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="imgOur">
+                    <a href="javascript:;">
+                        <img src="http://sandbox.runjs.cn/uploads/rs/113/ajzbmzhg/b03.jpg" alt="">
+                        <div class="innerPos">
+                            <img src="http://sandbox.runjs.cn/uploads/rs/113/ajzbmzhg/play.png" alt="">
+                            <p>点击查看直播</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="imgOur">
+                    <a href="javascript:;">
+                        <img src="http://sandbox.runjs.cn/uploads/rs/113/ajzbmzhg/b15.jpg" alt="">
+                        <div class="innerPos">
+                            <img src="http://sandbox.runjs.cn/uploads/rs/113/ajzbmzhg/play.png" alt="">
+                            <p>点击查看直播</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="imgOur">
+                    <a href="javascript:;">
+                        <img src="http://sandbox.runjs.cn/uploads/rs/113/ajzbmzhg/b20.jpg" alt="">
+                        <div class="innerPos">
+                            <img src="http://sandbox.runjs.cn/uploads/rs/113/ajzbmzhg/play.png" alt="">
+                            <p>点击查看直播</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // 顶部图片轮播滚动效果
+        var scrolWrp = document.getElementById('scrolWrp');
+        var scrolImgWrp = document.getElementsByClassName('imgOurWrp')[0];
+        var scrolItem = scrolImgWrp.getElementsByClassName("imgOur");
+        var indexNum = startX = endX = 0;
+
+        function changeEft(num) {
+            for (var i = 0; i < scrolItem.length; i++) {
+                scrolItem[i].className = "imgOur";
+            }
+            scrolItem[num].className = "imgOur on";
+            var numStr = 1.5 - (17 * num);
+            scrolImgWrp.style.transform = "translateX(" + numStr + "%)";
+        }
+        scrolWrp.addEventListener("touchstart", function(evt) {
+            startX = endX = evt.targetTouches[0].clientX;
+        });
+        scrolWrp.addEventListener("touchmove", function(evt) {
+            endX = evt.targetTouches[0].clientX;
+        });
+        scrolWrp.addEventListener("touchend", function(evt) {
+            if (endX - startX > 47) {
+                indexNum > 0 ? indexNum-- : indexNum = scrolItem.length - 1;
+                changeEft(indexNum)
+            } else if (endX - startX < -47) {
+                indexNum < scrolItem.length - 1 ? indexNum++ : indexNum = 0;
+                changeEft(indexNum)
+            }
+        });
+    </script>
+</body>
+
+</html>
