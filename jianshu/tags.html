@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .mainWrp {
+            max-width: 640px;
+            margin: 0 auto;
+        }
+        
+        .fl {
+            float: left;
+        }
+        
+        .fr {
+            float: right;
+        }
+        
+        .clear::after {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 0;
+            visibility: hidden;
+            clear: both;
+        }
+        
+        #divHeds a {
+            text-decoration: none;
+            display: block;
+            position: relative;
+            width: 33.333%;
+            float: left;
+            line-height: 46px;
+            text-align: center;
+            font-size: 12px;
+            color: #9d9d9d;
+            border-bottom: 1px solid #e1e1e1;
+        }
+        
+        #divHeds a.on {
+            color: #f15858;
+            border-bottom-color: #f15858;
+        }
+        
+        #divConts {
+            margin: 6px 2%;
+        }
+        
+        #divConts li {
+            background-image: linear-gradient(-180deg, #60e2cb 0%, #7efba0 100%);
+            border-radius: 6px;
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+        
+        #divConts li a {
+            position: relative;
+            display: block;
+            color: #fff;
+            height: 126px;
+            background-image: url(wrap/img/bgtou01.png);
+            background-repeat: no-repeat;
+            background-size: auto 80px;
+            background-position: 100% 100%;
+        }
+        
+        #divConts ul li.muji {
+            background-image: linear-gradient(-180deg, #ff87a3 0%, #ffb05b 99%);
+        }
+        
+        #divConts ul li.muji a {
+            background-image: url(wrap/img/bgtou02.png);
+        }
+        
+        #divConts li em {
+            position: absolute;
+            font-size: 100px;
+            top: 10px;
+            right: 26px;
+            font-style: normal
+        }
+        
+        #divConts li span {
+            position: absolute;
+            font-size: 20px;
+            top: 6px;
+            right: 6px;
+        }
+        
+        #divConts li p {
+            line-height: 17px;
+        }
+        
+        #divConts li p:nth-child(1) {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            font-size: 13px;
+        }
+        
+        #divConts li p:nth-child(2) {
+            position: absolute;
+            bottom: 12px;
+            left: 12px;
+        }
+        
+        #divConts li p strong {
+            font-size: 16px;
+        }
+        
+        #divConts div {
+            display: none
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mainWrp">
+        <div id="divHeds" class="clear">
+            <a class="on" href="javascript:;">所有</a>
+            <a href="javascript:;">未完成</a>
+            <a href="javascript:;">已完成</a>
+        </div>
+        <div id="divConts">
+            <div style="display:block">
+                <ul>
+                    <li>
+                        <a href="javascript:;">
+                            <p>我的鸡笼<br>电子兑换券</p>
+                            <p><strong>50枚蛋兑换券</strong><br>有效期：2018年10月</p>
+                            <em>50</em>
+                            <span>枚</span>
+                        </a>
+                    </li>
+                    <li class="muji">
+                        <a href="javascript:;">
+                            <p>我的鸡笼<br>电子兑换券</p>
+                            <p><strong>母鸡一只兑换券</strong><br>有效期：2018年10月</p>
+                            <em>1</em>
+                            <span>只</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <ul>
+
+                    <li>
+                        <a href="javascript:;">
+                            <p>我的鸡笼<br>电子优惠券</p>
+                            <p><strong>50枚蛋优惠券</strong><br>有效期：2018年10月</p>
+                            <em>70</em>
+                            <span>枚</span>
+                        </a>
+                    </li>
+                    <li class="muji">
+                        <a href="javascript:;">
+                            <p>我的鸡笼<br>电子优惠券</p>
+                            <p><strong>母鸡一只优惠券</strong><br>有效期：2018年10月</p>
+                            <em>3</em>
+                            <span>只</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <ul>
+
+                    <li>
+                        <a href="javascript:;">
+                            <p>我的鸡笼<br>电子优惠券</p>
+                            <p><strong>30枚蛋优惠券</strong><br>有效期：2018年10月</p>
+                            <em>80</em>
+                            <span>枚</span>
+                        </a>
+                    </li>
+                    <li class="muji">
+                        <a href="javascript:;">
+                            <p>我的鸡笼<br>电子优惠券</p>
+                            <p><strong>母鸡一只优惠券</strong><br>有效期：2018年10月</p>
+                            <em>8</em>
+                            <span>只</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+        var navs = document.getElementById('divHeds').getElementsByTagName('a');
+        var conts = document.getElementById('divConts').getElementsByTagName('div');
+        var prevousOne = 0;
+        for (var i = 0; i < 3; i++) {
+            ! function(i) {
+                navs[i].onclick = function() {
+                    navs[prevousOne].className = "";
+                    conts[prevousOne].style.display = "none";
+                    this.className = "on";
+                    conts[i].style.display = "block";
+                    prevousOne = i;
+                }
+            }(i)
+        }
+    </script>
+</body>
+
+</html>
