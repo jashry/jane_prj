@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="stylesheet" type="text/css" href="wrap/css/rest.css" />
+    <title></title>
+    <style>
+        html,
+        body {
+            background-color: #9DD1FF;
+            height: 100%;
+        }
+        
+        .mainWrp {
+            padding-top: 5%;
+            height: 100%;
+            box-sizing: border-box;
+            background-image: url(wrap/img/2b.png);
+            background-repeat: no-repeat;
+            background-position: center 100%;
+            background-size: 100% auto
+        }
+        
+        .tiBd {
+            margin: 2%;
+            position: relative;
+        }
+        
+        .ansWrp li {
+            margin: 10px 0;
+            line-height: 36px;
+        }
+        
+        .ansWrp li a {
+            padding: 6px;
+            display: inline-block;
+            color: #fff;
+            width: 70%;
+            background-image: url(wrap/img/2-2.png);
+            background-repeat: no-repeat;
+            background-position: center 100%;
+            background-size: 100% 100%
+        }
+        
+        .ansWrp li a:active {
+            background-image: url(wrap/img/2-2-1.png);
+        }
+        
+        .ansWrp li a p {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .ansWrp li a strong {
+            margin-left: 5px;
+        }
+        
+        .mainBos {
+            width: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        
+        .mainBos h3 {
+            line-height: 45px;
+            text-align: center;
+            font-size: 22px;
+            color: #AD6303;
+            background-image: url(wrap/img/2-1-1.png);
+            background-repeat: no-repeat;
+            background-position: 50% 50%;
+            background-size: auto 100%
+        }
+        
+        .tiWrp {
+            line-height: 26px;
+            font-size: 16px;
+            margin: 20px 15%;
+            width: 70%;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .ansWrp {
+            padding-top: 3%
+        }
+        
+        .ansWrp li {
+            color: #fff;
+            font-size: 16px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mainWrp">
+        <div class="tiBd">
+            <img style="width:100%" src="wrap/img/2-1.png" alt="">
+            <div class="mainBos">
+                <h3>第<span id="tiNum">1</span>题</h3>
+                <div class="tiWrp">
+                    <p id="tiMu">目前你有好多的鸡和好多的蛋，这样子，那么你会先去吃哪个？</p>
+                </div>
+                <div class="ansWrp">
+                    <ul id="tiAn">
+                        <li>
+                            <a href="javascript:;">
+                                <p><span>A</span>.<strong>先吃鸡</strong></p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <p><span>B</span>.<strong>先吃蛋</strong></p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <p><span>C</span>.<strong>全吃</strong></p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <p><span>D</span>.<strong>先吃你妹啊</strong></p>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- 题目库内容 -->
+                    <script src="wrap/js/guess.js"></script>
+                    <!-- 题目库内容 -->
+                    <script>
+                        var tiNum = document.getElementById('tiNum'),
+                            tiMu = document.getElementById('tiMu'),
+                            tiAn = document.getElementById('tiAn'),
+                            tiAnStrong = tiAn.getElementsByTagName('strong'),
+                            tiLiAs = tiAn.getElementsByTagName('li'),
+                            answers = [],
+                            indx = 0;
+
+                        function inital() {
+                            indx = 1;
+                            tiMu.innerText = guessTs["t1"].title;
+                            for (var j = 0; j < 4; j++) {
+                                tiAnStrong[j].innerText = guessTs["t1"]["answer"][j];
+                            }
+                        }
+                        inital();
+                        for (var i = 0; i < 4; i++) {
+                            ! function(i) {
+                                tiLiAs[i].onclick = function() {
+                                    var answer = this.getElementsByTagName('span')[0].innerText;
+                                    if (indx < 15) {
+                                        answers[indx - 1] = answer;
+                                        // console.log(answers);
+                                        indx++;
+                                        tiNum.innerText = indx;
+                                        tiMu.innerText = guessTs["t" + indx].title;
+                                        for (var j = 0; j < 4; j++) {
+                                            tiAnStrong[j].innerText = guessTs["t" + indx]["answer"][j];
+                                        }
+                                    } else if (indx == 15) {
+                                        answers[indx - 1] = answer;
+                                        // 答完最后一道题目，输出答案，跳转结果                    
+                                        console.log(answers);
+                                        // location.href = "重试.html"
+                                    }
+                                }
+                            }(i)
+                        }
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
