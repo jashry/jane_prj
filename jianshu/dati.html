@@ -132,53 +132,53 @@
                             </a>
                         </li>
                     </ul>
-                    <!-- 题目库内容 -->
-                    <script src="wrap/js/guess.js"></script>
-                    <!-- 题目库内容 -->
-                    <script>
-                        var tiNum = document.getElementById('tiNum'),
-                            tiMu = document.getElementById('tiMu'),
-                            tiAn = document.getElementById('tiAn'),
-                            tiAnStrong = tiAn.getElementsByTagName('strong'),
-                            tiLiAs = tiAn.getElementsByTagName('li'),
-                            answers = [],
-                            indx = 0;
-
-                        function inital() {
-                            indx = 1;
-                            tiMu.innerText = guessTs["t1"].title;
-                            for (var j = 0; j < 4; j++) {
-                                tiAnStrong[j].innerText = guessTs["t1"]["answer"][j];
-                            }
-                        }
-                        inital();
-                        for (var i = 0; i < 4; i++) {
-                            ! function(i) {
-                                tiLiAs[i].onclick = function() {
-                                    var answer = this.getElementsByTagName('span')[0].innerText;
-                                    if (indx < 15) {
-                                        answers[indx - 1] = answer;
-                                        // console.log(answers);
-                                        indx++;
-                                        tiNum.innerText = indx;
-                                        tiMu.innerText = guessTs["t" + indx].title;
-                                        for (var j = 0; j < 4; j++) {
-                                            tiAnStrong[j].innerText = guessTs["t" + indx]["answer"][j];
-                                        }
-                                    } else if (indx == 15) {
-                                        answers[indx - 1] = answer;
-                                        // 答完最后一道题目，输出答案，跳转结果                    
-                                        console.log(answers);
-                                        // location.href = "重试.html"
-                                    }
-                                }
-                            }(i)
-                        }
-                    </script>
                 </div>
             </div>
         </div>
     </div>
+    <!-- 题目库内容 -->
+    <script src="wrap/js/guess.js"></script>
+    <!-- 题目库内容 -->
+    <script>
+        var tiNum = document.getElementById('tiNum'),
+            tiMu = document.getElementById('tiMu'),
+            tiAn = document.getElementById('tiAn'),
+            tiAnStrong = tiAn.getElementsByTagName('strong'),
+            tiLiAs = tiAn.getElementsByTagName('li'),
+            answers = [],
+            indx = 0;
+
+        function inital() {
+            indx = 1;
+            tiMu.innerText = guessTs["t1"].title;
+            for (var j = 0; j < 4; j++) {
+                tiAnStrong[j].innerText = guessTs["t1"]["answer"][j];
+            }
+        }
+        inital();
+        for (var i = 0; i < 4; i++) {
+            ! function(i) {
+                tiLiAs[i].onclick = function() {
+                    var answer = this.getElementsByTagName('span')[0].innerText;
+                    if (indx < 15) {
+                        answers[indx - 1] = answer;
+                        // console.log(answers);
+                        indx++;
+                        tiNum.innerText = indx;
+                        tiMu.innerText = guessTs["t" + indx].title;
+                        for (var j = 0; j < 4; j++) {
+                            tiAnStrong[j].innerText = guessTs["t" + indx]["answer"][j];
+                        }
+                    } else if (indx == 15) {
+                        answers[indx - 1] = answer;
+                        // 答完最后一道题目，输出答案，跳转结果                    
+                        console.log(answers);
+                        // location.href = "重试.html"
+                    }
+                }
+            }(i)
+        }
+    </script>
 </body>
 
 </html>
