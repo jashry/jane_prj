@@ -1,6 +1,6 @@
 const http = require('http')
 const fs = require('fs')
-const query = require('querystring')
+const querystring = require('querystring')
 
 const server = http.createServer().listen('3000', function() {
     console.log("服务启动，监听端口中！")
