@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" name="name">
+    <input type="text" name="age">
+    <a id="oBtn" href="javascript:;">
+        OK
+    </a>
+    <script src="js/axios.min.js"></script>
+    <script>
+        var oBtn = document.getElementById("oBtn")
+
+
+        oBtn.addEventListener('click', function() {
+            var name = document.getElementsByTagName("input")[0].value
+            var age = document.getElementsByTagName("input")[1].value
+            axios({
+                method: 'post',
+                url: '/user',
+                data: {
+                    name: name,
+                    age: age
+                }
+            }).then(function(response) {
+                console.log(response)
+            }).catch(function(err) {
+                console.log(err)
+            });
+        })
+    </script>
+</body>
+
+</html>
