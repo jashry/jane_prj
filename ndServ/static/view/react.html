@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/vue"></script>
+    <title>reactTest</title>
+</head>
+
+<body>
+    <div id="app">
+        {{msg}}
+        <p :title="titmsg" v-if="show">
+            {{titmsg}}
+        </p>
+        <ul>
+            <li v-for="arr in arrs" @click="showTip(arr.mm)">
+                {{arr.mm}}
+            </li>
+        </ul>
+        <h5>{{textin}}</h5>
+        <input type="text" v-model="textin">
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                msg: "Hello Vue!",
+                titmsg: "show u the tit " + new Date().toLocaleTimeString(),
+                show: false,
+                textin: "you can input something",
+                arrs: [{
+                    mm: "MM,u r beauty"
+                }, {
+                    mm: "MMY,u r so beauty "
+                }, {
+                    mm: "MMYY,u r the most beauty"
+                }]
+            },
+            methods: {
+                showTip: function(tval) {
+                    alert("is that ok?" + tval)
+                }
+            }
+
+        })
+    </script>
+</body>
+
+</html>
