@@ -16,21 +16,31 @@
             {{titmsg}}
         </p>
         <ul>
-            <li v-for="arr in arrs" @click="showTip(arr.mm)">
-                {{arr.mm}}
+            <li v-for="(arr,index) in arrs" @click="showTip(arr.mm)">
+                {{arr.mm}}-{{index}}
             </li>
         </ul>
         <h5>{{textin}}</h5>
         <input type="text" v-model="textin">
+        <ol>
+            <itemli :class="{lss:true}" v-for="lis in tosLis" :tods="lis" :key="lis.id"> </itemli>
+        </ol>
+        <div v-html="showHTML"></div>
+        <div :vtx="show==true?0:1">tell the s val</div>
     </div>
 
     <script>
+        Vue.component("itemli", {
+            props: ["tods"],
+            template: "<li>{{tods.text}}</li>"
+        })
         var app = new Vue({
             el: "#app",
             data: {
                 msg: "Hello Vue!",
                 titmsg: "show u the tit " + new Date().toLocaleTimeString(),
                 show: false,
+                showHTML: "<p>This is a pragraf</p>",
                 textin: "you can input something",
                 arrs: [{
                     mm: "MM,u r beauty"
@@ -38,6 +48,22 @@
                     mm: "MMY,u r so beauty "
                 }, {
                     mm: "MMYY,u r the most beauty"
+                }],
+                tosLis: [{
+                    id: 1,
+                    text: "prods in section oneth"
+                }, {
+                    id: 2,
+                    text: "prods in section twice"
+                }, {
+                    id: 3,
+                    text: "prods in section thirth"
+                }, {
+                    id: 4,
+                    text: "prods in section fourth"
+                }, {
+                    id: 5,
+                    text: "prods in section fivith"
                 }]
             },
             methods: {
@@ -47,6 +73,40 @@
             }
 
         })
+    </script>
+    <script>
+        var posCal = {
+            cp1: {
+                x: 3,
+                y: 2
+            },
+            cp2: {
+                x: 1,
+                y: 2
+            },
+            cp3: {
+                x: 3,
+                y: 1
+            }
+        }
+
+        function Cirl(pos, cal, name) {
+            this.posX = pos.x;
+            this.posY = pos.y;
+            this.cal = cal;
+            this.name = name;
+        }
+        Cirl.prototype.move = function() {
+            this.posX = this.posX * posCal[this.cal]["x"];
+            this.posY = this.posY * posCal[this.cal]["y"];
+            console.log(this.posX, this.posY)
+        }
+        var postion = {
+            x: 20,
+            y: 30
+        }
+        var cirl0 = new Cirl(postion, "cp1", "alib");
+        cirl0.move()
     </script>
 </body>
 
