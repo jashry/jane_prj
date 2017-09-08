@@ -22,6 +22,7 @@ body {
 }
 
 .mainWrp .header {
+    width: 100%;
     border-bottom: 3px solid #2599e1;
     background-image: linear-gradient(0deg, #fcfcfc, #fff);
     margin-bottom: 0;
@@ -237,6 +238,7 @@ body {
 }
 
 .footer {
+    width: 100%;
     background-color: #666
 }
 
