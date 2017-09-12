@@ -9,31 +9,10 @@
 </head>
 
 <body>
-    <input type="text" name="name">
-    <input type="text" name="age">
-    <a id="oBtn" href="javascript:;">OK</a>
-    <script src="js/axios.min.js"></script>
-    <script>
-        var oBtn = document.getElementById("oBtn")
-
-
-        oBtn.addEventListener('click', function() {
-            var name = document.getElementsByTagName("input")[0].value
-            var age = document.getElementsByTagName("input")[1].value
-            axios({
-                method: 'post',
-                url: '/user',
-                data: {
-                    name: name,
-                    age: age
-                }
-            }).then(function(response) {
-                console.log(response)
-            }).catch(function(err) {
-                console.log(err)
-            });
-        })
-    </script>
+    <h2>Home</h2>
+    <article>
+        you will see the home !
+    </article>
 </body>
 
 </html>
