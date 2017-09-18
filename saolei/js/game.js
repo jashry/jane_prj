@@ -44,7 +44,7 @@ Game.prototype.newGame = function() {
 };
 Game.prototype.randomCellData = function() {
     var cells = this.cells;
-    var data = "100001000010000100001000010000".split("");
+    var data = "1000010000100001000010000".split("");
     TOOL.shuffle(data);
     for (var n = 0; n < GRID_TOTAL; ++n) {
         cells[n].reset()
