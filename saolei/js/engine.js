@@ -36,7 +36,7 @@ $(function() {
     GAME = new Game();
     var e = $(".engine");
     var top = (CLIENT_H - e.height()) / 4;
-    // e.css("marginTop", top);
+    e.css("marginTop", top);
     $(".modal-dialog").css("marginTop", top * 2);
     if (TOOL.isPC) {}
 });
