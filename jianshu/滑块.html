@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            padding-top: 30px
+        }
+        
+        #line {
+            height: 6px;
+            width: 80%;
+            margin: 0 auto;
+            position: relative;
+            background-color: lightblue
+        }
+        
+        #bir {
+            position: absolute;
+            left: 0;
+            top: -8px;
+            display: block;
+            height: 20px;
+            line-height: 20px;
+            width: 12px;
+            text-align: center;
+            color: #333;
+            border: 1px solid #ccc;
+            background-color: #dedede;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div id="line">
+            <a href="javascript:;" id="bir"></a>
+        </div>
+    </div>
+    <script>
+        function getPosition(node) {
+            var left = node.offsetLeft;
+            var top = node.offsetTop;
+            var current = node.offsetParent;
+
+            while (current != null) {
+                left += current.offsetLeft;
+                top += current.offsetTop;
+                current = current.offsetParent;
+            }
+
+            return {
+                "left": left,
+                "top": top
+            }
+        }
+        var oBir = document.getElementById('bir')
+        var oLine = document.getElementById('line')
+
+        oBir.addEventListener("touchmove", function(evt) {
+            console.log("move")
+            var exChange = evt.touches[0].clientX - getPosition(oLine).left
+            if (exChange < 0) {
+                exChange = 0
+            } else if (exChange > oLine.offsetWidth) {
+                exChange = oLine.offsetWidth - 12
+            }
+            oBir.style.left = exChange + "px"
+        })
+
+        console.log(getPosition(oBir).left, getPosition(oLine).left)
+    </script>
+</body>
+
+</html>
