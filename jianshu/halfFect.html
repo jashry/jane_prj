@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        ul,
+        li {
+            padding: 0;
+            margin: 0;
+            list-style: none
+        }
+        
+        .persLi {
+            line-height: 36px;
+            text-align: center;
+        }
+        
+        .persLi li {
+            float: left;
+            width: 50%;
+        }
+        
+        .persLi img {
+            width: 37%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="lists">
+        <ul class="persLi">
+            <li v-for="usr in ursList">
+                <img :src="usr.image" alt="头像">
+                <p>{{usr.name}} <strong>{{usr.age}}</strong> </p>
+            </li>
+        </ul>
+    </div>
+    <script src="wrap/js/vue.js"></script>
+    <script>
+        var oa = {
+                usr121: {
+                    image: "wrap/img/01.jpg",
+                    name: "Kj",
+                    age: 23
+                },
+                usr122: {
+                    image: "wrap/img/02.jpg",
+                    name: "Gj",
+                    age: 21
+                },
+                usr123: {
+                    image: "wrap/img/03.jpeg",
+                    name: "Mj",
+                    age: 27
+                }
+            },
+            ob = {
+                usr121: {
+                    image: "wrap/img/01.jpg",
+                    name: "Kj",
+                    age: 29
+                },
+
+                usr123: {
+                    image: "wrap/img/03.jpeg",
+                    name: "Mj",
+                    age: 28
+                },
+                usr125: {
+                    image: "wrap/img/05.png",
+                    name: "Lj",
+                    age: 33
+                },
+                usr126: {
+                    image: "wrap/img/05.png",
+                    name: "Bj",
+                    age: 37
+                },
+                usr127: {
+                    image: "wrap/img/05.png",
+                    name: "Dj",
+                    age: 23
+                }
+
+            }
+        var vm = new Vue({
+            el: "#lists",
+            data: {
+                ursList: null
+            },
+            created: function() {
+                this.ursList = oa
+            }
+
+        })
+
+        function camper(oa, ob) {
+            for (key in oa) {
+                if (!ob[key]) {
+                    delete oa[key]
+                }
+            }
+            for (key in ob) {
+                if (!oa[key]) {
+                    oa[key] = ob[key]
+                } else if (oa[key].age != ob[key].age || oa[key].name != ob[key].name || oa[key].image != ob[key].image) {
+                    oa[key].image = ob[key].image
+                    oa[key].name = ob[key].name
+                    oa[key].age = ob[key].age
+                }
+            }
+
+        }
+
+        function chgeData() {
+            vm.ursList = ob
+        }
+    </script>
+</body>
+
+</html>
