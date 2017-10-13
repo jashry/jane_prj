@@ -1,0 +1,33 @@
+.mui-bar,.mui-bar-nav{
+	box-shadow: none;
+	background: none;
+}
+.mui-off-canvas-left, .mui-off-canvas-right{
+	background-color: rgba(0,0,0,.85);
+}
+.mui-pull-right{
+	color: #333;
+}
+.mui-table-view{
+	background: none;
+}
+.mui-table-view{
+	padding-top: 30px;
+}
+.mui-table-view:before,.mui-table-view:after,.mui-table-view-cell:after{
+	display: none;
+}
+.mui-table-view-cell{
+	text-align: center;
+	color: #fff;
+}
+.mui-table-view-cell span{
+	padding-left: 5%;
+	float: left;
+}
+.mui-table-view-cell.mui-active{
+	background-color:#333 ;
+}
+.mui-off-canvas-left, .mui-off-canvas-right{
+	width: 51%;
+}

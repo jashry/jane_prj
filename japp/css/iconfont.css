@@ -1,0 +1,32 @@
+	@font-face {
+		font-family: "iconfont";
+		src: url('../fonts/iconfont.ttf?t=1506410655541') format('truetype')
+	}
+	
+	.iconfont {
+		font-family: "iconfont" !important;
+		font-size: 16px;
+		font-style: normal;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+	
+	.icon-shouye:before {
+		content: "\e63a";
+	}
+	
+	.icon-zuopinji:before {
+		content: "\e69c";
+	}
+	
+	.icon-wenzhang:before {
+		content: "\e614";
+	}
+	
+	.icon-jinrongtubiao_wode:before {
+		content: "\e60c";
+	}
+	
+	.icon-lvli:before {
+		content: "\e72c";
+	}
