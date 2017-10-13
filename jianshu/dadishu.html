@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        html,
+        body,
+        .gameWrp {
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="gameWrp">
+        <canvas id="main"></canvas>
+    </div>
+    <script>
+        var canvas = document.getElementById("main")
+        var ctx = canvas.getContext("2d");
+        var winHet = window.innerHeight;
+        var winWid = window.innerWidth
+        canvas.width = winWid;
+        canvas.height = winHet;
+        ctx.fillStyle = "rgb(100,100,0)"
+        ctx.fillRect(0, 0, winWid, winHet)
+
+        function randomArr(len, min, max) {
+
+            var arrs = []
+
+            function checkRept(el) {
+                var _this = this;
+                if (el[0] === _this[0] && el[1] === _this[1]) {
+                    return true
+                } else {
+                    return false
+                }
+            }
+
+            ! function repeat() {
+                var x = Math.floor(Math.random() * max) + min
+                var y = Math.floor(Math.random() * max) + min
+
+                while (arrs.length < len) {
+                    if (!arrs.find(checkRept, [x, y])) {
+                        arrs.push([x, y])
+                    }
+                    repeat()
+                }
+            }()
+
+            return arrs
+
+        }
+
+        console.log(randomArr(5, 1, 5))
+    </script>
+
+
+</body>
+
+</html>
