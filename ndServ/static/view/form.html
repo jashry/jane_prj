@@ -6,33 +6,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        .imgsWrp img {
+            height: 130px;
+            margin: 20px;
+        }
+    </style>
 </head>
 
 <body>
     <input type="text" name="name">
     <input type="text" name="age">
     <a id="oBtn" href="javascript:;">OK</a>
-    <script src="js/axios.min.js"></script>
+    <div class="imgsWrp">
+        <img src="../imgs/01.jpeg" alt=""><img src="../imgs/02.jpeg" alt=""><img src="../imgs/03.jpeg" alt="">
+    </div>
+    <script src="../js/axios.min.js"></script>
     <script>
         var oBtn = document.getElementById("oBtn")
-
-
         oBtn.addEventListener('click', function() {
             var name = document.getElementsByTagName("input")[0].value
             var age = document.getElementsByTagName("input")[1].value
             axios({
-                method: 'post',
-                url: '/user',
-                data: {
+                method: 'get',
+                url: '/form/reg',
+                params: {
                     name: name,
                     age: age
                 }
-            }).then(function(response) {
-                console.log(response)
+            }).then(function(dataBack) {
+                console.log(dataBack.data)
             }).catch(function(err) {
                 console.log(err)
             });
         })
+
+        // oBtn.addEventListener('click', function() {
+        //     var name = document.getElementsByTagName("input")[0].value
+        //     var age = document.getElementsByTagName("input")[1].value
+        //     axios({
+        //         method: 'post',
+        //         url: '/form/reg',
+        //         data: {
+        //             name: name,
+        //             age: age
+        //         }
+        //     }).then(function(dataBack) {
+        //         console.log(dataBack.data)
+        //     }).catch(function(err) {
+        //         console.log(err)
+        //     });
+        // })
     </script>
 </body>
 
