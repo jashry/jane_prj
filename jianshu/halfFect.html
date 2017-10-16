@@ -76,17 +76,77 @@
                     age: 33
                 },
                 usr126: {
-                    image: "wrap/img/05.png",
+                    image: "wrap/img/04.jpg",
                     name: "Bj",
                     age: 37
                 },
                 usr127: {
+                    image: "wrap/img/02.jpg",
+                    name: "Dj",
+                    age: 23
+                },
+                usr128: {
                     image: "wrap/img/05.png",
+                    name: "Lj",
+                    age: 33
+                },
+                usr129: {
+                    image: "wrap/img/04.jpg",
+                    name: "Bj",
+                    age: 37
+                },
+                usr130: {
+                    image: "wrap/img/02.jpg",
+                    name: "Dj",
+                    age: 23
+                },
+                usr131: {
+                    image: "wrap/img/04.jpg",
+                    name: "Bj",
+                    age: 37
+                },
+                usr132: {
+                    image: "wrap/img/02.jpg",
                     name: "Dj",
                     age: 23
                 }
 
+            },
+            oc = {
+                usr121: {
+                    image: "wrap/img/01.jpg",
+                    name: "Kj",
+                    age: 23
+                },
+                usr128: {
+                    image: "wrap/img/05.png",
+                    name: "Lj",
+                    age: 33
+                },
+                usr129: {
+                    image: "wrap/img/04.jpg",
+                    name: "Wj",
+                    age: 37
+                },
+                usr130: {
+                    image: "wrap/img/02.jpg",
+                    name: "Qj",
+                    age: 23
+                },
+                usr131: {
+                    image: "wrap/img/04.jpg",
+                    name: "Oj",
+                    age: 37
+                },
+                usr132: {
+                    image: "wrap/img/02.jpg",
+                    name: "Pj",
+                    age: 23
+                }
             }
+        console.log("oa: ", oa)
+        console.log("oc: ", oc)
+
         var vm = new Vue({
             el: "#lists",
             data: {
@@ -99,21 +159,19 @@
         })
 
         function camper(oa, ob) {
-            for (key in oa) {
-                if (!ob[key]) {
-                    delete oa[key]
-                }
-            }
+
             for (key in ob) {
                 if (!oa[key]) {
                     oa[key] = ob[key]
-                } else if (oa[key].age != ob[key].age || oa[key].name != ob[key].name || oa[key].image != ob[key].image) {
+                } else if (oa[key].age != ob[key].age || oa[key].name != ob[key].name) {
                     oa[key].image = ob[key].image
                     oa[key].name = ob[key].name
                     oa[key].age = ob[key].age
                 }
             }
 
+            console.log("oa after: ", oa)
+            console.log("ob after: ", ob)
         }
 
         function chgeData() {
