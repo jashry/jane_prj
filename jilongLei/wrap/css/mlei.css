@@ -1,0 +1,80 @@
+        html,
+        body,
+        .mainWrp {
+            height: auto;
+        }
+        
+        .mainWrp {
+            padding-bottom: 30px;
+        }
+        
+        .userInfos {
+            width: 80%;
+            margin: auto;
+        }
+        
+        .stageSelcet {
+            width: 96%;
+            margin: auto;
+            padding-bottom: 20px;
+        }
+        
+        body {
+            background-image: url('../img/stageRept.jpg');
+            background-repeat: repeat-y;
+            background-size: 100% auto;
+            background-position: 50% 50%;
+        }
+        
+        .cell-container div {
+            border-color: rgba(255, 255, 255, .5);
+            background: #E4BC80;
+        }
+        
+        .ending {
+            background-color: rgba(0, 0, 0, .9);
+            position: fixed;
+        }
+        
+        .ending p img {
+            width: 96%;
+            margin: auto;
+        }
+        
+        .backIndex {
+            width: 100%;
+            margin: auto;
+            display: block
+        }
+        
+        .backIndex img {
+            width: 50%;
+            margin: auto;
+        }
+        
+        .preWrp {
+            z-index: 999;
+            width: 100%;
+            height: 70%;
+            padding: 20px;
+            font-size: 14px;
+            line-height: 30px;
+            text-align: center;
+        }
+        
+        .preWrp a {
+            display: block;
+            text-decoration: none;
+            border: 1px solid #E4BC80;
+            border-radius: 3px;
+            color: #fff;
+            background: #E4BC80;
+            line-height: 40px;
+            width: 50%;
+            font-size: 16px;
+            margin: 20px auto
+        }
+        
+        .stageSelcet {
+            position: relative;
+        }
