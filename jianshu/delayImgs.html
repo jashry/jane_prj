@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <link href="wrap/css/rest.css" rel="stylesheet"> -->
+    <style>
+        ul,
+        li {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        li {
+            text-align: center;
+        }
+        
+        li img {
+            padding: 2.6rem 0;
+            width: 90%
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li>
+            <img src="wrap/img/img.jpg" data-src="wrap/img/miao01.jpg" alt="">
+        </li>
+        <li>
+            <img src="wrap/img/img.jpg" data-src="wrap/img/miao02.jpg" alt="">
+        </li>
+        <li>
+            <img src="wrap/img/img.jpg" data-src="wrap/img/miao03.jpg" alt="">
+        </li>
+        <li>
+            <img src="wrap/img/img.jpg" data-src="wrap/img/miao04.jpg" alt="">
+        </li>
+        <li>
+            <img src="wrap/img/img.jpg" data-src="wrap/img/miao05.jpg" alt="">
+        </li>
+        <li>
+            <img src="wrap/img/img.jpg" data-src="wrap/img/miao06.jpg" alt="">
+        </li>
+    </ul>
+    <script>
+        var wh = window.innerHeight;
+        var imgs = document.getElementsByTagName("img");
+        window.onscroll = function() {
+            for (var i = 0; i < imgs.length; i++) {
+                var imgTop = imgs[i].getBoundingClientRect().top;
+                if (wh >= imgTop) {
+                    imgs[i].setAttribute("src", imgs[i].getAttribute("data-src"))
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
