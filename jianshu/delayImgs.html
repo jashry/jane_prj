@@ -50,7 +50,7 @@
     <script>
         var wh = window.innerHeight;
         var imgs = document.getElementsByTagName("img");
-        window.onscroll = function() {
+        window.onload = window.onscroll = function() {
             for (var i = 0; i < imgs.length; i++) {
                 var imgTop = imgs[i].getBoundingClientRect().top;
                 if (wh >= imgTop) {
