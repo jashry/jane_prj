@@ -101,13 +101,13 @@
                 aOn = document.querySelector(".main a"),
                 aOff = document.querySelector(".mfix a");
 
-            function print(evt) {
+            function unableTouchmove(evt) {
                 evt.preventDefault();
             }
 
             aOn.addEventListener("click", function(e) {
                 fix.style.display = "block";
-                body.addEventListener("touchmove", print, {
+                body.addEventListener("touchmove", unableTouchmove, {
                     passive: false
                 })
                 fix.addEventListener("touchstart", function(evt) {
@@ -126,13 +126,9 @@
 
             aOff.addEventListener("click", function(e) {
                 fix.style.display = "none";
-                body.removeEventListener("touchmove", print)
-
-
+                body.removeEventListener("touchmove", unableTouchmove)
             });
-            var pfg = document.createElement("p");
-            pfg.innerText = new Date().toLocaleString();
-            main.appendChild(pfg)
+
         }
     </script>
 </body>
