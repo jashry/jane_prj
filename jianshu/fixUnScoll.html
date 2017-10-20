@@ -103,18 +103,14 @@
                 fix.style.display = "block";
                 main.style.height = window.innerHeight + "px";
                 main.style.overflow = "hidden";
-                main.addEventListener("touchmove", function(evt) {
-                    evt.preventDefault();
-                }, false)
+
             });
 
             aOff.addEventListener("click", function(e) {
                 fix.style.display = "none";
                 main.style.height = "";
                 main.style.overflow = "";
-                main.removeEventListener("touchmove", function(evt) {
-                    evt.preventDefault();
-                }, false)
+
             });
 
         }
