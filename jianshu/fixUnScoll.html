@@ -110,8 +110,8 @@
 
             aOff.addEventListener("click", function(e) {
                 fix.style.display = "none";
-                main.style.height = "auto";
-                main.style.overflow = "auto";
+                main.style.height = "";
+                main.style.overflow = "";
                 main.removeEventListener("touchmove", function(evt) {
                     evt.preventDefault();
                 }, false)
