@@ -16,8 +16,7 @@
         .main {
             background-color: #efefef;
             line-height: 1.6;
-            padding: 1rem;
-            box-sizing: border-box
+            padding: 1rem
         }
         
         .main a {
@@ -101,20 +100,14 @@
 
             aOn.addEventListener("click", function(e) {
                 fix.style.display = "block";
-                main.style.height = window.innerHeight + "px";
-                main.style.overflow = "hidden";
-                main.addEventListener("touchmove", function(evt) {
-                    evt.preventDefault();
-                }, false)
+                body.style.height = window.innerHeight + "px";
+                body.style.overflow = "hidden"
             });
 
             aOff.addEventListener("click", function(e) {
                 fix.style.display = "none";
-                main.style.height = "auto";
-                main.style.overflow = "auto";
-                main.removeEventListener("touchmove", function(evt) {
-                    evt.preventDefault();
-                }, false)
+                body.style.height = "atuo";
+                body.style.overflow = "auto"
             });
 
         }
