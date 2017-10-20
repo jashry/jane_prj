@@ -105,9 +105,6 @@
                 evt.preventDefault();
             }
 
-
-            // body.removeEventListener("touchmove", print, false)
-
             aOn.addEventListener("click", function(e) {
                 fix.style.display = "block";
                 body.addEventListener("touchmove", print, {
@@ -133,7 +130,9 @@
 
 
             });
-            // alert("ms")
+            var pfg = document.createElement("p");
+            pfg.innerText = new Date().toLocaleString();
+            main.appendChild(pfg)
         }
     </script>
 </body>
