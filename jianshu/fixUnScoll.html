@@ -96,23 +96,27 @@
             var fix = document.querySelector(".mfix"),
                 main = document.querySelector(".main"),
                 body = document.querySelector("body"),
+                hetVal = 0,
                 aOn = document.querySelector(".main a"),
                 aOff = document.querySelector(".mfix a");
+
 
             aOn.addEventListener("click", function(e) {
                 fix.style.display = "block";
                 main.style.height = window.innerHeight + "px";
+                hetVal = body.scrollTop;
                 main.style.overflow = "hidden";
 
             });
 
             aOff.addEventListener("click", function(e) {
                 fix.style.display = "none";
+                body.scrollTo(0, hetVal);
                 main.style.height = "initial";
                 main.style.overflow = "auto";
 
             });
-            alert("m")
+            alert("ms")
         }
     </script>
 </body>
