@@ -100,23 +100,32 @@
                 aOn = document.querySelector(".main a"),
                 aOff = document.querySelector(".mfix a");
 
+            function print(evt) {
+                evt.preventDefault();
+                hetVal = document.documentElement.scrollTop;
+                console.log(hetVal);
+            }
+
+
+            // body.removeEventListener("touchmove", print, false)
 
             aOn.addEventListener("click", function(e) {
                 fix.style.display = "block";
-                main.style.height = window.innerHeight + "px";
-                hetVal = body.scrollTop;
-                main.style.overflow = "hidden";
+                body.addEventListener("touchmove", print, {
+                    passive: false
+                })
 
             });
 
             aOff.addEventListener("click", function(e) {
                 fix.style.display = "none";
-                body.scrollTo(0, hetVal);
-                main.style.height = "initial";
-                main.style.overflow = "auto";
+                body.removeEventListener("touchmove", print, {
+                    passive: false
+                })
+
 
             });
-            alert("ms")
+            // alert("ms")
         }
     </script>
 </body>
