@@ -38,14 +38,63 @@
             visibility: hidden;
             clear: both;
         }
+        
+        .upWrp {
+            width: 90%;
+            margin: 0 auto;
+            display: flex;
+            flex-flow: row wrap;
+            border: 1px solid lightslategrey;
+        }
+        
+        .upWrp a {
+            flex: 1;
+            padding: 12.5%;
+            align-content: center;
+            justify-content: space-around;
+        }
+        
+        a:nth-child(2n+1) {
+            background-color: lavender
+        }
     </style>
 </head>
 
 <body>
     <div class="mainWrp">
-
+        <div class="upWrp">
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+        </div>
     </div>
     <script>
+        window.onload = init;
+
+        function init() {
+            var atags = document.getElementsByTagName("a")[0];
+            atags.addEventListener("touchstart", printOut)
+
+            function printOut(evt) {
+
+                clearTimeout(st)
+                console.log(evt.targetTouches[0].clientX);
+                var ms = evt.timeStamp;
+                var st = setTimeout(show, 70, ms)
+
+
+            }
+
+            function show(num) {
+                console.log(num);
+            }
+
+        }
     </script>
 </body>
 
