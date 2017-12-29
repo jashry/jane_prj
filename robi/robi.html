@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        totalRooms = {}
+
+        function secds(n) {
+            var range = Math.floor(Math.random() * 10 * 3 + n);
+            return range
+        }
+
+        function arry2objs(arrs, lens) {
+            var objs = {},
+                tureLens = 0;
+            if (arrs.length > lens) {
+                tureLens = lens
+            } else {
+                tureLens = arrs.length
+            }
+            for (var i = 0; i < tureLens; i++) {
+                objs[arrs[i]["no"]] = arrs[i]
+            }
+            return objs
+        }
+
+        // 6-7秒一次
+        function per67sed() {
+            setInterval(function() {
+                clearTimeout(timer)
+                var seconds = secds(10) * 100;
+                var timer = setTimeout(function() {
+                    console.log("timeOut:", seconds)
+                }, seconds)
+                console.log("timeInterval in nearly 6s")
+            }, secds(60) * 100)
+        }
+
+        // 每1秒三次
+        function perOneSed() {
+            setInterval(function() {
+                for (let i = 0; i < 3; i++) {
+                    let seconds = secds(9) * 10;
+                    let timer = setTimeout(function() {
+                        console.log("timeOut:", seconds)
+                    }, seconds)
+                }
+                console.log("timeInterval in 1s")
+            }, 1000)
+        }
+
+
+        if (window["WebSocket"]) {
+            var conn = new WebSocket("ws://121.43.187.117/rooms/status");
+            conn.onopen = function(evt) {
+                console.log("open WS")
+                conn.send("R")
+            }
+            conn.onmessage = function(evt) {
+                var webktObj = arry2objs(JSON.parse(evt.data), 1000);
+                console.dir(webktObj)
+                for (roomNo in webktObj) {
+                    if (webktObj[roomNo]["users_num"] <= 30 && totalRooms[roomNo][price] < 200) {
+                        var tokenNo = "2c65148bc23629ff5c8c598efc356255";
+                        var wsStr = "ws://121.43.187.117/rooms/" + roomNo + "/auction?token=" + tokenNo;
+                        var connIner = new WebSocket(wsStr);
+                        connIner.onopen = function(evt) {
+                            console.log(roomNo + "open WS")
+                            connIner.send("Y")
+                        }
+                        connIner.onmessage = function(evt) {
+                            totalRooms[roomNo][price] += 1;
+                            connIner.send("C")
+                        }
+                    }
+                }
+            }
+            conn.onclose = function(evt) {
+                console.log("Closed WS");
+                // window.location.reload()
+            }
+            conn.onerror = function(evt) {
+                console.log("error WS")
+            }
+        } else {
+            console.log("浏览器不支持 WS")
+        }
+    </script>
+</body>
+
+</html>

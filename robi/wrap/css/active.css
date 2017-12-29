@@ -1,0 +1,691 @@
+        body {
+            padding: 0;
+            margin: 0;
+            background-color: #f4f4f4;
+            padding-bottom: 60px;
+        }
+        
+        p {
+            padding: 0;
+            margin: 0;
+        }
+        
+        ul,
+        li {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        
+        a {
+            text-decoration: none;
+            color: #525252;
+        }
+        
+        .fl {
+            float: left;
+        }
+        
+        .fr {
+            float: right;
+        }
+        
+        .clear::after {
+            display: block;
+            content: "";
+            clear: both;
+        }
+        
+        .mainWrp {
+            width: 100%;
+            overflow: hidden;
+            max-width: 640px;
+        }
+        
+        .topWrp,
+        .tabswrp,
+        .WrpTwo,
+        .twolsWrps {
+            background-color: #fff;
+        }
+        
+        .topWrp {
+            position: relative;
+            text-align: center;
+            padding-bottom: 3%;
+        }
+        
+        .topWrp img {
+            width: 50%;
+        }
+        
+        .toplab {
+            margin: 0 auto;
+            width: 87%;
+            text-align: left;
+            line-height: 40px;
+            font-size: 13px;
+            position: relative;
+            padding-left: 36px;
+            background-repeat: no-repeat;
+            background-size: auto 30%;
+            background-position: 100% 50%;
+            background-image: url(../img/goto.png)
+        }
+        
+        .twolsWrps {
+            padding-top: 34px;
+            position: relative
+        }
+        
+        .toplab a {
+            display: block;
+        }
+        
+        .toplab .hedWrp {
+            position: absolute;
+            left: 3px;
+            top: 6px;
+            display: inline-block;
+            height: 28px;
+            width: 28px;
+            border-radius: 50%;
+            background-repeat: no-repeat;
+            background-size: 100% auto;
+            background-position: 50% 50%
+        }
+        
+        .toplab .hedWrp img {
+            width: 100%;
+            vertical-align: middle;
+        }
+        
+        .toplab>span:last-child {
+            font-size: 12px;
+            margin-left: 6px;
+            color: #ff473d
+        }
+        
+        .showActorWrp {
+            display: flex;
+            display: -webkit-flex;
+            justify-content: center;
+            align-items: center;
+            line-height: 40px;
+            font-size: 14px;
+            width: 96%;
+            margin: 0 auto;
+            text-align: center;
+            border: 1px solid #fcc647;
+            border-radius: 3px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .showActorWrp span em {
+            font-style: normal
+        }
+        
+        .showActorWrp span.red {
+            display: inline-block;
+            width: 80px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            color: #ff473d
+        }
+        
+        .imgWrpTop {
+            display: block;
+            position: relative;
+        }
+        
+        .overDeal::before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            z-index: 2;
+            background-image: url(../img/dealIcon0.png);
+            background-repeat: no-repeat;
+            background-size: 33% auto;
+            background-position: 50% 50%;
+        }
+        
+        .overDeal::after {
+            content: "";
+            display: block;
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            background-color: rgba(255, 255, 255, .7)
+        }
+        
+        .tabswrp p {
+            text-align: left;
+            padding-left: 2%;
+            font-size: 17px;
+            font-weight: bold;
+            color: #4a4a4a;
+            margin-bottom: 5%;
+        }
+        
+        .infsWrp {
+            margin-bottom: 3%;
+        }
+        
+        .tabswrp {
+            padding: 2px 1rem;
+        }
+        
+        .infsWrp div.fl {
+            width: 60%;
+        }
+        
+        .infsWrp div.fr {
+            width: 40%;
+        }
+        
+        .infsWrp div span {
+            color: #fff;
+            display: inline-block;
+            background: #4a4a4a;
+            font-size: 12px;
+            line-height: 20px;
+            margin: 3px 3px;
+            padding: 1px 4px;
+        }
+        
+        .infsWrp div a {
+            display: inline-block;
+            margin: 3px auto;
+            font-size: 16px;
+            color: #fff;
+            background: #4a4a4a;
+            width: 90%;
+            text-align: center;
+            line-height: 45px;
+        }
+        
+        .jlWrp {
+            text-align: center;
+        }
+        
+        .jlWrp table {
+            width: 100%;
+        }
+        
+        .paid tr:first-child {
+            color: #ff473d
+        }
+        
+        .jlWrp tr {
+            font-size: 14px;
+            color: #4a4a4a;
+            line-height: 30px;
+        }
+        
+        .jlWrp tr td {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        
+        .jlWrp tr td img {
+            height: 30px;
+            margin-right: 6px;
+            margin-top: -2px;
+            border-radius: 50%;
+            vertical-align: middle;
+        }
+        
+        .insoswrp {
+            border-top: 6px solid #e8e8e8;
+        }
+        
+        .insoswrp>div {
+            width: 50%;
+            text-align: left
+        }
+        
+        .insoswrp table {
+            width: 90%;
+            margin: 0 auto;
+        }
+        
+        .insoswrp table td:last-child {
+            color: #9b9b9b;
+        }
+        
+        .WrpTwo {
+            position: relative;
+            padding-top: 52px;
+        }
+        
+        .actinWrp {
+            display: flex;
+            display: -webkit-flex;
+            height: 52px;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+        
+        .actinWrp div>span {
+            font-size: 22px;
+            align-self: center;
+        }
+        
+        .actinWrp img {
+            width: 22px;
+            margin: 0 3px;
+            align-self: center;
+        }
+        
+        .actinWrp {
+            color: #fff;
+            background-color: #fcc647;
+            border: 1px solid #fcc647
+        }
+        
+        .actinWrp>div {
+            height: 50px;
+            flex: 1;
+            display: flex;
+            display: -webkit-flex;
+        }
+        
+        .actinWrp>div:first-child {
+            flex-direction: row;
+            flex-wrap: nowrap;
+            align-content: center;
+            justify-content: center;
+        }
+        
+        .actinWrp>div p {
+            font-size: 13px;
+            align-self: center;
+        }
+        
+        .actinWrp>div:nth-child(2) {
+            padding: 0 2px;
+            min-width: 116px;
+            max-width: 130px;
+            flex-wrap: wrap;
+            align-content: center
+        }
+        
+        .actinWrp>div:nth-child(2) p {
+            display: flex;
+            display: -webkit-flex;
+            justify-content: space-between;
+            padding: 2px 3px;
+            width: 100%;
+        }
+        
+        .actinWrp>div:nth-child(2) em {
+            font-size: 12px;
+            font-style: normal;
+            align-self: center;
+        }
+        
+        .actinWrp>div:nth-child(2) em:last-child {
+            font-size: 14px;
+        }
+        
+        .actinWrp>div:last-child {
+            flex-wrap: wrap;
+            justify-content: center;
+            align-content: flex-end;
+            color: #ff473d;
+            background-color: #fff;
+        }
+        
+        .actinWrp>div:last-child p:first-child {
+            font-size: 13px;
+        }
+        
+        .actinWrp>div:last-child p:last-child {
+            font-size: 23px;
+        }
+        
+        .sucsPio {
+            position: absolute;
+            bottom: 1rem;
+            right: 0;
+            transform: translateX(100%);
+            transition: all 8s ease-in;
+            line-height: 36px;
+            font-size: 12px;
+            padding: 0 8px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            display: inline-block;
+            border-radius: 16px;
+            color: #fff;
+            background-color: rgba(0, 0, 0, .5)
+        }
+        
+        .sucsPio span {
+            min-width: 50px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            color: #ff473d
+        }
+        
+        .headTitWrp {
+            height: 40px;
+            line-height: 40px;
+            font-size: 13px;
+            border-top: 6px solid #e8e8e8;
+            border-bottom: 1px solid #e8e8e8
+        }
+        
+        .headTitWrp em {
+            font-style: normal;
+            color: #9b9b9b
+        }
+        
+        .headTitWrp a {
+            display: inline-block;
+            background-image: url(../img/goto.png);
+            background-repeat: no-repeat;
+            background-size: auto 30%;
+            background-position: right center;
+            padding-right: 16px;
+            padding-left: 10%;
+            margin-right: 10px;
+        }
+        
+        .tsWrp {
+            display: inline-block;
+            padding-left: 50px;
+            background-image: url(../img/actingIcon.png);
+            background-repeat: no-repeat;
+            background-size: auto 60%;
+            background-position: 16px center
+        }
+        
+        .tabOut {
+            border-top: 1px solid #f4f4f4;
+            border-bottom: 1px solid #f4f4f4;
+        }
+        
+        #tabsBtn {
+            width: 90%;
+            margin: 0 auto;
+        }
+        
+        #tabsBtn span {
+            position: relative;
+            text-align: center;
+            display: inline-block;
+            width: 25%;
+            font-size: 14px;
+            color: #525252;
+            line-height: 30px;
+            border-bottom: 2px solid #fff;
+        }
+        
+        #tabsBtn span::before {
+            content: "";
+            display: block;
+            width: 0;
+            height: 16px;
+            border-left: 1px solid #D8D8D8;
+            position: absolute;
+            right: 0;
+            top: 8px;
+        }
+        
+        #tabsBtn span::after {
+            content: "";
+            display: block;
+            width: 76%;
+            height: 0;
+            border-bottom: 2px solid #fff;
+            position: absolute;
+            bottom: -2px;
+            left: 12%;
+        }
+        
+        #tabsBtn span:last-child::before {
+            content: "";
+            display: none
+        }
+        
+        #tabsBtn span.on {
+            color: #ff473d;
+        }
+        
+        #tabsBtn span.on::after {
+            border-bottom-color: #ff473d;
+        }
+        
+        .divWrps li {
+            display: flex;
+            display: -webkit-flex;
+            align-items: center;
+            text-align: center;
+            border-bottom: 1px solid #e8e8e8
+        }
+        
+        .divWrps li p {
+            margin: 6px 0;
+        }
+        
+        .divWrps li>div:first-child {
+            flex: 1
+        }
+        
+        .divWrps li>div:last-child {
+            flex: 2;
+            color: #9b9b9b;
+        }
+        
+        .divWrps li>div:nth-child(2) {
+            flex: 3;
+            text-align: left;
+            font-size: 13px;
+            color: #5b5b5b;
+        }
+        
+        .divWrps li>div:last-child p:first-child {
+            font-size: 10px;
+        }
+        
+        .divWrps li>div:last-child p:nth-child(2) {
+            font-size: 20px;
+        }
+        
+        .divWrps li>div:last-child p:last-child {
+            font-size: 12px;
+        }
+        
+        .imgHed img {
+            width: 100%;
+        }
+        
+        .imgHed span {
+            display: inline-block;
+            padding: 35%;
+            border-radius: 50%;
+            overflow: hidden;
+            background-size: 100% 100%;
+            background-position: 50% 50%;
+            background-repeat: no-repeat;
+        }
+        
+        .divWrps #contsinWrp {
+            width: 96%;
+            font-size: 13px;
+            padding: 1rem 0;
+            line-height: 1.6;
+            margin: 0 auto;
+        }
+        
+        .buyBtnsWrp,
+        .endBtnsWrp {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+        }
+        
+        .buyBtnsWrp {
+            padding-left: 80px;
+            box-sizing: border-box;
+        }
+        
+        .buyBtnsWrp a {
+            text-align: center;
+            display: block;
+            float: left;
+            height: 50px;
+        }
+        
+        a.scBtn {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 50px;
+            background-color: #fff;
+            display: block;
+            width: 80px;
+            text-align: center;
+        }
+        
+        a.scBtn img {
+            display: block;
+            width: 26px;
+            margin: 3px auto
+        }
+        
+        a.scBtn {
+            font-size: 13px;
+        }
+        
+        a.byBtn {
+            width: 100%;
+            color: #fff;
+            background-color: #FCC647;
+            width: 100%;
+        }
+        
+        a.byBtn span {
+            font-size: 16px;
+            line-height: 34px;
+            display: block;
+        }
+        
+        a.byBtn span:last-child {
+            font-size: 12px;
+            line-height: 8px;
+            display: block;
+        }
+        
+        .endBtn {
+            display: block;
+            float: left;
+            width: 50%;
+            line-height: 50px;
+            font-size: 17px;
+            color: #fff;
+            background: #4a4a4a;
+            text-align: center;
+        }
+        
+        .endBtnsWrp a:first-child {
+            background-color: #4990e2
+        }
+        
+        .endBtnsWrp a:last-child {
+            background-color: #fcc647
+        }
+        
+        .endsWrp {
+            background-image: url(../img/liner.png);
+            background-size: 100% 100%;
+            background-position: 50% 50%;
+            background-repeat: no-repeat;
+            padding: 10px 5%;
+            margin-bottom: 8px;
+            display: flex;
+            display: -webkit-flex
+        }
+        
+        .endsWrp div {
+            font-size: 12px;
+            color: #fff;
+            line-height: 22px;
+            letter-spacing: 1px;
+        }
+        
+        .endsWrp div:first-child {
+            flex: 1;
+            align-self: center
+        }
+        
+        .endsWrp div:nth-child(2) {
+            flex: 3;
+        }
+        
+        .endsWrp div:last-child {
+            flex: 1;
+        }
+        
+        .endsWrp div:last-child p:last-child {
+            font-size: 17px;
+        }
+        
+        .endsWrp div:last-child p:last-child::first-letter {
+            font-size: 10px;
+        }
+        
+        .endsWrp div strong {
+            font-size: 18px;
+            margin: 0 6px;
+        }
+        
+        .endsWrp div span {
+            font-size: 14px;
+        }
+        
+        .divWrps {
+            min-height: 200px;
+        }
+        
+        .tabOut {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #fff;
+        }
+        
+        .fixes {
+            position: fixed;
+            z-index: 3;
+            top: 0;
+            left: 0
+        }
+        
+        .fixes1 {
+            position: fixed;
+            z-index: 3;
+            top: 52px!important;
+            left: 0
+        }
