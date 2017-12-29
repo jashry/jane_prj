@@ -1,421 +1,132 @@
 <!DOCTYPE html>
-<html lang="zh_CN">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="wrap/css/active.css">
-    <title></title>
+    <title>Document</title>
     <style>
-        em {
-            font-style: normal
+        ul,
+        ol,
+        li {
+            margin: 0;
+            padding: 0;
+            list-style: none
         }
         
-        .jlWrp table {
-            height: 104px;
-            overflow: hidden
+        ul {
+            font-size: 15px;
         }
         
-        #timedick i {
-            font-style: normal
+        ul li {
+            margin: 6px auto;
+            font-weight: bold
         }
         
-        .paid tr td img {
-            float: left;
-        }
-        
-        .paid tr td span {
-            float: left;
+        ul a {
             display: block;
-            width: 60%;
+            text-decoration: none;
+            padding: 8px 0;
+            color: #666;
+            text-align: center
+        }
+        
+        ol {
+            overflow: auto;
+        }
+        
+        ol li {
+            width: 80%;
             overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
+            margin: 8px auto;
+        }
+        
+        ol p:first-child {
+            color: skyblue
+        }
+        
+        ol p:last-child {
+            color: #999
+        }
+        
+        ol p {
+            margin: 0;
+            font-size: 12px;
+            padding: 6px auto;
         }
     </style>
 </head>
 
 <body>
-    <div class="mainWrp">
-        <div class="topWrp">
-            <div class="toplab">
-                <a href="javascript:;">
-                    <span class="hedWrp" style="background-image:url(wrap/img/head.png)"></span>
-                    <span>夏雪开yjh</span>
-                    <span><em id="users_num">500</em>/5000</span>
+    <div id="app">
+        <h3>200房间号：</h3>
+        <ul>
+            <li v-for="(item,index) in rooms">
+                <a :href="'ods.html?rooms='+item.toString()+'&'+'tokens='+tokens[index].token" target="_blank">
+                 {{item}}
                 </a>
-            </div>
-            <div class="imgWrpTop">
-                <img src="wrap/img/Bitmap@1x.png" alt="">
-                <p id="pio" class="sucsPio">
-                    恭喜<span>夏雪开yjh</span>以<span>400积分</span>获得iPhone X 259g 黑金色 限量版 签名 发售
-                </p>
-            </div>
+            </li>
+        </ul>
+        <h3>token号：</h3>
+        <ol>
+            <li v-for="item in tokens">
+                <p>{{item.tel}}</p>
+                <p>{{item.token}}</p>
+            </li>
+        </ol>
 
-        </div>
-        <div class="tabswrp">
-            <p>小米MIX全网通 4GB+128GB 黑色</p>
-        </div>
-        <div class="WrpTwo">
-            <div class="actinWrp">
-                <div>
-                    <img src="wrap/img/goldIcon.png" alt="">
-                    <span id="now_auction_price_show">1399.10</span>
-                </div>
-                <div>
-                    <p><em>原价</em> <em>¥3999.00</em></p>
-                    <p><em>最高成交价</em> <em>599.00</em></p>
-                </div>
-                <div>
-                    <p>距离结束剩余</p>
-                    <p id="timedick"><i class="hour" id="hour">00</i>:<i class="mins" id="mins">00</i>:<i class="secd" id="secd">00</i></p>
-                </div>
-            </div>
-            <div style="padding:8px 0;">
-                <div class="showActorWrp">
-                    <span>若无人出价，</span><span class="red" id="nickname">zhengzhilisd</span><span>将以</span><span class="red" id="now_auction_price"><em>399.10</em>积分</span><span>拍得本商品</span>
-                </div>
-            </div>
-        </div>
-        <div class="twolsWrps">
-            <div class="tabOut">
-                <div id="tabsBtn">
-                    <span class="on">出价记录</span><span>往期成交</span><span>商品详情</span><span>竞拍规则</span>
-                </div>
-            </div>
-            <div id="contsinWrp">
-                <div class="jlWrp divWrps">
-                    <div class="headTitWrp clear">
-                        <p class="fl">
-                            <span class="tsWrp">出价总数</span>
-                            <em><i id="event_total_num">99</i> 条</em>
-                        </p>
-                        <a href="javascript:;" class="fr">更多</a>
-                    </div>
-                    <table class="paid">
-                        <tbody id="rcds">
-                            <tr>
-                                <td class="clear"><img src="wrap/img/mobileIcon.png" alt=""> <span>郑智杨</span></td>
-                                <td>领先</td>
-                                <td>浙江 温州</td>
-                                <td>积分 330</td>
-                            </tr>
-                            <tr>
-                                <td class="clear"><img src="wrap/img/computerIcon.png" alt=""><span>郑智杨</span></td>
-                                <td>出局</td>
-                                <td>浙江 林州</td>
-                                <td>积分 220</td>
-                            </tr>
-                            <tr>
-                                <td class="clear"><img src="wrap/img/computerIcon.png" alt=""><span>郑智杨</span></td>
-                                <td>出局</td>
-                                <td>浙江 林州</td>
-                                <td>积分 220</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="insoswrp clear">
-                        <div class="fl">
-                            <table>
-                                <tr>
-                                    <td>起拍价</td>
-                                    <td>积分 0.00</td>
-                                </tr>
-                                <tr>
-                                    <td>手续费</td>
-                                    <td>1积分/次</td>
-                                </tr>
-                                <tr>
-                                    <td>差价购买</td>
-                                    <td>有</td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div class="fr">
-                            <table>
-                                <tr>
-                                    <td>加价幅度</td>
-                                    <td>积分 0.1</td>
-                                </tr>
-                                <tr>
-                                    <td>竞拍倒计时</td>
-                                    <td>10s</td>
-                                </tr>
-                                <tr>
-                                    <td>退积分比例</td>
-                                    <td>30%</td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <div class="wqWrp  divWrps" style="display:none">
-                    <ul>
-                        <li>
-                            <div class="imgHed">
-                                <span style="background-image:url(wrap/img/head.png)"></span>
-                            </div>
-                            <div>
-                                <p>成交人：喵Wu</p>
-                                <p>用户ID： 001</p>
-                                <p>成交价：￥233</p>
-                            </div>
-                            <div>
-                                <p>2017/10/23 22:23:36</p>
-                                <p>91.3%</p>
-                                <p>节省</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="imgHed">
-                                <span style="background-image:url(wrap/img/head.png)"></span>
-                            </div>
-                            <div>
-                                <p>成交人：喵Wu</p>
-                                <p>用户ID： 001</p>
-                                <p>成交价：￥233</p>
-                            </div>
-                            <div>
-                                <p>2017/10/23 22:23:36</p>
-                                <p>91.3%</p>
-                                <p>节省</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="spWrp  divWrps" style="display:none">
-                    详情图文
-                </div>
-                <div class="jpWrp  divWrps" style="display:none">
-                    规则文字段落
-                </div>
-            </div>
-        </div>
     </div>
-    <div class="buyBtnsWrp clear">
-        <a class="scBtn" href="javascript:;">
-            <img src="wrap/img/starsCheckIcon.png" alt="">
-            <span>收藏</span>
-        </a>
-        <a class="byBtn" id="byBtn" href="javascript:;">
-            <span> 出价</span>
-            <span>1积分/次</span>
-        </a>
-    </div>
-    </div>
+    <script src="https://cdn.bootcss.com/axios/0.16.2/axios.js"></script>
+    <script src="https://cdn.bootcss.com/vue/2.0.0/vue.js"></script>
     <script>
-        function getPosition(node) {
-            var left = node.offsetLeft;
-            var top = node.offsetTop;
-            var current = node.offsetParent;
-
-            while (current != null) {
-                left += current.offsetLeft;
-                top += current.offsetTop;
-                current = current.offsetParent;
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                rooms: [],
+                tokens: [{
+                    tel: 15088566830,
+                    token: "1b3d072da23feeec16ca2b3b3fcd7f79"
+                }, {
+                    tel: 13566245475,
+                    token: "769bcea18477cb2885b7c047e452a0e4"
+                }, {
+                    tel: 18329046271,
+                    token: "2c65148bc23629ff5c8c598efc356255"
+                }, {
+                    tel: 18867755642,
+                    token: "d7c6a804c0003c22be7a0ca853788b76"
+                }, {
+                    tel: 15088566830,
+                    token: "1b3d072da23feeec16ca2b3b3fcd7f79"
+                }, {
+                    tel: 13566245475,
+                    token: "769bcea18477cb2885b7c047e452a0e4"
+                }, {
+                    tel: 18329046271,
+                    token: "2c65148bc23629ff5c8c598efc356255"
+                }, {
+                    tel: 18867755642,
+                    token: "d7c6a804c0003c22be7a0ca853788b76"
+                }]
             }
-
-            return {
-                "left": left,
-                "top": top
-            }
-        }
-
-        var timerDik = "";
-        var ohour = document.getElementById("hour"),
-            omins = document.getElementById("mins"),
-            osecd = document.getElementById("secd");
-
-        function less10(numb) {
-            var num = parseInt(numb)
-            num = num < 10 ? "0" + num : num
-            return num
-
-        }
-
-        function dicker(timeNum) {
-            var initSecond = parseInt(timeNum - Date.now() / 1000);
-            var totalSeconds = initSecond < 0 ? 0 : initSecond;
-            clearInterval(timerDik)
-            timerDik = setInterval(function() {
-                totalSeconds--;
-                if (totalSeconds > 0) {
-                    ohour.innerText = less10(totalSeconds / 60 / 60);
-                    omins.innerText = less10(totalSeconds / 60 % 60);
-                    osecd.innerText = less10(totalSeconds % 60);
-                } else {
-                    clearInterval(timerDik)
-                    ohour.innerText = "00";
-                    omins.innerText = "00";
-                    osecd.innerText = "00"
-                }
-            }, 1000)
-
-        }
-        window.onload = function() {
-
-            var users_num = document.getElementById('users_num')
-            var nickname = document.getElementById('nickname')
-            var now_auction_price = document.getElementById('now_auction_price');
-            var now_auction_price_show = document.getElementById('now_auction_price_show');
-            var event_total_num = document.getElementById('event_total_num');
-            var byBtn = document.getElementById('byBtn');
-            var timedick = document.getElementById('timedick');
-            var now_price = 0;
-
-            function dicker(timeNum) {
-                var hour, mins, secd,
-                    ohour = timedick.getElementsByClassName("hour")[0],
-                    omins = timedick.getElementsByClassName("mins")[0],
-                    osecd = timedick.getElementsByClassName("secd")[0];
-                var totalSeconds = timeNum
-                clearInterval(timerDik)
-                timerDik = setInterval(function() {
-                    totalSeconds--;
-                    if (totalSeconds > 0) {
-                        hour = parseInt(totalSeconds / 60 / 60) < 10 ? "0" + parseInt(totalSeconds / 60 / 60) : parseInt(totalSeconds / 60 / 60);
-                        mins = parseInt(totalSeconds / 60 % 60) < 10 ? "0" + parseInt(totalSeconds / 60 % 60) : parseInt(totalSeconds / 60 % 60);
-                        secd = parseInt(totalSeconds % 60) < 10 ? "0" + parseInt(totalSeconds % 60) : parseInt(totalSeconds % 60);
-                        ohour.innerText = hour;
-                        omins.innerText = mins;
-                        osecd.innerText = secd;
-                    } else {
-                        ohour.innerText = "00";
-                        omins.innerText = "00";
-                        osecd.innerText = "00"
+        })
+        axios.get("http://www.ouyiadd.com/api/Test/runRoom.html").then(function(response) {
+            if (response.data.data === "") {
+                console.log("数据为空")
+            } else if (response.data.code === 0) {
+                console.log(response.data.data);
+                var rooms = response.data.data;
+                for (i in rooms) {
+                    if (rooms[i]["status"] == 200) {
+                        vm.rooms.push(rooms[i]["no"])
                     }
-                }, 1000)
-
-            }
-
-            function secds(n) {
-                var range = Math.floor(Math.random() * 10 * 3 + n);
-                return range
-            }
-            //房间号
-            var searchStr = document.location.search
-            var roomNo = searchStr.slice(searchStr.indexOf("rooms=") + 6, searchStr.indexOf("&"));
-            document.getElementsByTagName('title')[0].innerText = roomNo;
-            // token号
-            var tokenNo = searchStr.slice(searchStr.indexOf("tokens=") + 7);
-            console.log(tokenNo)
-
-            if (window["WebSocket"]) {
-
-                var wsStr = "ws://121.43.187.117/rooms/" + roomNo + "/auction?token=" + tokenNo;
-                var conn = new WebSocket(wsStr);
-                conn.onopen = function(evt) {
-                    console.log("open WS")
-                    conn.send("R")
-                }
-                conn.onmessage = function(evt) {
-
-                    list = JSON.parse(evt.data);
-                    console.log("list: ", list);
-
-                    var otable = document.getElementById('rcds');
-                    var trs = otable.getElementsByTagName('tr');
-                    var lens = trs.length;
-                    // console.log(now_price);
-                    // console.log(now_auction_price_show.innerText)
-                    // console.log(parseFloat(list.now_auction_price).toFixed(2))
-                    if (list.user_id !== 0 && now_auction_price_show.innerText != parseFloat(list.now_auction_price).toFixed(2)) {
-                        users_num.innerText = list.users_num;
-                        nickname.innerText = list.nickname;
-                        now_auction_price.innerText = parseFloat(list.now_auction_price).toFixed(2);
-                        now_auction_price_show.innerText = parseFloat(list.now_auction_price).toFixed(2);
-                        event_total_num.innerText = list.event_total_num || 3;
-                        dicker(list.time - Math.abs(list.create_time - list.last_time))
-                        var newTr = document.createElement('tr');
-                        newTr.innerHTML =
-                            "<td class='clear'><img src='wrap/img/mobileIcon.png'><span>" + list.nickname + "</span></td>" +
-                            "<td>领先</td>" +
-                            "<td>" + (list.area_name_path || "浙江 杭州") + "</td>" +
-                            " <td>积分" + parseFloat(list.now_auction_price).toFixed(2) + "</td>";
-                        otable.appendChild(newTr)
-                        otable.insertBefore(otable.lastElementChild, trs[0]);
-                        trs = otable.getElementsByTagName('tr');
-                        if (trs[1]) {
-                            trs[1].getElementsByTagName('td')[1].innerText = "出局";
-                        }
-                        if (trs[3]) {
-                            otable.removeChild(trs[3])
-                        }
-                        now_price = parseFloat(now_auction_price_show.innerText)
-                            // console.log(now_price)
-                    }
-                    users_num.innerText = list.users_num;
 
                 }
-                conn.onclose = function(evt) {
-                    console.log("Closed WS")
-                }
-                conn.onerror = function(evt) {
-                    console.log("error WS")
-                }
-
-                // 点击出价按钮
-                byBtn.onclick = function() {
-                    setInterval(function() {
-                        // 每秒几次就循环几次
-
-                        let seconds = secds(9) * 10;
-                        setTimeout(function() {
-                            conn.send("Y");
-                            // console.log("timeOut:", seconds)
-                        }, seconds)
-
-                        console.log("timeInterval in 1s")
-                    }, 1000)
-                    console.log("kk")
-                }
-                setTimeout(function() {
-                    byBtn.click()
-                }, 1000)
-
             } else {
-                console.log("浏览器不支持 WS")
+                console.log("接口出错")
             }
-
-            // 标签切换
-            var tabsWrp = document.getElementById("tabsBtn");
-            var pio = document.getElementById("pio");
-            var actinWrp = document.getElementsByClassName("actinWrp")[0];
-            var actinWrpTop = getPosition(actinWrp).top;
-            var tabsFather = tabsWrp.parentNode;
-            var tapOffset = getPosition(tabsFather).top;
-            var otbs = tabsWrp.getElementsByTagName("span");
-            var ocont = document.getElementById("contsinWrp").getElementsByClassName('divWrps');
-            for (var i = 0; i < otbs.length; i++) {
-                otbs[i].setAttribute('indx', i);
-                otbs[i].onclick = function() {
-                    for (var l = 0; l < otbs.length; l++) {
-                        otbs[l].className = "";
-                        ocont[l].style.display = "none";
-                    }
-                    ocont[this.getAttribute("indx")].style.display = "block";
-                    this.className = "on";
-                }
-            }
-            // 滚动贴边
-            window.onscroll = function() {
-                var topVal = document.documentElement.scrollTop;
-                if (topVal >= tapOffset - 52) {
-                    tabsFather.className = "tabOut fixes1";
-                } else {
-                    tabsFather.className = "tabOut";
-                }
-                if (topVal >= actinWrpTop) {
-                    actinWrp.className = "actinWrp fixes";
-                } else {
-                    actinWrp.className = "actinWrp";
-                }
-            }
-
-            pio.style.transform = "translateX(-100%)";
-
-        }
+        })
     </script>
 </body>
 
