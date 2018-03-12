@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: #f4f4f4;
+        }
+
+        a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        .inputWrp a {
+            display: block;
+
+            position: absolute;
+            top: 37%;
+            left: 15%;
+            width: 70%;
+            font-size: 17px;
+            text-align: center;
+            height: 37px;
+            line-height: 37px;
+            box-shadow: 0 0 3px #ccc;
+            border-radius: 5px
+        }
+
+        .mainWrp {
+            position:relative;
+            background: #fff;
+            max-width: 640px;
+            height: 100%;
+            margin: auto
+        }
+
+        .fishsWrp {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow-y: auto;
+            background-color: #f4f4f4;
+            z-index: 999;
+            text-align: center
+        }
+
+        .fishs li {
+            padding: 6px 0;
+        }
+
+        .fishs li a {
+            display: inline-block;
+            border-radius: 2px;
+            background-color: #fff;
+            box-shadow: 0 0 2px #ccc;
+            height: 38px;
+            line-height: 38px;
+            width: 50%;
+            font-size: 16px;
+        }
+
+        .fishs li a.diss {
+            color: #666;
+            background-color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mainWrp">
+        <div class="inputWrp">
+            <a href="javascript:;">点我选择</a>
+            <input type="hidden" value="0">
+        </div>
+    </div>
+    <div class="fishsWrp" style="display:none">
+        <ul class="fishs">
+            <li>
+                <a href="javascript:;">梭子蟹</a>
+            </li>
+            <li>
+                <a href="javascript:;">对虾</a>
+            </li>
+            <li>
+                <a class="diss" href="javascript:;">鳓鱼</a>
+            </li>
+            <li>
+                <a href="javascript:;">鲳鱼</a>
+            </li>
+            <li>
+                <a class="diss" href="javascript:;">鱿鱼</a>
+            </li>
+            <li>
+                <a class="diss" href="javascript:;">鮸鱼</a>
+            </li>
+            <li>
+                <a href="javascript:;">带鱼</a>
+            </li>
+            <li>
+                <a href="javascript:;">黄鱼</a>
+            </li>
+            <li>
+                <a class="diss" href="javascript:;">三文鱼</a>
+            </li>
+            <li>
+                <a class="diss" href="javascript:;">螃蟹</a>
+            </li>
+            <li>
+                <a href="javascript:;">河虾</a>
+            </li>
+            <li>
+                <a href="javascript:;">七节虾</a>
+            </li>
+            <li>
+                <a href="javascript:;">龙虾</a>
+            </li>
+            <li>
+                <a href="javascript:;">小龙虾</a>
+            </li>
+            <li>
+                <a class="diss" href="javascript:;">黑鱼</a>
+            </li>
+            <li>
+                <a href="javascript:;">鲱鱼</a>
+            </li>
+            <li>
+                <a href="javascript:;">小黄鱼</a>
+            </li>
+            <li>
+                <a href="javascript:;">金龙鱼</a>
+            </li>
+        </ul>
+    </div>
+    <script>
+        var fishsWrp = document.querySelector('.fishsWrp');
+        var oinput = document.querySelector('.inputWrp');
+        oinput.addEventListener('touchstart', function () {
+            setTimeout(function () {
+                fishsWrp.style.display = 'block';
+            }, 100);
+        })
+
+        fishsWrp.addEventListener('touchstart', function (evt) {
+            otarget = evt.target;
+            if (otarget.nodeName == 'A') {
+                if (otarget.className != "diss") {
+                    textVal = otarget.innerText;
+                    oinput.querySelector('a').innerText = textVal;
+                    oinput.querySelector('input').setAttribute('value', textVal);
+                    setTimeout(function () {
+                        fishsWrp.style.display = 'none';
+                    }, 100);
+                } else {
+                    alert('您选择的 " '+ otarget.innerText +' " 卖完啦!')
+                }
+            }
+        })
+
+    </script>
+</body>
+
+</html>
