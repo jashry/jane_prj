@@ -12,11 +12,11 @@ const User = require('./model/users')
 
 mongoose.Promise = global.Promise
 
-mongoose.connect('mongodb://localhost/webs', { useMongoClient: true, })
-mongoose.connection.on('error', console.error.bind(console, 'connection error:'))
-    .once('openUri', function() {
-        console.log("we're connected!")
-    });
+// mongoose.connect('mongodb://localhost/webs', { useMongoClient: true, })
+// mongoose.connection.on('error', console.error.bind(console, 'connection error:'))
+//     .once('openUri', function() {
+//         console.log("we're connected!")
+//     });
 
 
 
