@@ -1,13 +1,14 @@
 const puppeteer = require('puppeteer')
+const fs=require('fs')
 const url = 'https://movie.douban.com/explore#!type=movie&sort=recommend&page_limit=20&page_start=0'
 
 const sleep = time => new Promise(resolve => {
   setTimeout(resolve, time)
 })
 
-console.log('yun');
+console.log('运行中...');
 
- let crawlers= async () => {
+ ;(async () => {
     const browser = await puppeteer.launch({
       args: ['--no-sandbox'],
       dumpio: false
@@ -51,11 +52,15 @@ console.log('yun');
       return links
     })
 
-    console.log(result)
+    // console.log(result)
 
-    // await page.screenshot({ path: 'example.png' });
     await browser.close();
 
+    process.send({result})
+    process.exit(0)
 
-  };
-  crawlers()
+  })();
+
+  
+
+  
