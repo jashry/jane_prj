@@ -7,10 +7,10 @@ const static = require('koa-static')
 const app = new Koa()
 
 
-const mongoose = require('mongoose')
-const User = require('./model/users')
+// const mongoose = require('mongoose')
+// const User = require('./model/users')
 
-mongoose.Promise = global.Promise
+// mongoose.Promise = global.Promise
 
 // mongoose.connect('mongodb://localhost/webs', { useMongoClient: true, })
 // mongoose.connection.on('error', console.error.bind(console, 'connection error:'))
@@ -20,14 +20,14 @@ mongoose.Promise = global.Promise
 
 
 
-// 获取数据 
-User.find({ name: 'jack' }).exec((err, person) => {
-    if (err) {
-        console.log(err)
-    } else {
-        // console.log(person)
-    }
-})
+// // 获取数据 
+// User.find({ name: 'jack' }).exec((err, person) => {
+//     if (err) {
+//         console.log(err)
+//     } else {
+//         // console.log(person)
+//     }
+// })
 
 
 //路由
