@@ -1,8 +1,8 @@
 const mongoose = require('mongoose')
 const Users = require('../schema/users')
 
-let usersCtr = {}
-usersCtr.save = (data) => {
+let usersMod = {}
+usersMod.save = (data) => {
   Users.create(
     {
       name:data.name,
@@ -14,4 +14,4 @@ usersCtr.save = (data) => {
 }
 
 
-module.exports = usersCtr
+module.exports = usersMod

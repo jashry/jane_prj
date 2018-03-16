@@ -1,5 +1,5 @@
 const Router = require('koa-router')
-const UsersControler = require('../controllers/users')
+const UsersControler = require('../models/users')
 const fs = require('fs')
 
 let form = new Router()
