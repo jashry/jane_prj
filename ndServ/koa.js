@@ -8,11 +8,11 @@ const app = new Koa()
 
 
 const mongoose = require('mongoose')
-const User = require('./model/users')
+const Users = require('./models/users')
 
 mongoose.Promise = global.Promise
 
-mongoose.connect('mongodb://localhost/webs', { useMongoClient: true, })
+mongoose.connect('mongodb://adminOwner:adminOwner@localhost/webs', { useMongoClient: true, })
 mongoose.connection.on('error', console.error.bind(console, 'connection error:'))
     .once('openUri', function() {
         console.log("we're connected!")
@@ -21,11 +21,11 @@ mongoose.connection.on('error', console.error.bind(console, 'connection error:')
 
 
 // // 获取数据 
-User.find({ name: 'jack' }).exec((err, person) => {
+Users.find({ name: 'jack' }).exec((err, person) => {
     if (err) {
         console.log(err)
     } else {
-        // console.log(person)
+        console.log(person)
     }
 })
 
