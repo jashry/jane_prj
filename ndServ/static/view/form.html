@@ -16,20 +16,20 @@
 
 <body>
     <input type="text" name="name">
-    <input type="text" name="age">
+    <input type="text" name="password">
     <a id="oBtn" href="javascript:;">OK</a>
     <script src="https://cdn.bootcss.com/axios/0.18.0/axios.min.js"></script>
     <script>
         var oBtn = document.getElementById("oBtn")
         oBtn.addEventListener('click', function() {
             var name = document.getElementsByTagName("input")[0].value
-            var age = document.getElementsByTagName("input")[1].value
+            var password = document.getElementsByTagName("input")[1].value
             axios({
-                method: 'get',
+                method: 'post',
                 url: '/form/reg',
                 params: {
                     name: name,
-                    age: age
+                    password: password
                 }
             }).then(function(response) {
                 console.log(response.data)

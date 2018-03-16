@@ -1,5 +1,7 @@
 const Router = require('koa-router')
+const UsersControler = require('../controllers/users')
 const fs = require('fs')
+
 let form = new Router()
 form
     .get("/", (ctx, next) => {
@@ -12,7 +14,7 @@ form
     })
     .post("/reg", (ctx, next) => {
         ctx.response.body = ctx.query
-        console.log(ctx.query)
+        UsersControler.save(ctx.query)
     })
 
-    module.exports=form
+module.exports = form
