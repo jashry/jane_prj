@@ -7,6 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
+        html,
+        body {
+            height: 120%;
+        }
+        
         * {
             margin: 0;
             padding: 0;
@@ -40,15 +45,106 @@
             visibility: hidden;
             clear: both;
         }
+        
+        .upWrp {
+            width: 90%;
+            margin: 0 auto;
+            display: flex;
+            flex-flow: row wrap;
+            border: 1px solid lightslategrey;
+        }
+        
+        .upWrp a {
+            flex: 1;
+            padding: 12.5%;
+            align-content: center;
+            justify-content: space-around;
+        }
+        
+        a:nth-child(2n+1) {
+            background-color: lavender
+        }
+        
+        .cls {
+            margin: 1rem;
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            text-indent: -999px;
+            border-radius: 50%;
+            position: relative;
+            border: 1px solid #fcfcfc;
+        }
+        
+        .cls::before,
+        .cls::after {
+            position: absolute;
+            content: "";
+            display: block;
+            width: 16px;
+            height: 1px;
+            top: 50%;
+            left: 22%;
+            background-color: #ccc;
+        }
+        
+        .cls::before {
+            transform: rotate(135deg)
+        }
+        
+        .cls::after {
+            transform: rotate(45deg)
+        }
     </style>
 </head>
 
 <body>
     <div class="mainWrp">
+<<<<<<< HEAD
         <input type="button" value="mini">
         <button>maxi</button>
+=======
+        <div class="upWrp">
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+        </div>
+        <a class="cls">关闭</a>
+>>>>>>> 2c71abd4ed0335c1b543ed4a6224e6b1a65f0132
     </div>
     <script>
+        window.onload = init;
+
+        function init() {
+            var atags = document.getElementsByTagName("a")[0];
+            var cls = document.getElementsByClassName("cls")[0];
+            atags.addEventListener("touchstart", printOut)
+            cls.addEventListener("click", function(evt) {
+                console.log(evt.target.innerText);
+                console.log("body ", document.documentElement.scrollTop, " html: ", document.getElementsByTagName("html")[0].scrollTop);
+            })
+
+            function printOut(evt) {
+
+                clearTimeout(st)
+                console.log(evt.targetTouches[0].clientX);
+                var ms = evt.timeStamp;
+                var st = setTimeout(show, 70, ms)
+
+
+            }
+
+            function show(num) {
+                console.log(num);
+            }
+
+        }
     </script>
 </body>
 

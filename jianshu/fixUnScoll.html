@@ -16,7 +16,8 @@
         .main {
             background-color: #efefef;
             line-height: 1.6;
-            padding: 1rem
+            padding: 1rem;
+            box-sizing: border-box
         }
         
         .main a {
@@ -95,19 +96,37 @@
             var fix = document.querySelector(".mfix"),
                 main = document.querySelector(".main"),
                 body = document.querySelector("body"),
+                articleObj = fix.getElementsByTagName("article")[0],
+                hetVal = mnm = 0,
                 aOn = document.querySelector(".main a"),
                 aOff = document.querySelector(".mfix a");
 
+            function unableTouchmove(evt) {
+                evt.preventDefault();
+            }
+
             aOn.addEventListener("click", function(e) {
                 fix.style.display = "block";
-                body.style.height = window.innerHeight + "px";
-                body.style.overflow = "hidden"
+                body.addEventListener("touchmove", unableTouchmove, {
+                    passive: false
+                })
+                fix.addEventListener("touchstart", function(evt) {
+                    startY = evt.touches[0].clientY
+                    hetVal = articleObj.scrollTop;
+                    console.log(hetVal);
+                })
+                fix.addEventListener("touchmove", function(evt) {
+                    mnm = evt.touches[0].clientY - startY;
+                    articleObj.scrollTop = hetVal - mnm;
+                    console.log(mnm);
+                })
+
+
             });
 
             aOff.addEventListener("click", function(e) {
                 fix.style.display = "none";
-                body.style.height = "atuo";
-                body.style.overflow = "auto"
+                body.removeEventListener("touchmove", unableTouchmove)
             });
 
         }

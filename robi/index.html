@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        ul,
+        ol,
+        li {
+            margin: 0;
+            padding: 0;
+            list-style: none
+        }
+        
+        ul {
+            font-size: 15px;
+        }
+        
+        ul li {
+            margin: 6px auto;
+            font-weight: bold
+        }
+        
+        ul a {
+            display: block;
+            text-decoration: none;
+            padding: 8px 0;
+            color: #666;
+            text-align: center
+        }
+        
+        ol {
+            overflow: auto;
+        }
+        
+        ol li {
+            width: 80%;
+            overflow: hidden;
+            margin: 8px auto;
+        }
+        
+        ol p:first-child {
+            color: skyblue
+        }
+        
+        ol p:last-child {
+            color: #999
+        }
+        
+        ol p {
+            margin: 0;
+            font-size: 12px;
+            padding: 6px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h3>200房间号：</h3>
+        <ul>
+            <li v-for="(item,index) in rooms">
+                <a :href="'ods.html?rooms='+item.toString()+'&'+'tokens='+tokens[index].token" target="_blank">
+                 {{item}}
+                </a>
+            </li>
+        </ul>
+        <h3>token号：</h3>
+        <ol>
+            <li v-for="item in tokens">
+                <p>{{item.tel}}</p>
+                <p>{{item.token}}</p>
+            </li>
+        </ol>
+
+    </div>
+    <script src="https://cdn.bootcss.com/axios/0.16.2/axios.js"></script>
+    <script src="https://cdn.bootcss.com/vue/2.0.0/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                rooms: [],
+                tokens: [{
+                    tel: 18329046271,
+                    token: "2c65148bc23629ff5c8c598efc356255"
+                }, {
+                    tel: 18867755642,
+                    token: "d7c6a804c0003c22be7a0ca853788b76"
+                }, {
+                    tel: 15088566830,
+                    token: "1b3d072da23feeec16ca2b3b3fcd7f79"
+                }, {
+                    tel: 13566245475,
+                    token: "769bcea18477cb2885b7c047e452a0e4"
+                }, {
+                    tel: 15088566830,
+                    token: "1b3d072da23feeec16ca2b3b3fcd7f79"
+                }, {
+                    tel: 13566245475,
+                    token: "769bcea18477cb2885b7c047e452a0e4"
+                }, {
+                    tel: 18329046271,
+                    token: "2c65148bc23629ff5c8c598efc356255"
+                }, {
+                    tel: 18867755642,
+                    token: "d7c6a804c0003c22be7a0ca853788b76"
+                }]
+            }
+        })
+        axios.get("http://www.ouyiadd.com/api/Test/runRoom.html").then(function(response) {
+            if (response.data.data === "") {
+                console.log("数据为空")
+            } else if (response.data.code === 0) {
+                console.log(response.data.data);
+                var rooms = response.data.data;
+                for (i in rooms) {
+                    if (rooms[i]["status"] == 200) {
+                        vm.rooms.push(rooms[i]["no"])
+                    }
+
+                }
+            } else {
+                console.log("接口出错")
+            }
+        })
+    </script>
+</body>
+
+</html>

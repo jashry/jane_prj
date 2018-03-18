@@ -18,25 +18,71 @@
             height: 100%;
             overflow: hidden;
         }
+        
+        .miss {
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            color: lightslategray
+        }
+        
+        .score {
+            color: red;
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+        }
+        
+        .innerWrp {
+            width: 90%;
+            margin: 0 auto;
+            margin-top: 5rem;
+            display: flex;
+            display: -webkit-flex;
+            flex-wrap: wrap;
+        }
+        
+        .innerWrp>a {
+            display: block;
+            flex: 1;
+            padding: 16%;
+            box-sizing: border-box;
+            height: 0;
+            width: 0;
+            border: 1px solid #f1f1f1;
+        }
     </style>
 </head>
 
 <body>
     <div class="gameWrp">
-        <canvas id="main"></canvas>
+        <span class="miss">0</span>
+        <span class="score">00</span>
+        <div class="innerWrp">
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+        </div>
     </div>
     <script>
-        var canvas = document.getElementById("main")
-        var ctx = canvas.getContext("2d");
-        var winHet = window.innerHeight;
-        var winWid = window.innerWidth
-        canvas.width = winWid;
-        canvas.height = winHet;
-        ctx.fillStyle = "rgb(126, 202, 247)"
-        ctx.fillRect(0, 0, winWid, winHet)
+        var
+
+
+
+
+
+
+
+
+
 
         function randomArr(len, min, max) {
-
             var arrs = []
 
             function checkRept(el) {
@@ -47,8 +93,7 @@
                     return false
                 }
             }
-
-            ! function repeat() {
+            (function repeat() {
                 var x = Math.floor(Math.random() * max) + min
                 var y = Math.floor(Math.random() * max) + min
 
@@ -58,13 +103,13 @@
                     }
                     repeat()
                 }
-            }()
+            })()
 
             return arrs
 
         }
 
-        console.log(randomArr(5, 1, 5))
+        console.log(randomArr(6, 1, 5))
     </script>
 
 

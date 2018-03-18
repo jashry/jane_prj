@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            background-color: #fff;
+            padding-bottom: 60px;
+        }
+        
+        p {
+            padding: 0;
+            margin: 0;
+        }
+        
+        ul,
+        li {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        
+        a {
+            text-decoration: none;
+            color: #525252;
+        }
+        
+        .fl {
+            float: left;
+        }
+        
+        .fr {
+            float: right;
+        }
+        
+        .clear::after {
+            display: block;
+            content: "";
+            clear: both;
+        }
+        
+        .mainWrp {
+            width: 100%;
+            overflow: hidden;
+            max-width: 640px;
+        }
+        
+        ul li.flex {
+            display: flex;
+            display: -webkit-flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            text-align: center;
+            line-height: 32px;
+            font-size: 13px;
+        }
+        
+        .flex>div {
+            flex: 1;
+        }
+        
+        .flex>div.nd {
+            flex: 3;
+            text-align: left;
+        }
+        
+        .img {
+            align-self: center
+        }
+        
+        .img img {
+            vertical-align: middle;
+            height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mainWrp">
+        <ul>
+            <li class="flex">
+                <div class="img">
+                    <img src="wrap/img/computerIcon.png" alt="">
+                </div>
+                <div class="nd">7778</div>
+                <div>领先</div>
+                <div class="nd">重庆</div>
+                <div>¥6.80</div>
+            </li>
+            <li class="flex">
+                <div class="img">
+                    <img src="wrap/img/computerIcon.png" alt="">
+                </div>
+                <div class="nd">7778</div>
+                <div>出局</div>
+                <div class="nd">重庆</div>
+                <div>¥6.80</div>
+            </li>
+            <li class="flex">
+                <div class="img">
+                    <img src="wrap/img/computerIcon.png" alt="">
+                </div>
+                <div class="nd">7778</div>
+                <div>出局</div>
+                <div class="nd">重庆</div>
+                <div>¥6.80</div>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>

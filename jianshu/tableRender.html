@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            background-color: #fdfdfd;
+        }
+        
+        ul,
+        li {
+            list-style: none
+        }
+        
+        li {
+            line-height: 46px;
+        }
+        /* 单选按钮样式 */
+        
+        input[type=radio] {
+            visibility: hidden;
+            height: 0;
+            width: 0;
+        }
+        
+        input[type=radio]+label {
+            padding-left: 38px;
+            display: inline-block;
+            position: relative;
+        }
+        
+        input[type=radio]+label::before {
+            content: "";
+            position: absolute;
+            display: inline-block;
+            top: 12px;
+            left: 6px;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            border: 2px solid lightblue
+        }
+        
+        input[type=radio]+label::after {
+            content: "";
+            display: block;
+            position: absolute;
+            transform-origin: 50% 50% 0;
+            transform: scale(0, 0);
+            transition: all 200ms ease-in;
+            background-color: transparent;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            top: 18px;
+            left: 12px;
+        }
+        
+        input[type=radio]:checked+label::after {
+            background-color: lightblue;
+            transform: scale(1, 1)
+        }
+        /* 多选按钮 */
+        
+        input[type=checkbox] {
+            visibility: hidden;
+            width: 0;
+            height: 0;
+        }
+        
+        input[type=checkbox]+label {
+            padding-left: 38px;
+            display: inline-block;
+            position: relative;
+        }
+        
+        input[type=checkbox]+label::before {
+            content: "";
+            position: absolute;
+            display: inline-block;
+            top: 12px;
+            left: 6px;
+            height: 20px;
+            width: 20px;
+            border: 2px solid lightblue
+        }
+        
+        input[type=checkbox]+label::after {
+            content: "√";
+            font-size: 20px;
+            line-height: 20px;
+            font-weight: bold;
+            color: lightblue;
+            display: block;
+            position: absolute;
+            transform-origin: 50% 50% 0;
+            transform: scale(0, 0);
+            transition: all 200ms ease-in;
+            background-color: transparent;
+            width: 12px;
+            height: 20px;
+            top: 14px;
+            left: 12px;
+        }
+        
+        input[type=checkbox]:checked+label::after {
+            transform: scale(1, 1);
+        }
+        /* select 改动小 */
+        
+        .selectWrp {
+            display: inline-block;
+            position: relative;
+            width: 60%;
+        }
+        
+        select {
+            outline: none;
+            -webkit-appearance: none;
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid lightblue;
+            padding: 6px 20px;
+            text-align: center;
+            color: #333;
+            ;
+        }
+        
+        .selectWrp::after {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 16px;
+            right: 8px;
+            height: 0;
+            width: 0;
+            border-width: 5px;
+            transform: rotateZ(-45deg);
+            border-color: transparent transparent skyblue skyblue;
+            border-style: solid;
+        }
+        
+        select:active+.selectWrp::after {
+            transform: rotateZ(135deg);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main">
+        <ul>
+            <li>性别：</li>
+            <li>
+                <input type="radio" name="sex" id="radioM" checked value="mail"><label for="radioM">男 Mail</label>
+            </li>
+            <li>
+                <input type="radio" name="sex" id="radioF" value="femail"><label for="radioF">女 Femail</label>
+            </li>
+            <li>喜好：</li>
+            <li>
+                <input type="checkbox" name="hobby" id="hobby1" checked value="music"><label for="hobby1">音乐 Music</label>
+            </li>
+            <li>
+                <input type="checkbox" name="hobby" id="hobby2" value="movie"><label for="hobby2">电影 Movie</label>
+            </li>
+            <li>
+                <input type="checkbox" name="hobby" id="hobby3" value="reading"><label for="hobby3">阅读 Reading</label>
+            </li>
+            <li>最喜欢的饮料：</li>
+            <li>
+                <div class="selectWrp">
+                    <select>
+                        <optgroup>
+                            <option value="可乐">可乐</option>
+                            <option value="芬达">芬达</option>
+                            <option value="纯水" selected>纯水</option>
+                            <option value="脉动">脉动</option>
+                            <option value="激活">激活</option>
+                        </optgroup>
+                    </select>
+                </div>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>
