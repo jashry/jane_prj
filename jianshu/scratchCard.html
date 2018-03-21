@@ -80,18 +80,37 @@
             ctx.fillRect(0, 0, cwidth, 120);
         }
 
-
-
         cavs.addEventListener('touchmove', function(evt) {
             var nX = evt.targetTouches[0].clientX - cavs.getBoundingClientRect().left,
                 nY = evt.targetTouches[0].clientY - cavs.getBoundingClientRect().top;
-            console.log(nX, nY)
+
             ctx.fillStyle = 'rgb(0,0,0)';
             ctx.globalCompositeOperation = "destination-out";
             ctx.beginPath();
             ctx.arc(nX, nY, 20, 0, Math.PI * 2, true);
             ctx.closePath();
             ctx.fill()
+        })
+
+        cavs.addEventListener('touchend', function() {
+            var OimgData = ctx.getImageData(0, 0, cwidth, 120)
+            var imgData = OimgData.data;
+            var checkNum = 0;
+            for (var j = 0; j < imgData.length; j = j + 4) {
+                if (imgData[j] && imgData[j + 1] && imgData[j + 2] && imgData[j + 3]) {
+                    checkNum += 4;
+                }
+            }
+            if (checkNum / imgData.length <= 0.4) {
+                for (var j = 0; j < imgData.length; j = j + 4) {
+                    OimgData.data[j] = 0;
+                    OimgData.data[j + 1] = 0;
+                    OimgData.data[j + 2] = 0;
+                    OimgData.data[j + 3] = 0;
+                }
+                ctx.putImageData(OimgData, 0, 0)
+                console.log("finished!!!")
+            }
         })
     </script>
 </body>
