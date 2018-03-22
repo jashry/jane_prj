@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sample</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+        
+        html {
+            background-color: #ccc;
+        }
+        
+        body {
+            background-color: #f4f4f4;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        a {
+            text-decoration: none;
+            color: #333;
+        }
+        
+        .mainWrp {
+            max-width: 640px;
+            margin: 0 auto;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .fl {
+            float: left;
+        }
+        
+        .fr {
+            float: right;
+        }
+        
+        .clear::after {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 0;
+            visibility: hidden;
+            clear: both;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mainWrp" id="wrp"></div>
+    <script src="https://cdn.bootcss.com/konva/2.0.2/konva.min.js"></script>
+    <script>
+        var stage = new Konva.Stage({
+            container: 'wrp',
+            width: window.innerWidth,
+            height: window.innerHeight
+        });
+
+
+        createHeadPic('wrap/img/03.jpeg', 45, 120, 100);
+
+        function createHeadPic(imgSrc, imgRadius, PositionX, PositionY, appellation) {
+            var layer = new Konva.Layer({
+                draggable: true
+            });
+            var imageObj = new Image();
+            var group = new Konva.Group({
+                clipFunc: function(ctx) {
+                    ctx.arc(PositionX, PositionY, imgRadius, 0, Math.PI * 2, false)
+                },
+            });
+            var cirle = new Konva.Circle({
+                x: PositionX,
+                y: PositionY,
+                radius: imgRadius,
+                fill: 'white',
+                stroke: '#55CB7D',
+                strokeWidth: 5,
+                shadowWidth: 4,
+                shadowBlur: 0,
+                shadowColor: '#55CB7D',
+                shadowOffset: {
+                    x: 0,
+                    y: 0
+                },
+                shadowOpacity: .7
+            });
+            var cirleBg = new Konva.Circle({
+                x: PositionX,
+                y: PositionY,
+                radius: imgRadius + 3,
+                fill: 'white',
+                stroke: '#55CB7D',
+                strokeWidth: 5,
+                opacity: .5,
+                shadowWidth: 7,
+                shadowBlur: 0,
+                shadowColor: '#55CB7D',
+                shadowOffset: {
+                    x: 0,
+                    y: 0
+                },
+                shadowOpacity: .7
+            });
+            var cirleBgEnd = new Konva.Circle({
+                x: PositionX,
+                y: PositionY,
+                radius: imgRadius + 3,
+                fill: 'white',
+                stroke: '#55CB7D',
+                strokeWidth: 10,
+                opacity: .3,
+                shadowWidth: 12,
+                shadowBlur: 0,
+                shadowColor: '#55CB7D',
+                shadowOffset: {
+                    x: 0,
+                    y: 0
+                },
+                shadowOpacity: .2
+            });
+
+            imageObj.src = imgSrc;
+            imageObj.onload = function() {
+                var oImg = new Konva.Image({
+                    x: PositionX - imgRadius,
+                    y: PositionY - imgRadius,
+                    image: imageObj,
+                    width: imgRadius * 2,
+                    height: imgRadius * 2,
+                });
+
+                oImg.on('touchstart', function() {
+                    // console.log('touchstart')
+                })
+
+                oImg.on('touchend', function() {
+                    // console.log('touchend')
+                })
+
+                group.add(oImg);
+                layer.add(cirleBgEnd);
+                layer.add(cirleBg);
+                layer.add(cirle);
+                layer.add(group);
+
+                stage.add(layer);
+            }
+
+        }
+    </script>
+</body>
+
+</html>
