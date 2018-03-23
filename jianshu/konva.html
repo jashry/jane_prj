@@ -34,7 +34,6 @@
             max-width: 640px;
             margin: 0 auto;
             height: 100%;
-            overflow: hidden;
         }
         
         .fl {
@@ -63,11 +62,16 @@
         var stage = new Konva.Stage({
             container: 'wrp',
             width: window.innerWidth,
-            height: window.innerHeight
+            height: window.innerHeight,
+            draggable: true
         });
 
 
-        createHeadPic('wrap/img/03.jpeg', 42, 120, 100);
+        createHeadPic('wrap/img/03.jpeg', 42, 120, 130, '泽涛');
+        createHeadPic('wrap/img/04.jpg', 42, 160, 160, '新燕');
+        createHeadPic('wrap/img/01.jpg', 42, 200, 190, '徐科');
+        createHeadPic('wrap/img/02.jpg', 42, 240, 220, '何东');
+        createHeadPic('wrap/img/05.png', 42, 280, 250, '诸葛徐伊立');
 
         function createHeadPic(imgSrc, imgRadius, PositionX, PositionY, appellation) {
             var layer = new Konva.Layer({
@@ -78,6 +82,17 @@
                 clipFunc: function(ctx) {
                     ctx.arc(PositionX, PositionY, imgRadius, 0, Math.PI * 2, false)
                 },
+            });
+            var nameText = new Konva.Text({
+                x: PositionX - 40,
+                y: PositionY + imgRadius + 16,
+                text: appellation,
+                align: 'center',
+                fontSize: 13,
+                width: 80,
+                height: 20,
+                fontFamily: 'Calibri',
+                fill: '#55CB7D'
             });
             var cirle = new Konva.Circle({
                 x: PositionX,
@@ -149,6 +164,7 @@
                 })
 
                 group.add(oImg);
+                layer.add(nameText);
                 layer.add(cirleBgEnd);
                 layer.add(cirleBg);
                 layer.add(cirle);
