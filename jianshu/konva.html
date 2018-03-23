@@ -67,7 +67,7 @@
         });
 
 
-        createHeadPic('wrap/img/03.jpeg', 45, 120, 100);
+        createHeadPic('wrap/img/03.jpeg', 42, 120, 100);
 
         function createHeadPic(imgSrc, imgRadius, PositionX, PositionY, appellation) {
             var layer = new Konva.Layer({
@@ -98,11 +98,11 @@
             var cirleBg = new Konva.Circle({
                 x: PositionX,
                 y: PositionY,
-                radius: imgRadius + 3,
+                radius: imgRadius + 4,
                 fill: 'white',
                 stroke: '#55CB7D',
                 strokeWidth: 5,
-                opacity: .5,
+                opacity: .4,
                 shadowWidth: 7,
                 shadowBlur: 0,
                 shadowColor: '#55CB7D',
@@ -115,7 +115,7 @@
             var cirleBgEnd = new Konva.Circle({
                 x: PositionX,
                 y: PositionY,
-                radius: imgRadius + 3,
+                radius: imgRadius + 5,
                 fill: 'white',
                 stroke: '#55CB7D',
                 strokeWidth: 10,
