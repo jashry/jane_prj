@@ -13,6 +13,7 @@ const home = require('./routers/home')
 const form = require('./routers/form')
 
 
+// 链接数据库
 mongoose.Promise = global.Promise
 mongoose.connect('mongodb://adminOwner:adminOwner@localhost/webs', { useMongoClient: true, }).then(
     () => { console.log('mongoDB connect success!') },

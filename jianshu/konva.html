@@ -34,6 +34,7 @@
             max-width: 640px;
             margin: 0 auto;
             height: 100%;
+            overflow: hidden;
         }
         
         .fl {
@@ -66,113 +67,248 @@
             draggable: true
         });
 
+        var lastDist = 0;
+        var startScale = 1;
 
-        createHeadPic('wrap/img/03.jpeg', 42, 120, 130, '泽涛');
-        createHeadPic('wrap/img/04.jpg', 42, 160, 160, '新燕');
-        createHeadPic('wrap/img/01.jpg', 42, 200, 190, '徐科');
-        createHeadPic('wrap/img/02.jpg', 42, 240, 220, '何东');
-        createHeadPic('wrap/img/05.png', 42, 280, 250, '诸葛徐伊立');
+        function getDistance(p1, p2) {
+            return Math.sqrt(Math.pow((p2.x - p1.x), 2) + Math.pow((p2.y - p1.y), 2));
+        }
 
-        function createHeadPic(imgSrc, imgRadius, PositionX, PositionY, appellation) {
-            var layer = new Konva.Layer({
-                draggable: true
-            });
-            var imageObj = new Image();
-            var group = new Konva.Group({
-                clipFunc: function(ctx) {
-                    ctx.arc(PositionX, PositionY, imgRadius, 0, Math.PI * 2, false)
-                },
-            });
-            var nameText = new Konva.Text({
-                x: PositionX - 40,
-                y: PositionY + imgRadius + 16,
-                text: appellation,
-                align: 'center',
-                fontSize: 13,
-                width: 80,
-                height: 20,
-                fontFamily: 'Calibri',
-                fill: '#55CB7D'
-            });
-            var cirle = new Konva.Circle({
-                x: PositionX,
-                y: PositionY,
-                radius: imgRadius,
-                fill: 'white',
-                stroke: '#55CB7D',
-                strokeWidth: 5,
-                shadowWidth: 4,
-                shadowBlur: 0,
-                shadowColor: '#55CB7D',
-                shadowOffset: {
-                    x: 0,
-                    y: 0
-                },
-                shadowOpacity: .7
-            });
-            var cirleBg = new Konva.Circle({
-                x: PositionX,
-                y: PositionY,
-                radius: imgRadius + 4,
-                fill: 'white',
-                stroke: '#55CB7D',
-                strokeWidth: 5,
-                opacity: .4,
-                shadowWidth: 7,
-                shadowBlur: 0,
-                shadowColor: '#55CB7D',
-                shadowOffset: {
-                    x: 0,
-                    y: 0
-                },
-                shadowOpacity: .7
-            });
-            var cirleBgEnd = new Konva.Circle({
-                x: PositionX,
-                y: PositionY,
-                radius: imgRadius + 5,
-                fill: 'white',
-                stroke: '#55CB7D',
-                strokeWidth: 10,
-                opacity: .3,
-                shadowWidth: 12,
-                shadowBlur: 0,
-                shadowColor: '#55CB7D',
-                shadowOffset: {
-                    x: 0,
-                    y: 0
-                },
-                shadowOpacity: .2
-            });
+        var halfWidth = window.innerWidth * .5;
+        var halfHeight = window.innerHeight * .5;
 
-            imageObj.src = imgSrc;
-            imageObj.onload = function() {
-                var oImg = new Konva.Image({
-                    x: PositionX - imgRadius,
-                    y: PositionY - imgRadius,
-                    image: imageObj,
-                    width: imgRadius * 2,
-                    height: imgRadius * 2,
+        var bors = [];
+        var chds = [];
+
+
+        stage.getContent().addEventListener('touchmove', function(evt) {
+            var touch1 = evt.touches[0];
+            var touch2 = evt.touches[1];
+
+            if (touch1 && touch2) {
+                var dist = getDistance({
+                    x: touch1.clientX,
+                    y: touch1.clientY
+                }, {
+                    x: touch2.clientX,
+                    y: touch2.clientY
                 });
 
-                oImg.on('touchstart', function() {
-                    // console.log('touchstart')
-                })
+                if (!lastDist) {
+                    lastDist = dist;
+                }
 
-                oImg.on('touchend', function() {
-                    // console.log('touchend')
-                })
+                var scale = stage.getScaleX() * dist / lastDist;
 
-                group.add(oImg);
-                layer.add(nameText);
-                layer.add(cirleBgEnd);
-                layer.add(cirleBg);
-                layer.add(cirle);
-                layer.add(group);
+                stage.scaleX(scale);
+                stage.scaleY(scale);
+                stage.draw();
+                lastDist = dist;
+            }
+        }, false);
 
-                stage.add(layer);
+        stage.getContent().addEventListener('touchend', function() {
+            lastDist = 0;
+        }, false);
+
+        var appes = ['self', 'father', 'mother', 'mate', 'brosis', 'children'];
+        createHeadPic('wrap/img/04.jpg', 42, halfWidth, halfHeight, '徐凌宇', 'Matefather');
+        createHeadPic('wrap/img/04.jpg', 42, halfWidth, halfHeight, '陈淑芬', 'Matemother');
+        createHeadPic('wrap/img/02.jpg', 42, halfWidth, halfHeight, '章燕', 'Mamother');
+        createHeadPic('wrap/img/04.jpg', 42, halfWidth, halfHeight, '何东', 'Mafather');
+        createHeadPic('wrap/img/02.jpg', 42, halfWidth, halfHeight, '林琳', 'Famother');
+        createHeadPic('wrap/img/04.jpg', 42, halfWidth, halfHeight, '诸葛乾武', 'Fafather');
+        createHeadPic('wrap/img/02.jpg', 42, halfWidth, halfHeight, '何艳', 'mother');
+        createHeadPic('wrap/img/04.jpg', 42, halfWidth, halfHeight, '诸葛顾友', 'father');
+        createHeadPic('wrap/img/01.jpg', 42, halfWidth, halfHeight, '徐茜', 'mate');
+        createHeadPic('wrap/img/05.png', 42, halfWidth, halfHeight, '诸葛旭立', 'brosis');
+        createHeadPic('wrap/img/05.png', 42, halfWidth, halfHeight, '诸葛旭伊', 'brosis');
+        createHeadPic('wrap/img/05.png', 42, halfWidth, halfHeight, '诸葛旭毅', 'brosis');
+        createHeadPic('wrap/img/02.jpg', 42, halfWidth, halfHeight, '诸葛鑫易', 'children');
+        createHeadPic('wrap/img/02.jpg', 42, halfWidth, halfHeight, '诸葛鑫泽', 'children');
+        createHeadPic('wrap/img/02.jpg', 42, halfWidth, halfHeight, '诸葛鑫禄', 'children');
+        createHeadPic('wrap/img/03.jpeg', 42, halfWidth, halfHeight, '诸葛旭洋', 'self');
+
+        function drawLine(x, y, r, changeX, changeY) {
+            var greenLine = new Konva.Line({
+                points: [x, y, changeX, changeY],
+                stroke: '#55CB7D',
+                strokeWidth: 6,
+                opacity: .25,
+                size: {
+                    x: .5,
+                    y: .5
+                },
+                lineCap: 'round'
+            });
+            return greenLine
+        }
+
+        function createHeadPic(imgSrc, imgRadius, PositionX, PositionY, name, appellation) {
+            var layer = new Konva.Layer({
+                // draggable: true
+            });
+
+            switch (appellation) {
+                case 'Mafather':
+                    var greenLine = drawLine(PositionX + imgRadius * 2.5, PositionY - imgRadius * 5.8, imgRadius, PositionX + imgRadius * 2, PositionY - imgRadius * 6.6);
+                    drawHead(PositionX + imgRadius * 2, PositionY - imgRadius * 8)
+                    break;
+                case 'Mamother':
+                    var greenLine = drawLine(PositionX + imgRadius * 3.8, PositionY - imgRadius * 5.8, imgRadius, PositionX + imgRadius * 4.5, PositionY - imgRadius * 6.6);
+                    drawHead(PositionX + imgRadius * 4.5, PositionY - imgRadius * 8)
+                    break;
+                case 'mother':
+                    var greenLine = drawLine(PositionX + imgRadius * 1.2, PositionY - imgRadius * 1.5, imgRadius, PositionX + imgRadius * 2.3, PositionY - imgRadius * 2.7);
+                    drawHead(PositionX + imgRadius * 3, PositionY - imgRadius * 4.5)
+                    break;
+                case 'Famother':
+                    var greenLine = drawLine(PositionX - imgRadius * 2.1, PositionY - imgRadius * 5.8, imgRadius, PositionX - imgRadius * 1.6, PositionY - imgRadius * 6.5);
+                    drawHead(PositionX - imgRadius * 1.5, PositionY - imgRadius * 8)
+                    break;
+                case 'Fafather':
+                    var greenLine = drawLine(PositionX - imgRadius * 3.7, PositionY - imgRadius * 5.8, imgRadius, PositionX - imgRadius * 4, PositionY - imgRadius * 6.5);
+
+                    drawHead(PositionX - imgRadius * 4, PositionY - imgRadius * 8)
+                    break;
+                case 'father':
+                    var greenLine = drawLine(PositionX - imgRadius * 1.2, PositionY - imgRadius * 1.5, imgRadius, PositionX - imgRadius * 2.3, PositionY - imgRadius * 2.7);
+                    drawHead(PositionX - imgRadius * 3, PositionY - imgRadius * 4.5)
+                    break;
+                case 'self':
+                    var greenLine = drawLine(PositionX, PositionY, 0, PositionX, PositionY);
+                    drawHead(PositionX, PositionY)
+                    break;
+                case 'Matemother':
+                    var greenLine = drawLine(PositionX + imgRadius * 9.7, PositionY - imgRadius * 1.2, imgRadius, PositionX + imgRadius * 1.3 + imgRadius * 9, PositionY - imgRadius * 1.7);
+                    drawHead(PositionX + imgRadius * 1.5 + imgRadius * 9, PositionY - imgRadius * 3.5)
+                    break;
+                case 'Matefather':
+                    var greenLine = drawLine(PositionX + imgRadius * 8.3, PositionY - imgRadius * 1.2, imgRadius, PositionX - imgRadius * 1.3 + imgRadius * 9, PositionY - imgRadius * 1.7);
+                    drawHead(PositionX - imgRadius * 1.5 + imgRadius * 9, PositionY - imgRadius * 3.5)
+                    break;
+                case 'mate':
+                    var greenLine = drawLine(PositionX + imgRadius * 1.5, PositionY, imgRadius, PositionX + imgRadius * 9 - imgRadius * 1.5, PositionY);
+                    drawHead(PositionX + imgRadius * 9, PositionY)
+                    break;
+                case 'brosis':
+                    var nowNum = bors.length;
+                    var greenLine = drawLine(PositionX - imgRadius * 4.5 * nowNum - imgRadius * 1.5, PositionY, imgRadius, PositionX - imgRadius * 4.5 * (nowNum + 1) + imgRadius * 1.5, PositionY);
+                    drawHead(PositionX - imgRadius * 4.5 * (nowNum + 1), PositionY);
+                    bors.push('brosis');
+                    break;
+                case 'children':
+                    var nowNum = chds.length;
+                    if (nowNum == 0) {
+                        var greenLine = drawLine(PositionX, PositionY + imgRadius * 1.8, imgRadius, PositionX - imgRadius * 4.5 * nowNum, PositionY + imgRadius * 5 - imgRadius * 1.5);
+                    } else {
+                        var greenLine = drawLine(PositionX - imgRadius * 4.5 * (nowNum - 1) - imgRadius * 1.5, PositionY + imgRadius * 5, imgRadius, PositionX - imgRadius * 4.5 * nowNum + imgRadius * 1.5, PositionY + imgRadius * 5);
+                    }
+                    drawHead(PositionX - imgRadius * 4.5 * nowNum, PositionY + imgRadius * 5);
+                    chds.push('child');
+                    break;
+
             }
 
+
+            function drawHead(exPositionX, exPositionY) {
+                var imageObj = new Image();
+                var group = new Konva.Group({
+                    clipFunc: function(ctx) {
+                        ctx.arc(exPositionX, exPositionY, imgRadius, 0, Math.PI * 2, false)
+                    },
+                });
+
+                var nameText = new Konva.Text({
+                    x: exPositionX - 40,
+                    y: exPositionY + imgRadius + 16,
+                    text: name,
+                    align: 'center',
+                    fontSize: 13,
+                    width: 80,
+                    height: 20,
+                    fontFamily: 'Calibri',
+                    fill: '#333'
+                });
+                var cirle = new Konva.Circle({
+                    x: exPositionX,
+                    y: exPositionY,
+                    radius: imgRadius,
+                    fill: 'white',
+                    stroke: '#55CB7D',
+                    strokeWidth: 5,
+                    shadowWidth: 4,
+                    shadowBlur: 0,
+                    shadowColor: '#55CB7D',
+                    shadowOffset: {
+                        x: 0,
+                        y: 0
+                    },
+                    shadowOpacity: .7
+                });
+                var cirleBg = new Konva.Circle({
+                    x: exPositionX,
+                    y: exPositionY,
+                    radius: imgRadius + 4,
+                    fill: 'white',
+                    stroke: '#55CB7D',
+                    strokeWidth: 5,
+                    opacity: .4,
+                    shadowWidth: 7,
+                    shadowBlur: 0,
+                    shadowColor: '#55CB7D',
+                    shadowOffset: {
+                        x: 0,
+                        y: 0
+                    },
+                    shadowOpacity: .7
+                });
+                var cirleBgEnd = new Konva.Circle({
+                    x: exPositionX,
+                    y: exPositionY,
+                    radius: imgRadius + 5,
+                    fill: 'white',
+                    stroke: '#55CB7D',
+                    strokeWidth: 10,
+                    opacity: .3,
+                    shadowWidth: 12,
+                    shadowBlur: 0,
+                    shadowColor: '#55CB7D',
+                    shadowOffset: {
+                        x: 0,
+                        y: 0
+                    },
+                    shadowOpacity: .2
+                });
+
+                imageObj.src = imgSrc;
+                imageObj.onload = function() {
+                    var oImg = new Konva.Image({
+                        x: exPositionX - imgRadius,
+                        y: exPositionY - imgRadius,
+                        image: imageObj,
+                        width: imgRadius * 2,
+                        height: imgRadius * 2,
+                    });
+                    oImg.pid = name;
+                    oImg.on('touchstart', function() {
+                        console.log('touchstart', this.pid)
+                    })
+
+                    // oImg.on('touchend', function() {
+                    //     console.log('touchend', name)
+                    // })
+
+                    group.add(oImg);
+                    layer.add(greenLine);
+                    layer.add(nameText);
+                    layer.add(cirleBgEnd);
+                    layer.add(cirleBg);
+                    layer.add(cirle);
+                    layer.add(group);
+                    stage.add(layer);
+                }
+            }
         }
     </script>
 </body>

@@ -2,42 +2,42 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <style>
-        .imgsWrp img {
-            height: 130px;
-            margin: 20px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .imgsWrp img {
+      height: 130px;
+      margin: 20px;
+    }
+  </style>
 </head>
 
 <body>
-    <input type="text" name="name">
-    <input type="text" name="password">
-    <a id="oBtn" href="javascript:;">OK</a>
-    <script src="https://cdn.bootcss.com/axios/0.18.0/axios.min.js"></script>
-    <script>
-        var oBtn = document.getElementById("oBtn")
-        oBtn.addEventListener('click', function() {
-            var name = document.getElementsByTagName("input")[0].value
-            var password = document.getElementsByTagName("input")[1].value
-            axios({
-                method: 'post',
-                url: '/form/reg',
-                params: {
-                    name: name,
-                    password: password
-                }
-            }).then(function(response) {
-                console.log(response.data)
-            }).catch(function(err) {
-                console.log(err)
-            });
-        })
-    </script>
+  <input type="text" name="name">
+  <input type="text" name="password">
+  <a id="oBtn" href="javascript:;">OK</a>
+  <script src="https://cdn.bootcss.com/axios/0.18.0/axios.min.js"></script>
+  <script>
+    var oBtn = document.getElementById("oBtn")
+    oBtn.addEventListener('click', function() {
+      var name = document.getElementsByTagName("input")[0].value
+      var password = document.getElementsByTagName("input")[1].value
+      axios({
+        method: 'post',
+        url: '/form/reg',
+        params: {
+          name: name,
+          password: password
+        }
+      }).then(function(response) {
+        console.log("用户创建成功: ", response.data)
+      }).catch(function(err) {
+        console.log("发送不可知错误: ", err)
+      });
+    })
+  </script>
 </body>
 
 </html>
