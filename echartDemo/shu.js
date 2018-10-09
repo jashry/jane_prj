@@ -520,7 +520,7 @@ $(function() {
 
             var myChart = echarts.init(document.getElementById('chart-c-l-1'), 'dark');
 
-            var name_title = "中国苹果产量分布";
+            var name_title = "中国XX产量分布";
             var mapName = 'china';
             var data = [];
             var geoCoordMap = {};
@@ -1187,7 +1187,7 @@ $(function() {
             // 最后初始化世界地图中的相关数据
             myChart.setOption({
                 title: {
-                    text: '鲜苹果贸易流向',
+                    text: 'XX贸易流向',
                     itemGap: 30,
                     top: '10%',
                     left: 'center',
