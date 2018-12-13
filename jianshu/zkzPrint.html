@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        table {
+            width: 900px;
+            margin: 20px auto;
+            border: 1px solid #333;
+            padding: 10px 20px;
+        }
+
+        td {
+            height: 27px;
+            line-height: 27px;
+            font-size: 16px;
+        }
+
+        thead td {
+            text-align: center;
+            font-weight: bold;
+            font-size: 26px;
+        }
+
+        thead td {
+            height: 50px;
+            line-height: 50px
+        }
+
+        thead tr.titWrp td {
+            font-family: '宋体';
+            line-height: 70px;
+            height: 70px;
+        }
+
+        thead tr.titWrp td img {
+            position: relative;
+            vertical-align: middle;
+            top: -3px;
+        }
+
+        .bolder {
+            font-weight: bold
+        }
+
+        .nots td {
+            line-height: 20px;
+            height: 20px;
+            font-size: 15px
+        }
+
+        .fltb {
+            padding: 0;
+            border: 4px double #333
+        }
+
+        .fltb td {
+
+            border: 1px solid #333;
+        }
+
+        p {
+            margin: 0;
+            padding: 0
+        }
+        .mainWrp{
+            width: 960px;
+            margin: 0 auto;
+        }
+        .mainWrp button{
+            display: block;
+            height: 40px;
+            width: 120px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mainWrp">
+        <button onclick="print()">点我打印</button>
+        <table>
+            <thead>
+                <tr class="titWrp">
+                    <td colspan="4"><img width="270" src="MYLogo.jpg" alt="">社会美术水平考级</td>
+                </tr>
+                <tr>
+                    <td colspan="4" style="letter-spacing:12px">准考证</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="bolder">姓名：</td>
+                    <td>吴力TAT</td>
+                    <td class="bolder">考试编号：</td>
+                    <td>绘画235s</td>
+                </tr>
+                <tr>
+                    <td class="bolder">性别：</td>
+                    <td>男</td>
+                    <td class="bolder">报考专业：</td>
+                    <td>绘画</td>
+                </tr>
+                <tr>
+                    <td class="bolder">报考级别：</td>
+                    <td>七级</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="bolder">考试时间：</td>
+                    <td class="bolder">2017年8月11日上午8:30</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="bolder">考试地点：</td>
+                    <td>温州第十五中学</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="bolder">试场：</td>
+                    <td class="bolder">十二试场：306教室</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="nots">
+                    <td class="bolder" style="font-size:16px">注意事项：</td>
+                    <td colspan="3">1. 考生提前30分钟凭准考证入场，考级宣纸统一为四尺三开</td>
+                </tr>
+                <tr class="nots">
+                    <td></td>
+                    <td colspan="3">2. 考试时除纸外，特殊用纸、其他用品均自带，国画用纸自备（1-2张）</td>
+                </tr>
+                <tr class="nots">
+                    <td></td>
+                    <td colspan="3">3. 美术类必带画板，软笔书法必带书法垫</td>
+                </tr>
+                <tr class="nots">
+                    <td></td>
+                    <td colspan="3">4. 查询成绩：10中旬登录网站，网上报名系统查询</td>
+                </tr>
+                <tr class="nots">
+                    <td></td>
+                    <td colspan="3">5. 证书领取：大约在11月中旬，已网站公布时间为准</td>
+                </tr>
+
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="4" class="bolder" style="text-align:center;">
+                        <p>承办机构：温州市五里河学生活动指导中心</p>
+                        <p>温州市五号时培训中心</p>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+        <hr style="margin:30px;">
+        <table class="fltb" border="0" cellspacing='0' cellpadding="6">
+            <tbody>
+                <tr>
+                    <td rowspan="5" width="130"></td>
+                    <td colspan="4">中国美术学院社会美术水平考级中心准考证（副联）</td>
+                </tr>
+                <tr>
+                    <td>姓名：吴力TaAT</td>
+                    <td>身份证号码：3303026532463562<br>准考证号码：sdf548632345223</td>
+                    <td>专业：绘画</td>
+                    <td>级别：七级</td>
+                </tr>
+                <tr>
+                    <td colspan="4">承办机构：温州市五里河学生活动指导中心</td>
+                </tr>
+                <tr>
+                    <td colspan="2">考试地址：温州市上陡门12组团203</td>
+                    <td colspan="2">考点：温州第十五中学</td>
+                </tr>
+            </tbody>
+        </table>
+        <p style="margin-left:30px">注意：制证用，考试必带</p>
+    </div>
+</body>
+
+</html>
