@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        table {
+            width: 300px;
+            margin: 0 auto;
+            background: #fcfcfc;
+            border: 1px solid #ccc
+        }
+
+        table tr td:first-child span {
+            display: block;
+            padding: 0 8px;
+            height: 30px;
+            line-height: 30px;
+            position: relative;
+            text-align: justify;
+            overflow: hidden;
+        }
+
+
+        table tr td:first-child span::after {
+            content: "";
+            width: 100%;
+            display: inline-block;
+        }
+
+        table td {
+            text-align: center;
+            border: 1px solid #333
+        }
+    </style>
+</head>
+
+<body>
+    <table cellspacing='0' cellpadding='0'>
+        <tr>
+            <td><span>姓名</span></td>
+            <td>休泽</td>
+        </tr>
+        <tr>
+            <td><span>职业</span></td>
+            <td>修业</td>
+        </tr>
+    </table>
+</body>
+
+</html>
