@@ -1,0 +1,289 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Family tree（族谱）</title>
+<meta name="keywords" content="css,css3" />
+<meta name="description" content="" />
+
+<style type="text/css">
+* {margin: 0; padding: 0;font-size: 0}
+.tree{width:auto;width: 99999px;
+margin-left: 80px;}
+.tree ul {
+	padding-top: 20px; position: relative;
+
+	transition: all 0.5s;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+}
+
+.tree li {
+	float: left;
+	text-align: left;
+	padding-right:10px;
+	list-style-type: none;
+	position: relative;
+	padding-top: 20px;
+	transition: all 0.5s;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+}
+
+/*We will use ::before and ::after to draw the connectors*/
+
+.tree li::before{
+	content: '';
+	position: absolute; top: 0; width:100%;left: 40px;
+	border-top: 1px solid #f00; height: 20px;
+}
+.tree li::after{
+	/*right: auto; left: 50%;
+	border-left: 1px solid #ccc;*/
+}
+
+/*We need to remove left-right connectors from elements without
+any siblings*/
+.tree li:only-child::after, .tree li:only-child::before {
+	display: none;
+}
+.tree ul li a:only-child::after{
+	display: none
+}
+/*Remove space from the top of single children*/
+/*.tree li:only-child{ padding-top: 0;}*/
+
+/*Remove left connector from first child and
+right connector from last child*/
+.tree li:first-child::before{
+	/*border: 0*/
+}
+/*Adding back the vertical connector to the last nodes*/
+.tree li:last-child::before{
+	border: 0
+
+}
+.tree li:first-child::after{
+
+}
+
+/*Time to add downward connectors from parents*/
+.tree ul ul::before{
+	/*content: '';
+	position: absolute; top: 0; left: 50%;
+	border-left: 1px solid #ccc;
+	width: 0; height: 20px;*/
+}
+.tree ul::after{
+	content: "";
+	display: block;
+	visibility: hidden;
+	clear: both;
+}
+
+.tree li a{
+	padding: 5px 10px;
+	text-decoration: none;
+	color: #666;
+	font-family: arial, verdana, tahoma;
+	font-size: 11px;
+	display: inline-block;
+	background: #fcfcfc;
+	transition: all 0.5s;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+	position: relative;
+	writing-mode:vertical-lr;
+	-webkit-writing-mode:vertical-lr;
+	height: 80px;
+	width: 60px;
+}
+.tree li a b{
+	color: #333;
+	font-size: 22px;
+	letter-spacing: 3px;
+	font-weight: bold;
+}
+.tree li a p{
+	margin: 1px 2px;
+	color: #666;
+	font-size: 13px;
+	letter-spacing: 2px;
+}
+.tree li a b,.tree li a p{
+	position: relative;
+	top: 12px
+}
+.tree li a span.sz{
+	letter-spacing: 2px;
+	color: #f00;
+	font-size: 13px;
+	position: absolute;
+	left: 6px;
+	top: 1px;
+	writing-mode:horizontal-tb;
+	-webkit-writing-mode:horizontal-tb;
+}
+.tree li a span.pse{
+	letter-spacing: 2px;
+	color: #f00;
+	font-size: 13px;
+	position: absolute;
+	right: 3px;
+	top: 16px;
+}
+.tree li a::before{
+	content: '';
+	position: absolute; top:-20px; left: 50%;
+	border-left: 1px solid #f00;
+	width: 0; height: 20px;
+}
+.tree li a.female::before{
+	border-color: #00f;
+}
+.tree li a::after{
+	content: '';
+	position: absolute; bottom: -20px; left: 50%;
+	border-left: 1px solid #f00;
+	width: 0; height: 20px;
+}
+/*Time for some hover effects*/
+/*We will apply the hover effect the the lineage of the element also*/
+.tree li a:hover, .tree li a:hover+ul li a {
+	background: #c8e4f8; color: #000;
+}
+/*Connector styles on hover*/
+.tree li a:hover::after,
+.tree li a:hover+ul li a::after,
+.tree li a:hover+ul li a::before,
+.tree li a:hover+ul li::before,
+.tree li a:hover+ul ul::before{
+	border-color:  #94a0b4;
+}
+.tree>ul>li:first-child>a::before{
+	display: none
+}
+.main{
+	position: relative;
+}
+.navsCrus{
+	position: absolute;
+	top: 40px;
+}
+.navsCrus li{
+	position: relative;
+	height: 130px;
+	width: 60px;
+}
+.navsCrus a {
+	writing-mode: vertical-lr;
+	-webkit-writing-mode:vertical-lr;
+	border:1px solid #f00;
+	border-radius: 3px;
+	letter-spacing: 2px;
+	font-size: 13px;
+	color: #f00;
+	padding: 6px 3px;
+	font-weight: bold;
+	position: relative;
+	left: 16px;
+	top: 16px;
+}
+</style>
+</head>
+
+<body>
+
+
+<div id="main">
+	<ul class="navsCrus">
+		<li><a>第一世</a></li>
+		<li><a>第二世</a></li>
+		<li><a>第三世</a></li>
+		<li><a>第四世</a></li>
+		<li><a>第五世</a></li>
+		<li><a>第六世</a></li>
+	</ul>
+   <div class="tree">
+	<ul>
+		<li>
+			<a href="#"><b>兴才</b><p>号养淳</p><p>字文效</p><span class="sz">祖始</span></a>
+			<ul>
+				<li>
+					<a href="#"><b>知丙</b><p>字伊南</p></a>
+					<ul>
+						<li><a href="#"><b>守牛</b><p>字于耕</p><span class="pse"></span></a>
+							<ul>
+							<li><a  href="#"><b>珉斗</b><p>字子斣</p><span class="pse"></span></a>
+								<ul>
+									<li><a href="#"><b>汉瑾</b><p>字廷瑕</p><span class="pse"></span></a>
+										<ul>
+											<li><a href="#"><b>孔泉</b><p>字孟登</p><span class="pse"></span></a></li>
+											<li><a href="#"><b>孔馆</b><p>字孟舍</p><span class="pse"></span></a></li>
+
+										</ul></li>
+									<li><a href="#"><b>汉瑶</b><p>字廷名</p><span class="pse"></span></a></li>
+									<li><a class="female" href="#"><b>汉珮</b><p>字廷汉</p><span class="pse"></span></a>
+										<ul>
+											<li><a href="#"><b>孔楼</b><p>字孟阁</p><span class="pse"></span></a></li>
+											<li><a href="#"><b>孔曲</b><p>字孟里</p><span class="pse"></span></a></li>
+
+										</ul>
+									</li>
+								</ul>
+							</li>
+							<li><a href="#"><b>丘陵</b><p>字誐新</p><span class="pse">出兼</span></a></li>
+							<li><a href="#"><b>丘陵</b><p>字誐新</p><span class="pse"></span></a></li>
+						</ul></li>
+						<li><a href="#"><b>丘陵</b><p>字誐新</p><span class="pse"></span></a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#"><b>丘陵</b><p>字誐新</p><span class="pse"></span></a>
+					<ul>
+						<li><a href="#"><b>丘陵</b><p>字誐新</p><span class="pse"></span></a></li>
+						<li>
+							<a href="#"><b>丘陵</b><p>字誐新</p></a>
+							<ul>
+								<li><a href="#"><b>丘陵</b><p>字誐新</p></a></li>
+								<li><a href="#"><b>丘陵</b><p>字誐新</p></a><ul>
+									<li><a class="female" href="#"><b>丘陵</b><p>字誐新</p><span class="pse"></span></a></li>
+									<li><a href="#"><b>丘陵</b><p>字誐新</p><span class="pse">出兼</span></a></li>
+									<li><a href="#"><b>丘陵</b><p>字誐新</p><span class="pse"></span></a></li>
+								</ul></li>
+								<li><a href="#"><b>丘陵</b><p>字誐新</p></a></li>
+								<li>
+									<a href="#"><b>丘陵</b><p>字誐新</p></a>
+									<ul>
+										<li><a class="female" href="#"><b>丘陵</b><p>字誐新</p><span class="pse"></span></a></li>
+										<li><a href="#"><b>丘陵</b><p>字誐新</p><span class="pse">出兼</span></a></li>
+										<li><a href="#"><b>丘陵</b><p>字誐新</p><span class="pse"></span></a></li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+						<li><a href="#"><b>丘陵</b><p>字誐新</p></a>
+							<ul>
+								<li><a href="#"><b>丘陵</b><p>字誐新</p></a></li>
+								<li><a href="#"><b>丘陵</b><p>字誐新</p></a><ul>
+									<li><a class="female" href="#"><b>丘陵</b><p>字誐新</p><span class="pse"></span></a></li>
+									<li><a href="#"><b>丘陵</b><p>字誐新</p><span class="pse">出兼</span></a></li>
+									<li><a href="#"><b>丘陵</b><p>字誐新</p><span class="pse"></span></a></li>
+								</ul></li>
+								<li><a href="#"><b>丘陵</b><p>字誐新</p></a></li>
+								<li>
+									<a href="#"><b>丘陵</b><p>字誐新</p></a>
+									<ul>
+										<li><a class="female" href="#"><b>丘陵</b><p>字誐新</p><span class="pse"></span></a></li>
+										<li><a href="#"><b>丘陵</b><p>字誐新</p><span class="pse">出兼</span></a></li>
+										<li><a href="#"><b>丘陵</b><p>字誐新</p><span class="pse"></span></a></li>
+									</ul>
+								</li>
+							</ul></li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+	</ul>
+</body>
+</html>
