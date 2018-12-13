@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        ul,
+        li {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            padding: 3px 0;
+        }
+
+        li {
+            border-bottom: 1px solid #ccc;
+        }
+
+        .imgWrp {
+            width: 0;
+            height: 0;
+            padding: 10%;
+            margin-right: 2%;
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            overflow: hidden;
+        }
+
+        li {
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        li>* {
+            flex: 1 1 auto;
+        }
+
+        li>p {
+            width: 70%
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li>
+            <div class="imgWrp" style='background-image:url(wrap/img/cat01.jpg)'></div>
+            <p>喵咪冬季取暖</p>
+        </li>
+        <li>
+            <div class="imgWrp" style='background-image:url(wrap/img/cat02.jpg)'></div>
+            <p>喵咪冬季取暖</p>
+        </li>
+        <li>
+            <div class="imgWrp" style='background-image:url(wrap/img/cat03.jpg)'></div>
+            <p>喵咪冬季取暖</p>
+        </li>
+        <li>
+            <div class="imgWrp" style='background-image:url(wrap/img/cat05.jpg)'></div>
+            <p>喵咪冬季取暖</p>
+        </li>
+        <li>
+            <div class="imgWrp" style='background-image:url(wrap/img/cat06.jpg)'></div>
+            <p>喵咪冬季取暖</p>
+        </li>
+    </ul>
+</body>
+
+</html>
