@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <style>
+        body{
+            background-color:skyblue;
+        }
+        .barWrp{
+            margin:10px 0;
+            border:1px solid #fff;
+            border-radius:4px;
+        }
+        .bar{
+            height: 30px;
+            background-color:#fff;
+            background-image:linear-gradient(45deg,yellow 25%,green 0,green 50%, yellow 0,yellow 75%,green 0);
+            background-size:30px 30px;
+            animation: backgroundPosition 1s linear infinite, widtheft 2s linear infinite;
+        }
+        @keyframes backgroundPosition{
+            0%{
+                background-position:0 center
+            }
+            100%{
+                background-position:60px center
+            }
+        }
+        @keyframes widtheft{
+            0%{
+                width:1%;
+            }
+            100%{
+                width:100%;
+            }
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="barWrp">
+        <div class="bar"></div>
+    </div>
+</body>
+
+</html>
