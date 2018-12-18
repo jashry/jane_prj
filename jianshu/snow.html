@@ -24,6 +24,7 @@
             height: 100%;
             width:100%;
             background-image:url(wrap/img/snow.png);
+            animation: falling 50s linear infinite;
         }
         .snow1 div{
             background-position:10% 20%;
@@ -40,17 +41,14 @@
             background-position:30% 10%;
         }
         .snow1 div{
-            animation: falling 50s linear 10s infinite;
+            animation-delay:10s;
         } 
 
         .snow2 div{
-            animation: falling 50s linear 20s infinite;
+            animation-delay:20s;
         } 
         .snow3 div{
-            animation: falling 50s linear 30s infinite;
-        } 
-                .snow4 div{
-            animation: falling 50s linear infinite;
+            animation-delay:30s;
         } 
 
         @keyframes falling{
@@ -59,15 +57,13 @@
                 opacity: 0;
             }
             1%{
-                top:-100%;
                 opacity: 1;
             }
-            99%{
-                top:100%;
+            98%{
                 opacity: 1;
             }
             100%{                
-                top:-100%;
+                top:100%;
                 opacity: 0;
             }
         }
