@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <style>
+        body {
+            background-color: #fff;
+        }
+        
+        ul,
+        li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        
+        .mainWrp {
+            padding: 10px;
+            position: fixed;
+            background-color: lightcyan;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 2;
+            overflow: auto;
+            box-shadow: 0 0 1px #ccc, -3px 0 8px lightcyan;
+            transition: transform 1s cubic-bezier(0.215, 0.610, 0.355, 1)
+        }
+        
+        .shrik {
+            transform: scale3d(.8, .8, .8) translateX(70%)
+        }
+        
+        nav {
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 50%;
+            background-color: lightcyan;
+        }
+        
+        nav li {
+            line-height: 37px;
+            width: 80px;
+            text-align: center;
+        }
+        
+        nav li a {
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="javascript:;">Page1</a></li>
+            <li><a href="javascript:;">Page2</a></li>
+            <li><a href="javascript:;">Page3</a></li>
+            <li><a href="javascript:;">Page4</a></li>
+            <li><a href="javascript:;">Page5</a></li>
+        </ul>
+    </nav>
+    <div class="mainWrp" id="mainWrp">
+        <button id="menu">menu</button>
+        <p>
+            黄丽玲（A-Lin），1983年9月20日出生于台湾省台东市，台东阿美族原住民，华语流行乐女歌手。</p>
+        <p>1999年，黄丽玲在南投教921地震后的小朋友们唱诗歌时被经纪人发现。2003年，黄丽玲正式签约艾回唱片。</p>
+        <p>2007年，黄丽玲凭借首张个人专辑《失恋无罪》获得第18届台湾金曲奖最佳新人奖提名 [1] ；同年7月，黄丽玲与相差八岁的棒球选手黄甘霖结婚，并在其后育有一女 [2] 。2009年，黄丽玲凭借《天生歌姬》专辑首次获得台湾金曲奖最佳国语女歌手奖提名 [3] 。
+        </p>2011年，黄丽玲凭借专辑《寂寞不痛》再次获得金曲奖最佳国语女歌手提名。
+        <p>2012年，黄丽玲凭借专辑《我们会更好的》第三次获得金曲奖最佳国语女歌手提名。同年，黄丽玲还发行了第五张个人专辑《幸福了，然后呢》。</p>
+        <p>2013年，黄丽玲在台北小巨蛋举办了Feel-Lin个人演唱会 [4] 。2014年，黄丽玲加盟索尼音乐 [5] ；并于同年12月30日发行第六张个人专辑《罪恶感》。
+        </p>
+        <p>2015年，黄丽玲因参加职业歌手对战节目《我是歌手第三季》而在内地获得更高关注度 [6] ；同年，黄丽玲还凭借专辑《罪恶感》第四次获得金曲奖最佳国语女歌手提名。
+        </p>
+    </div>
+    <script>
+        var menu = document.querySelector('#menu')
+        var mainWrp = document.querySelector('#mainWrp')
+        menu.addEventListener('touchstart', function(evt) {
+            evt.stopPropagation() // 阻止事件冒泡
+            mainWrp.className = "mainWrp shrik"
+        })
+        mainWrp.addEventListener('touchstart', function(evt) {
+            evt.stopPropagation()
+            mainWrp.className = "mainWrp"
+        })
+    </script>
+
+</body>
+
+</html>
