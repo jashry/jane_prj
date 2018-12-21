@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            padding: 0;
+            margin: 0
+        }
+
+        body {
+            background-color: aliceblue;
+        }
+        p{
+            padding: 2% 6%
+        }
+        .mainWrps {
+            padding-top: 47px;
+        }
+
+        #titWrp {
+            background-color: rgba(255, 255, 255, 0);
+            text-align: center;
+            height: 47px;
+            line-height: 47px;
+            font-size: 17px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mainWrps">
+        <div id="titWrp">渐显渐隐标题</div>
+        <!-- 一大片段落 -->
+        <div>
+            <p>1 paragraph</p>
+            <p>1 paragraph</p>
+            <p>1 paragraph</p>
+            <p>1 paragraph</p>
+            <p>1 paragraph</p>
+            <p>1 paragraph</p>
+            <p>1 paragraph</p>
+            <p>1 paragraph</p>
+            <p>1 paragraph</p>
+            <p>1 paragraph</p>
+            <p>1 paragraph</p>
+            <p>1 paragraph</p>
+            <p>1 paragraph</p>
+            <p>1 paragraph</p>
+            <p>1 paragraph</p>
+            <p>1 paragraph</p>
+            <p>1 paragraph</p>
+            <p>1 paragraph</p>
+            <p>1 paragraph</p>
+            <p>1 paragraph</p>
+            <p>1 paragraph</p>
+            <p>1 paragraph</p>
+            <p>1 paragraph</p>
+            <p>1 paragraph</p>
+            <p>1 paragraph</p>
+            <p>1 paragraph</p>
+            <p>1 paragraph</p>
+            <p>1 paragraph</p>
+            <p>1 paragraph</p>
+            <p>1 paragraph</p>
+            <p>1 paragraph</p>
+            <p>1 paragraph</p>
+            <p>1 paragraph</p>
+            <p>1 paragraph</p>
+            <p>1 paragraph</p>
+            <p>1 paragraph</p>
+            <p>1 paragraph</p>
+            <p>1 paragraph</p>
+            <p>1 paragraph</p>
+            <p>1 paragraph</p>
+            <p>1 paragraph</p>
+            <p>1 paragraph</p>
+            <p>1 paragraph</p>
+            <p>1 paragraph</p>
+            <p>1 paragraph</p>
+            <p>1 paragraph</p>
+            <p>1 paragraph</p>
+            <p>1 paragraph</p>
+            <p>1 paragraph</p>
+            <p>1 paragraph</p>
+            <p>1 paragraph</p>
+            <p>1 paragraph</p>
+        </div>
+    </div>
+    <!-- lodash.js工具库 -->
+    <script src="https://cdn.bootcss.com/lodash.js/4.17.11/lodash.min.js"></script>
+    <script>
+        var tit = document.querySelector('#titWrp')
+        var doc = document.body.parentElement
+        // 当滚动时,用节流函数来间隔时间段触发绑定的函数操作
+        window.addEventListener("scroll", _.throttle(function () {
+            // 仅在小于100时,也就是滚动值100以内才执行对应的操作
+            if(doc.scrollTop<100){
+                var num = doc.scrollTop;
+                console.log("num: ", num)
+                num = num/100
+                tit.style.backgroundColor="rgba(255,255,255,"+num+")"
+            }else{
+                tit.style.backgroundColor="rgba(255,255,255,1)"
+            }
+        }, false), 500)
+    </script>
+</body>
+
+</html>
