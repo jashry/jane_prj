@@ -100,7 +100,7 @@
     <script src="https://cdn.bootcss.com/lodash.js/4.17.11/lodash.min.js"></script>
     <script>
         var tit = document.querySelector('#titWrp')
-        var doc = document.body.parentElement
+        var doc = document.body || document.documentElement
         // 当滚动时,用节流函数来间隔时间段触发绑定的函数操作
         window.addEventListener("scroll", _.throttle(function () {
             // 仅在小于100时,也就是滚动值100以内才执行对应的操作
