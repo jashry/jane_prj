@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        button {
+            background: none;
+            border: none;
+            outline: none
+        }
+
+        a {
+            color: #333;
+            text-decoration: none
+        }
+
+        .navs {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 99;
+            height: 60px;
+            background-color: aliceblue;
+        }
+
+        .roller {
+            position: absolute;
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            background-color: aliceblue;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%)
+        }
+
+        .roller a {
+            display: block;
+            opacity: 0;
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            text-align: center;
+            height: 44px;
+            width: 44px;
+            border-radius: 50%;
+            background-color: tomato;
+            color: #fff;
+            font-size: 15px;
+            line-height: 44px;
+            transition: all 500ms ease;
+            transform-origin: center center;
+        }
+
+        .roller a em {
+            display: block;
+            font-style: normal;
+            text-shadow: 0 0 #fff;
+        }
+
+        .rob {
+            display: block;
+            height: 46px;
+            width: 46px;
+            line-height: 46px;
+            border-radius: 50%;
+            margin: 2px;
+            position: absolute;
+            background-color: blanchedalmond
+        }
+
+        button.rob:active {
+            background-color: azure
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mainWrp">
+        <div class="navs">
+            <div class="roller" id="rob">
+                <a href="javascript:;"><em>B1</em></a>
+                <a href="javascript:;"><em>B2</em></a>
+                <a href="javascript:;"><em>B3</em></a>
+                <a href="javascript:;"><em>B4</em></a>
+                <a href="javascript:;"><em>B5</em></a>
+                <a href="javascript:;"><em>B6</em></a>
+                <a href="javascript:;"><em>B7</em></a>
+                <button class="rob" id="rollout">ROT</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        var linkas = document.querySelector('#rob').querySelectorAll('a')
+        var rollout = document.querySelector('#rollout')
+        var arc = 180 / linkas.length
+        var bolt = 0
+
+        function hide() {
+            linkas.forEach((item, index) => {
+                item.querySelector('em').style.transform = 'rotateZ(' + arc * (index + 0.5) + 'deg)'
+                item.style.transform = 'rotateZ(-' + arc * (index + 0.5) + 'deg) translateX(0)'
+                item.style.opacity = '0'
+            })
+        }
+        function show(){
+            linkas.forEach((item, index) => {
+                item.style.transform = 'rotateZ(-' + arc * (index + 0.5) + 'deg) translateX(100px)'
+                item.style.opacity = '1'
+            })
+        }
+
+        hide()
+
+        rollout.addEventListener('click', function () {
+            if(bolt){
+                hide()
+                bolt=0
+            }else{
+                show()
+                bolt=1
+            }
+        })
+    </script>
+</body>
+
+</html>
