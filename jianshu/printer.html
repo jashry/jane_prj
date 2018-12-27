@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            font-size: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="cav"></canvas>
+    <script>
+        window.onload = function () {
+
+            var cav = document.querySelector('#cav')
+            var ctx = cav.getContext('2d')
+
+            var sw = screen.availWidth
+            var sh = screen.availHeight
+
+            cav.width = sw
+            cav.height = sh
+
+            var poetry = ['床前明月光', '疑是地上霜', '举头望明月', '低头思故乡']
+            var poetryArr = []
+
+            ctx.fillStyle = "#332833"
+            ctx.font = "26px cursive"
+            ctx.textAlign = "left"
+
+            var text = ctx.measureText(poetry[0])
+            var poiX = (sw - text.width) * 0.5
+
+            poetry.forEach(function (item, index) {
+                var ziArr = item.split("")
+                poetryArr.push(ziArr)
+            })
+
+            var i = j = 0;
+            var tik = setInterval(() => {
+                if (i < poetryArr.length) {
+                    if (j < poetryArr[i]['length']) {
+                        ctx.fillText(poetryArr[i][j], poiX + 26 * j, 100 + 40 * i)
+                        j++
+                    } else {
+                        i++;
+                        j = 0
+                    }
+                }else{
+                    clearInterval(tik)
+                }
+            }, 170);
+        }
+    </script>
+</body>
+
+</html>
