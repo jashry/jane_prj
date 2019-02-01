@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            background-color: #f8f8f8;
+        }
+        
+        .main_wrp {
+            margin: 0 auto;
+            max-width: 760px;
+        }
+        
+        .cavs_wrp {
+            position: relative;
+            margin: 6rem auto;
+        }
+        
+        #cavs1 {
+            z-index: 2;
+            /* background-color: sandybrown */
+        }
+        
+        #cavs_background {
+            z-index: 1;
+            background-color: cornflowerblue
+        }
+        
+        #cavs1,
+        #cavs_background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main_wrp">
+        <div class="cavs_wrp">
+            <canvas id="cavs1"></canvas>
+            <canvas id="cavs_background"></canvas>
+        </div>
+
+    </div>
+    <script>
+        function draw_bg_text(num_prise) {
+            switch (num_prise) {
+                case 1:
+                    ctx_bg.fillText("First Prize", (300 - ctx_bg.measureText("First Prize").width) * 0.5, 85);
+                    break;
+                case 2:
+                    ctx_bg.fillText("Second Prize", (300 - ctx_bg.measureText("Second Prize").width) * 0.5, 85);
+                    break;
+                case 3:
+                    ctx_bg.fillText("Third Prize", (300 - ctx_bg.measureText("Third Prize").width) * 0.5, 85);
+                    break;
+                default:
+                    ctx_bg.fillText("None Prize", (300 - ctx_bg.measureText("None Prize").width) * 0.5, 85);
+            }
+            console.log("prize Level：", num_prise)
+        }
+
+        function roll_num() {
+            return Math.floor(Math.random() * 4)
+        }
+
+
+        var cavs1 = document.getElementById('cavs1');
+        var cavs_bg = document.getElementById('cavs_background');
+        var cavs_wrp = document.getElementsByClassName('cavs_wrp')[0];
+
+        cavs_wrp.style.cssText = "width:300px;height:150px";
+        cavs1.width = cavs_bg.width = 300;
+        cavs1.height = cavs_bg.height = 150;
+
+        var ctx_bg = cavs_bg.getContext('2d')
+        ctx_bg.font = "30px cursive";
+        ctx_bg.fillStyle = "#fff";
+        draw_bg_text(roll_num());
+
+
+        var ctx = cavs1.getContext('2d');
+        ctx.fillStyle = '#ccc';
+        ctx.fillRect(0, 0, 300, 150);
+
+
+        var startX = startY = oclinetX = oclientY = 0
+
+        function drawing(evt) {
+            ctx.globalCompositeOperation = "destination-out"
+            ctx.fillStyle = "#fff"
+            ctx.beginPath();
+            ctx.arc(evt.targetTouches[0].clientX - oclinetX + startX, evt.targetTouches[0].clientY - oclientY + startY, 30, 0, Math.PI * 2)
+            ctx.stroke();
+            ctx.fill()
+
+            console.log('arc drawing')
+        }
+
+
+        cavs1.addEventListener('touchstart', function(evt) {
+            console.log('arc draw start')
+            oclinetX = evt.targetTouches[0].clientX
+            oclientY = evt.targetTouches[0].clientY
+            startX = oclinetX - cavs_wrp.offsetLeft
+            startY = oclientY - cavs_wrp.offsetTop
+
+            cavs1.addEventListener('touchmove', function(evt) {
+                drawing(evt)
+            })
+        })
+
+
+        cavs1.addEventListener('touchend', function(evt) {
+            console.log('arc draw end')
+            cavs1.removeEventListener('touchmove', function(evt) {
+                drawing(evt)
+            })
+        })
+    </script>
+</body>
+
+</html>
