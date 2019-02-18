@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        .mwrp {
+            padding: 3rem 0;
+            overflow: hidden;
+            
+        }
+
+        .dzp {
+            position: relative;
+            font-size: 0;
+        }
+
+        .dzp img {
+            width: 100%
+        }
+
+        .roller {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            border-radius: 50%;
+            overflow: hidden;
+            background-image: url('wrap/img/prize.png');
+            background-repeat: no-repeat;
+            background-size: 85% auto;
+            background-position: center center;
+            z-index: 2;
+            transition: none;
+            /* transform: rotateZ(120deg) */
+        }
+
+        .zz {
+            position: absolute;
+            top: 49%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            height: 0;
+            width: 0;
+            padding: 11%;
+            background-image: url('wrap/img/zz.png');
+            background-repeat: no-repeat;
+            background-size: 100% auto;
+            background-position: center center;
+            z-index: 3;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mwrp">
+        <div class="dzp">
+            <img src="wrap/img/bg.png" alt="">
+            <div class="roller" id="roller"></div>
+            <div class="zz" id="pin"></div>
+        </div>
+    </div>
+    <script>
+        var roller = document.getElementById('roller')
+        var pin = document.getElementById('pin')
+        var Bools = true;
+
+        function rollRound() {
+            var randNum = Math.floor(Math.random() * 8 + 1)
+            console.log('random number: ', randNum)
+            roller.style.transition = ' all 2s ease-out'
+            roller.style.transform = "rotateZ(" + (360 + randNum * 45) + "deg)"
+            return randNum
+        }
+        pin.addEventListener('click', function () {
+            if (Bools) {
+                var prizeNum = rollRound()
+                Bools = false;
+                setTimeout(function(){
+                    Bools = true;
+                    var slos = ''
+                    if (prizeNum !== 4) {
+                        slos = '恭喜您中得' + prizeNum + '号奖项!'
+                    } else {
+                        slos = '抱歉,您未中奖!'
+                    }
+                    alert(slos)
+                    roller.style.transition = 'none'
+                    roller.style.transform = "rotateZ(0deg)"
+                }, 2000);
+            }
+        })
+    </script>
+</body>
+
+</html>
