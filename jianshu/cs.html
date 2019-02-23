@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .close_button{
+        display: inline-block;
+        padding: 17px;
+        border: 1px solid #ccc;
+        overflow: hidden;
+        position: relative;
+        border-radius: 50%
+    }
+    .close_button::after,.close_button::before{
+        content: "";
+        width: 60%;
+        height: 0;
+        border-bottom: 1px solid #999;
+        position: absolute;
+        top:50%;
+        left: 20%;
+        transition: transform 300ms ease-out
+    }
+    .close_button::after{
+        transform: rotateZ(45deg)
+    }
+    .close_button::before{
+        transform: rotateZ(-45deg)
+    }
+    .close_button:hover{
+        cursor: pointer;
+    }
+    .close_button:hover::after{
+        transform: rotateZ(-45deg)
+    }
+    .close_button:hover::before{
+        transform: rotateZ(45deg)
+    }
+
+    /* add_button */
+    .add_button{
+        display: inline-block;
+        padding: 17px;
+        border: 1px solid #ccc;
+        overflow: hidden;
+        position: relative;
+        border-radius: 50%
+    }
+    .add_button::after,.add_button::before{
+        content: "";
+        width: 60%;
+        height: 0;
+        border-bottom: 1px solid #999;
+        position: absolute;
+        top:50%;
+        left: 20%;
+        transition: transform 300ms ease-out
+    }
+    .add_button::after{
+        transform: rotateZ(0)
+    }
+    .add_button::before{
+        transform: rotateZ(-90deg)
+    }
+    .add_button:hover{
+        cursor: pointer;
+    }
+    .add_button:hover::after{
+        transform: rotateZ(360deg)
+    }
+    .add_button:hover::before{
+        transform: rotateZ(450deg)
+    }
+    /* delete_button */
+    .delete_button{
+        display: inline-block;
+        padding: 17px;
+        border: 1px solid #ccc;
+        overflow: hidden;
+        position: relative;
+        border-radius: 50%
+    }
+    .delete_button::before{
+        content: "";
+        width: 60%;
+        height: 0;
+        border-bottom: 1px solid #999;
+        position: absolute;
+        top:50%;
+        left: 20%;
+        transition: transform 300ms ease-out
+    }
+    .delete_button::before{
+        transform: rotateZ(0) scale(1,1)
+    }
+    .delete_button:hover{
+        cursor: pointer;
+    }
+    .delete_button:hover::before{
+        transform: rotateZ(180deg)  scale(1.3,1.8)
+    }
+
+    /* arrow_button */
+    .arrow_button{
+        display: inline-block;
+        padding: 17px;
+        border: 1px solid #ccc;
+        overflow: hidden;
+        position: relative;
+        border-radius: 50%;
+        transition: transform 300ms ease-out
+
+    }
+    .arrow_button::before{
+        content: "";
+        display: block;
+        width: 0;
+        height: 0;
+        padding: 20%;
+        border-top: 1px solid #999;
+        border-left: 1px solid #999;
+        position: absolute;
+        top:50%;
+        left: 60%;
+        transform:rotateZ(-45deg) translateY(-70%)
+    }
+    .arrow_button:hover{
+        cursor: pointer;
+        transform: scale(1.2)
+    }
+    </style>
+</head>
+<body>
+    <span class="close_button"></span>
+    <span class="add_button"></span>
+    <span class="delete_button"></span>
+    <span class="arrow_button"></span>
+</body>
+</html>
