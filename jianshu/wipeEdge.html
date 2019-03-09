@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
@@ -40,7 +40,8 @@
             border-left: 2px solid #fff;
             border-bottom: 1px solid #efefef
         }
-        .clsbtn{
+
+        .clsbtn {
             position: absolute;
             left: 0;
             width: 100%;
@@ -50,14 +51,15 @@
             box-sizing: border-box;
             border: 1px solid #efefef
         }
+
         nav a:active {
             color: #ccc;
             border-color: lightskyblue
         }
-        nav.on{
+
+        nav.on {
             transform: translateX(0)
         }
-
     </style>
 </head>
 
@@ -79,16 +81,11 @@
         var clientXStart = clientXEnd = 0
         var movefunc = function (evts) {
             clientXEnd = evts.touches[0].clientX
-            console.log("clientXStart: ",Math.floor(clientXStart))
-            // console.log("clientXEnd: ",clientXEnd)
-            console.log("End - Start: ", Math.floor(Math.abs(clientXEnd - clientXStart)))
-            
-            if (clientXStart <= 22 && Math.floor(Math.abs(clientXEnd - clientXStart)) > 77) {
-                console.log('touch the edge and move!')
-                // alert('touch the edge and move!')
 
-                nav.className='on'
-                
+            if (clientXStart <= 22 && Math.floor(Math.abs(clientXEnd - clientXStart)) > 77) {
+
+                nav.className = 'on'
+
             }
         }
         obody.addEventListener('touchstart', function (evt) {
@@ -99,8 +96,8 @@
         obody.addEventListener('touchend', function (evt) {
             obody.removeEventListener('touchmove', movefunc)
         })
-        clsbtn.addEventListener('touchstart',function(){
-            nav.className=''
+        clsbtn.addEventListener('touchstart', function () {
+            nav.className = ''
         })
     </script>
 </body>
