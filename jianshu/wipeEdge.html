@@ -40,11 +40,24 @@
             border-left: 2px solid #fff;
             border-bottom: 1px solid #efefef
         }
-
+        .clsbtn{
+            position: absolute;
+            left: 0;
+            width: 100%;
+            bottom: 1px;
+            text-align: center;
+            color: #999;
+            box-sizing: border-box;
+            border: 1px solid #efefef
+        }
         nav a:active {
             color: #ccc;
             border-color: lightskyblue
         }
+        nav.on{
+            transform: translateX(0)
+        }
+
     </style>
 </head>
 
@@ -56,24 +69,38 @@
             <a href="javascript:;">Page03</a>
             <a href="javascript:;">Page04</a>
             <a href="javascript:;">Page05</a>
+            <a href="javascript:;" class="clsbtn">close</a>
         </nav>
     </div>
     <script>
         var nav = document.querySelector('#nav')
-        var obody = document.body;
+        var obody = document.body
+        var clsbtn = document.querySelector(".clsbtn")
         var clientXStart = clientXEnd = 0
         var movefunc = function (evts) {
-            clientXEnd = evts.touches.clientX
-            if (clientXStart == 0 && Math.abs(clientXEnd - clientXStart) > 77) {
-                alert('touch the edge and move!')
+            clientXEnd = evts.touches[0].clientX
+            console.log("clientXStart: ",Math.floor(clientXStart))
+            // console.log("clientXEnd: ",clientXEnd)
+            console.log("End - Start: ", Math.floor(Math.abs(clientXEnd - clientXStart)))
+            
+            if (clientXStart <= 22 && Math.floor(Math.abs(clientXEnd - clientXStart)) > 77) {
+                console.log('touch the edge and move!')
+                // alert('touch the edge and move!')
+
+                nav.className='on'
+                
             }
         }
         obody.addEventListener('touchstart', function (evt) {
             clientXStart = evt.touches[0].clientX
             obody.addEventListener('touchmove', movefunc)
         })
+
         obody.addEventListener('touchend', function (evt) {
             obody.removeEventListener('touchmove', movefunc)
+        })
+        clsbtn.addEventListener('touchstart',function(){
+            nav.className=''
         })
     </script>
 </body>
